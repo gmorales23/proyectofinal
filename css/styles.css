@@ -189,7 +189,7 @@ a.custom-card:hover {
   color: orange;
 }
 
-.login1 {
+.login_1 {
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -252,5 +252,5 @@ button[type="submit"] {
     cursor: pointer;
     font-weight: 600;
     transition: transform .05s ease, filter .12s ease;
-    min-height: 44px;
+    min-height: 45px;
 }
