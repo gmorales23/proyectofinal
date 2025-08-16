@@ -237,110 +237,110 @@ button[type="submit"] {
 }
 /* Título de la página */
 #titulo-categoría {
-  font-size: 3rem;
-  font-weight: bold;
-  color: #333;
-  text-align: center;
-  margin-bottom: 20px;
+    font-size: 3rem;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 /* Tarjeta */
 .card {
-  display: flex;
-  flex-direction: column;
-  height: 100%; 
-  border: 2px solid #00000093;
-  border-radius: 5px;
-  box-shadow: 0 4px 12px rgba(0.3, 0, 0, 0.3);
-  transition: transform 0.2s;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border: 2px solid #00000093;
+    border-radius: 5px;
+    box-shadow: 0 4px 12px rgba(0.3, 0, 0, 0.3);
+    transition: transform 0.2s;
 }
 
 .card:hover {
-  transform: translateY(-5px);
+    transform: translateY(-5px);
 }
 
 /* Imagen de la tarjeta */
 .card-img-top {
-  border-top-left-radius: 3px;
-  border-top-right-radius: 3px;
-  flex: 0 0 50%; 
-  object-fit: cover;
-  width: 100%;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    flex: 0 0 50%;
+    object-fit: cover;
+    width: 100%;
 }
 
 /* Título de la tarjeta */
 .card-title {
-  font-size: 1rem;
-  font-weight: bold;
+    font-size: 1rem;
+    font-weight: bold;
 }
 
 /* Cuerpo de la tarjeta */
 .card-body {
-  display: flex;
-  justify-content: space-between;
-  align-items: stretch; 
-  padding: 0;
-  flex: 1 1 60%; 
-  font-size: 0.7rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    padding: 0;
+    flex: 1 1 60%;
+    font-size: 0.7rem;
 }
 
 /* Información del producto */
 .info-producto {
-  flex: 2;
-  padding: 15px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center; 
+    flex: 2;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 /* Franja negra del precio */
 .precio-producto {
-  font-size: 1rem;
+    font-size: 1rem;
 }
 
 .bg-dark {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 15px;
-  height: 100%;
-  white-space: nowrap;
-  background-color: #000;
-  color: #fff;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 15px;
+    height: 100%;
+    white-space: nowrap;
+    background-color: #000;
+    color: #fff;
 }
 
 /* Texto dentro de la franja negra */
 .bg-dark .fs-4 {
-  font-weight: bold;
-  line-height: 1;
-  font-size: 1.2rem !important;
+    font-weight: bold;
+    line-height: 1;
+    font-size: 1.2rem !important;
 }
 
 .bg-dark .fs-6 {
-  font-size: 0.6rem !important;
+    font-size: 0.6rem !important;
 }
 
 .bg-dark small {
-  color: rgba(204, 204, 204, 0.37);
+    color: rgba(204, 204, 204, 0.37);
 }
 
 /* Espaciado entre tarjetas */
 #catalogo-autos .col-md-4 {
-  margin: 25px 0 !important;  
-  padding: 0 25px;
+    margin: 25px 0 !important;
+    padding: 0 25px;
 }
 form > div:last-child {
     text-align: center;
-    margin-top: 10px;   
+    margin-top: 10px;
 }
 
 form > div:last-child a {
-    text-decoration: none; 
-    color: #007bff;             
+    text-decoration: none;
+    color: #007bff;
 }
 
 form > div:last-child a:hover {
-    text-decoration: underline; 
+    text-decoration: underline;
 }
