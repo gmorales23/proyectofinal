@@ -235,6 +235,7 @@ button[type="submit"] {
     cursor: pointer;
     background-color: #212529;
 }
+
 /* Título de la página */
 #titulo-categoría {
     font-size: 3rem;
@@ -249,9 +250,8 @@ button[type="submit"] {
     display: flex;
     flex-direction: column;
     height: 100%;
-    border: 2px solid #00000093;
-    border-radius: 5px;
-    box-shadow: 0 4px 12px rgba(0.3, 0, 0, 0.3);
+    border-radius: 3px;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.75);
     transition: transform 0.2s;
 }
 
@@ -294,36 +294,42 @@ button[type="submit"] {
 }
 
 /* Franja negra del precio */
-.precio-producto {
-    font-size: 1rem;
-}
-
 .bg-dark {
     flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 15px;
-    height: 100%;
-    white-space: nowrap;
+    justify-content: center; /* centra verticalmente el precio */
+    align-items: flex-start; /* alinea a la izquierda */
+    padding: 0 15px; /* padding solo lateral */
     background-color: #000;
     color: #fff;
+    position: relative; /* necesario para colocar "vendidos" */
 }
 
-/* Texto dentro de la franja negra */
-.bg-dark .fs-4 {
-    font-weight: bold;
+/* Precio y moneda */
+.precio-producto {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0;
+    font-weight: 700;
+    white-space: nowrap; /* evita salto de línea */
+}
+.precio-producto .monto {
+    font-size: 1.2rem;
     line-height: 1;
-    font-size: 1.2rem !important;
+}
+.precio-producto .moneda {
+    font-size: 0.7rem;
+    line-height: 1;
 }
 
-.bg-dark .fs-6 {
-    font-size: 0.6rem !important;
-}
-
-.bg-dark small {
-    color: rgba(204, 204, 204, 0.37);
+.bg-dark .vendidos {
+    position: absolute;
+    bottom: 5px;
+    right: 15px;
+    color: rgba(204, 204, 204, 0.7);
+    font-size: 0.7rem;
+    white-space: nowrap;
 }
 
 /* Espaciado entre tarjetas */
@@ -331,6 +337,7 @@ button[type="submit"] {
     margin: 25px 0 !important;
     padding: 0 25px;
 }
+
 form > div:last-child {
     text-align: center;
     margin-top: 10px;
@@ -343,4 +350,9 @@ form > div:last-child a {
 
 form > div:last-child a:hover {
     text-decoration: underline;
+}
+
+#userNav {
+    display: flex;
+    align-items: center; /* centra verticalmente */
 }

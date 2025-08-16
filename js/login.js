@@ -13,14 +13,14 @@ formLogin.addEventListener("submit", function(e) {
     // Si no hay usuario registrado
     if (!usuarioGuardado || !contrasenaGuardada) {
         alert("No estás registrado. Por favor registrate primero.");
-        window.location.href = "registro.html"; // redirige al registro
+        window.location.href = "./registro.html"; // redirige al registro
         return;
     }
 
     // Si los datos coinciden
     if (usuario === usuarioGuardado && contrasena === contrasenaGuardada) {
         localStorage.setItem("usuarioLogueado", usuario);
-        window.location.href ="/index.html"; // redirige al index
+        window.location.href ="./index.html"; // redirige al index
     } else {
         alert("Usuario o contraseña incorrectos");
     }
