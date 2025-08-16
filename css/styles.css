@@ -331,3 +331,16 @@ button[type="submit"] {
   margin: 25px 0 !important;  
   padding: 0 25px;
 }
+form > div:last-child {
+    text-align: center;
+    margin-top: 10px;   
+}
+
+form > div:last-child a {
+    text-decoration: none; 
+    color: #007bff;             
+}
+
+form > div:last-child a:hover {
+    text-decoration: underline; 
+}
