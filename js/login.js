@@ -1,4 +1,3 @@
-// Seleccionamos el formulario
 const formLogin = document.querySelector("form");
 
 formLogin.addEventListener("submit", function(e) {
@@ -10,28 +9,25 @@ formLogin.addEventListener("submit", function(e) {
     const usuarioGuardado = localStorage.getItem("usuario");
     const contrasenaGuardada = localStorage.getItem("contrasena");
 
-    // Si no hay usuario registrado
     if (!usuarioGuardado || !contrasenaGuardada) {
         alert("No estás registrado. Por favor regístrate primero.");
-        window.location.href = "registro.html"; // redirige al registro
+        window.location.href = "registro.html";
         return;
     }
 
-    // Si los datos coinciden
     if (usuario === usuarioGuardado && contrasena === contrasenaGuardada) {
         localStorage.setItem("usuarioLogueado", usuario);
-        window.location.href = "index.html"; // redirige al index
+        window.location.href = "index.html";
     } else {
         alert("Usuario o contraseña incorrectos");
     }
 });
 
-// Detectar si ya hay sesión activa y reemplazar el formulario
+// Detecta si ya hay sesión activa y reemplaza el formulario
 window.addEventListener("DOMContentLoaded", () => {
     const usuarioLogueado = localStorage.getItem("usuarioLogueado");
 
     if (usuarioLogueado) {
-        // Reemplaza todo el formulario por un contenedor con los botones
         const loginContainer = document.querySelector(".loginContenedor");
         loginContainer.innerHTML = `
             <div class="d-flex flex-column align-items-center gap-3">
@@ -43,13 +39,11 @@ window.addEventListener("DOMContentLoaded", () => {
             </div>
         `;
 
-        // Botón para cerrar sesión
         document.getElementById("logout").addEventListener("click", () => {
             localStorage.removeItem("usuarioLogueado");
             window.location.reload();
         });
 
-        // Botón para ir a la página principal
         document.getElementById("goHome").addEventListener("click", () => {
             window.location.href = "index.html";
         });
