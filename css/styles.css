@@ -283,3 +283,8 @@ form > div:last-child a:hover {
     border-color: #343a40;
     color: white;
 }
+
+.custom-shadow {
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.75);
+    border: none;
+}
