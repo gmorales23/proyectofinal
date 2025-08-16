@@ -21,6 +21,6 @@ formRegistro.addEventListener("submit", function(e) {
     regMessage.style.color = "green";
 
     setTimeout(() => {
-        window.location.href = "../index.html";
+        window.location.href = "index.html";
     }, 1500);
 });
