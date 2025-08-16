@@ -1,8 +1,7 @@
 .jumbotron,
 .card-body,
 .container,
-.site-header,
-body {
+.site-header {
     font-family: "Verdana", serif !important;
 }
 
@@ -192,14 +191,19 @@ a.custom-card:hover {
 
 .loginContenedor {
     min-height: 100vh;
+
     display: flex;
+
     align-items: center;
+
     justify-content: center;
+
     padding: 24px;
 }
 
 form {
     width: 100%;
+
     max-width: 500px;
 }
 
@@ -209,142 +213,58 @@ form > div {
 
 label {
     font-size: 36px;
+
     margin-bottom: 6px;
+
     color: #212529;
 }
 
 input[type="text"],
 input[type="password"] {
     border: none;
+
     width: 100%;
+
     padding: 14px;
+
     font-size: 1rem;
+
     outline: none;
+
     border-radius: 3px;
+
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.75);
 }
 
 button[type="submit"] {
     all: unset;
+
     border-radius: 3px;
+
     text-align: center;
+
     margin-top: 18px;
+
     width: 100%;
+
     font-size: 36px;
+
     color: white;
+
     cursor: pointer;
+
     background-color: #212529;
-}
-
-/* Título de la página */
-#titulo-categoría {
-    font-size: 3rem;
-    font-weight: bold;
-    color: #333;
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-/* Tarjeta */
-.card {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    border-radius: 3px;
-    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.75);
-    transition: transform 0.2s;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-}
-
-/* Imagen de la tarjeta */
-.card-img-top {
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
-    flex: 0 0 50%;
-    object-fit: cover;
-    width: 100%;
-}
-
-/* Título de la tarjeta */
-.card-title {
-    font-size: 1rem;
-    font-weight: bold;
-}
-
-/* Cuerpo de la tarjeta */
-.card-body {
-    display: flex;
-    justify-content: space-between;
-    align-items: stretch;
-    padding: 0;
-    flex: 1 1 60%;
-    font-size: 0.7rem;
-}
-
-/* Información del producto */
-.info-producto {
-    flex: 2;
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-/* Franja negra del precio */
-.bg-dark {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* centra verticalmente el precio */
-    align-items: flex-start; /* alinea a la izquierda */
-    padding: 0 15px; /* padding solo lateral */
-    background-color: #000;
-    color: #fff;
-    position: relative; /* necesario para colocar "vendidos" */
-}
-
-/* Precio y moneda */
-.precio-producto {
-    display: inline-flex;
-    align-items: baseline;
-    gap: 0;
-    font-weight: 700;
-    white-space: nowrap; /* evita salto de línea */
-}
-.precio-producto .monto {
-    font-size: 1.2rem;
-    line-height: 1;
-}
-.precio-producto .moneda {
-    font-size: 0.7rem;
-    line-height: 1;
-}
-
-.bg-dark .vendidos {
-    position: absolute;
-    bottom: 5px;
-    right: 15px;
-    color: rgba(204, 204, 204, 0.7);
-    font-size: 0.7rem;
-    white-space: nowrap;
-}
-
-/* Espaciado entre tarjetas */
-#catalogo-autos .col-md-4 {
-    margin: 25px 0 !important;
-    padding: 0 25px;
 }
 
 form > div:last-child {
     text-align: center;
+
     margin-top: 10px;
 }
 
 form > div:last-child a {
     text-decoration: none;
+
     color: #007bff;
 }
 
@@ -352,7 +272,14 @@ form > div:last-child a:hover {
     text-decoration: underline;
 }
 
-#userNav {
-    display: flex;
-    align-items: center; /* centra verticalmente */
+.btn-dark-custom {
+    background-color: #212529;
+    border-color: #212529;
+    color: white;
+}
+
+.btn-dark-custom:hover {
+    background-color: #343a40;
+    border-color: #343a40;
+    color: white;
 }

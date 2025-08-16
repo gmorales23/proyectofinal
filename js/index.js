@@ -21,9 +21,11 @@ window.addEventListener("DOMContentLoaded", () => {
     if (usuarioLogueado) {
         // Cambiar el link de login por nombre y botón de logout
         userNav.innerHTML = `
-    <span class="nav-link">Hola, ${usuarioLogueado}</span>
-    <button id="logoutBtn" class="btn btn-sm btn-outline-light ms-2">Cerrar sesión</button>
-    `;
+    <div class="d-flex align-items-center">
+        <span class="nav-link mb-0">Hola, ${usuarioLogueado}</span>
+        <button id="logoutBtn" class="btn btn-sm btn-outline-light ms-2">Cerrar sesión</button>
+    </div>
+`;
 
         document.getElementById("logoutBtn").addEventListener("click", () => {
             localStorage.removeItem("usuarioLogueado");
