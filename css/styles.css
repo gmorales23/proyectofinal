@@ -201,6 +201,19 @@ a.custom-card:hover {
     padding: 24px;
 }
 
+a.naranja,
+a.naranja:link,
+a.naranja:visited {
+    color: #F09100;
+    text-decoration: none;
+}
+
+a.naranja:hover,
+a.naranja:active {
+    color: #d97f00;
+    text-decoration: none !important;
+}
+
 form {
     width: 100%;
 
@@ -233,7 +246,7 @@ input[type="password"] {
 
     border-radius: 3px;
 
-    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.4);
 }
 
 button[type="submit"] {
@@ -285,6 +298,7 @@ form > div:last-child a:hover {
 }
 
 .custom-shadow {
-    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.4);
     border: none;
 }
+
