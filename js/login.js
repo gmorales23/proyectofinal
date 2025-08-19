@@ -1,21 +1,20 @@
 const formLogin = document.querySelector("form");
 
-formLogin.addEventListener("submit", function(e) {
+formLogin.addEventListener("submit", function (e) {
     e.preventDefault();
 
-    const usuario = document.getElementById("usuario").value.trim();
-    const contrasena = document.getElementById("contrasena").value.trim();
+    const usuario = document.getElementById("usuario").value;
+    const contrasena = document.getElementById("contrasena").value;
 
-    const usuarioGuardado = localStorage.getItem("usuario");
-    const contrasenaGuardada = localStorage.getItem("contrasena");
+    // Obtener lista de usuarios del localStorage
+    let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
 
-    if (!usuarioGuardado || !contrasenaGuardada) {
-        alert("No estás registrado. Por favor regístrate primero.");
-        window.location.href = "registro.html";
-        return;
-    }
+    // Buscar si existe el usuario con esa contraseña
+    const usuarioValido = usuarios.find(
+        (user) => user.usuario === usuario && user.contrasena === contrasena
+    );
 
-    if (usuario === usuarioGuardado && contrasena === contrasenaGuardada) {
+    if (usuarioValido) {
         localStorage.setItem("usuarioLogueado", usuario);
         window.location.href = "index.html";
     } else {
@@ -25,27 +24,5 @@ formLogin.addEventListener("submit", function(e) {
 
 // Detecta si ya hay sesión activa y reemplaza el formulario
 window.addEventListener("DOMContentLoaded", () => {
-    const usuarioLogueado = localStorage.getItem("usuarioLogueado");
-
-    if (usuarioLogueado) {
-        const loginContainer = document.querySelector(".loginContenedor");
-        loginContainer.innerHTML = `
-            <div class="d-flex flex-column align-items-center gap-3">
-                <p class="mb-0 fs-4">Hola, ${usuarioLogueado}</p>
-                <div class="d-flex gap-2">
-                    <button id="goHome" class="btn btn-dark-custom">Ir a inicio</button>
-                    <button id="logout" class="btn btn-outline-dark">Cerrar sesión</button>
-                </div>
-            </div>
-        `;
-
-        document.getElementById("logout").addEventListener("click", () => {
-            localStorage.removeItem("usuarioLogueado");
-            window.location.reload();
-        });
-
-        document.getElementById("goHome").addEventListener("click", () => {
-            window.location.href = "index.html";
-        });
-    }
+    mostrarUsuarioLogueado(".loginContenedor", true);
 });

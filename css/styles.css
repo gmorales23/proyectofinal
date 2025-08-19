@@ -302,3 +302,7 @@ form > div:last-child a:hover {
     border: none;
 }
 
+#regMessage {
+    text-align: center;
+    padding-top: 16px;
+}
