@@ -1,5 +1,6 @@
 const contenedor = document.getElementById("catalogo-autos");
 
+{
 fetch("https://japceibal.github.io/emercado-api/cats_products/101.json")
     .then((response) => response.json())
     .then((data) => {
@@ -32,3 +33,8 @@ fetch("https://japceibal.github.io/emercado-api/cats_products/101.json")
             Error al cargar los productos: ${error}
         </div>`;
     });
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+    mostrarUsuarioLogueado("#userNav", false);
+});

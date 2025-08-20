@@ -306,3 +306,9 @@ form > div:last-child a:hover {
     text-align: center;
     padding-top: 16px;
 }
+.card {
+    transition: transform 0.2s;
+}
+.card:hover {
+    transform: translateY(-5px);
+}
