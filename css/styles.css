@@ -204,7 +204,7 @@ a.custom-card:hover {
 a.naranja,
 a.naranja:link,
 a.naranja:visited {
-    color: #F09100;
+    color: #f09100;
     text-decoration: none;
 }
 
@@ -311,4 +311,11 @@ form > div:last-child a:hover {
 }
 .card:hover {
     transform: translateY(-5px);
+}
+
+.navbar .btn:focus,
+.navbar .btn:focus-visible,
+.navbar .btn:active {
+    outline: none !important;
+    box-shadow: none !important;
 }
