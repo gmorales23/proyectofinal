@@ -5,21 +5,12 @@ function mostrarUsuarioLogueado(containerSelector, mostrarGoHome = false) {
     const container = document.querySelector(containerSelector);
     if (!container) return;
 
-    // Contenido base
+    // Flex para centrar vertical y horizontalmente en navbar
     let html = `
-        <div class="d-flex align-items-center flex-column gap-3">
-            <p class="mb-0 fs-4">Hola, ${usuarioLogueado}</p>
-            <div class="d-flex gap-2">
-    `;
-
-    // Opcional: botón de ir a inicio
-    if (mostrarGoHome) {
-        html += `<button id="goHome" class="btn" style="background-color:#212529; color:white;">Ir a inicio</button>`;
-    }
-
-    // Botón cerrar sesión
-    html += `<button id="logout" class="btn btn-outline-dark">Cerrar sesión</button>
-            </div>
+        <div class="d-flex align-items-center h-100">
+            <span class="me-3 nav-link">Hola, ${usuarioLogueado}</span>
+            ${mostrarGoHome ? `<button id="goHome" class="btn btn-sm btn-light me-2">Ir a inicio</button>` : ""}
+            <button id="logout" class="btn btn-sm btn-outline-light">Cerrar sesión</button>
         </div>
     `;
 
