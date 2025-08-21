@@ -315,7 +315,10 @@ form > div:last-child a:hover {
 
 .navbar .btn:focus,
 .navbar .btn:focus-visible,
-.navbar .btn:active {
+.navbar .btn:active,
+.loginContenedor .btn:focus,
+.loginContenedor .btn:focus-visible,
+.loginContenedor .btn:active {
     outline: none !important;
     box-shadow: none !important;
 }

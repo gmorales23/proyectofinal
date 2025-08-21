@@ -8,17 +8,22 @@ function mostrarUsuarioLogueado(containerSelector, mostrarGoHome = false) {
     // Estructura base
     let html = `
         <div class="d-flex align-items-center h-100">
-            <span class="me-3 nav-link">Hola, ${usuarioLogueado}</span>
+            <span class="me-3 ${mostrarGoHome ? "text-dark" : "nav-link"}">Hola, ${usuarioLogueado}</span>
     `;
 
-    // Si hay que mostrar el botón Ir a inicio
+    // Botón Ir a inicio (si corresponde)
     if (mostrarGoHome) {
-        html += `<button id="goHome" class="btn btn-sm btn-light me-2 no-focus">Ir a inicio</button>`;
+        html += `<button id="goHome" class="btn me-2 no-focus" style="background-color:#212529; color:white;">Ir a inicio</button>`;
     }
 
-    // Botón logout
-    html += `<button id="logout" class="btn btn-sm btn-outline-light no-focus">Cerrar sesión</button></div>`;
+    // Botón Cerrar sesión
+    if (mostrarGoHome) {
+        html += `<button id="logout" class="btn btn-outline-dark no-focus">Cerrar sesión</button>`;
+    } else {
+        html += `<button id="logout" class="btn btn-sm btn-outline-light no-focus">Cerrar sesión</button>`;
+    }
 
+    html += `</div>`;
     container.innerHTML = html;
 
     // Eventos
