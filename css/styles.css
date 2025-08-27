@@ -304,6 +304,6 @@ form > div:last-child a:hover {
 }
 
 input::placeholder {
-    color: #dddddd;
+    color: #c4c4c4;
     opacity: 1;
 }
