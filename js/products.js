@@ -10,7 +10,7 @@ fetch("https://japceibal.github.io/emercado-api/cats_products/101.json")
 
         productos.forEach((producto) => {
             htmlContent += `
-            <div class="col-12 col-md-6 col-xl-4">
+            <div class="col-12 col-md-6 col-lg-4">
                 <div class="card h-100 custom-shadow">
                     <img src="${producto.image}" class="card-img-top" alt="${producto.name}">
                     <div class="card-body">

@@ -1,66 +1,53 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, shrink-to-fit=no"
-        />
-        <title>eMercado - Todo lo que busques está aquí</title>
 
-        <link
-            href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i"
-            rel="stylesheet"
-        />
-        <link href="css/bootstrap.min.css" rel="stylesheet" />
-        <link href="css/styles.css" rel="stylesheet" />
-        <style>
-            body {
-                background-color: rgb(248, 249, 250);
-            }
-        </style>
-    </head>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>eMercado - Todo lo que busques está aquí</title>
 
-    <body>
-        <div class="loginContenedor">
-            <form>
-                <div>
-                    <label for="usuario">Usuario:</label>
-                    <input type="text" id="usuario" name="usuario" required />
-                </div>
-                <div>
-                    <label for="contrasena">Contraseña:</label>
-                    <input
-                        type="password"
-                        id="contrasena"
-                        name="contrasena"
-                        required
-                    />
-                </div>
-                <div>
-                    <button type="submit">Ingresar</button>
-                </div>
-                <div>
-                    <a href="registro.html" class="naranja"
-                        >¿No tienes usuario? Registrate</a
-                    >
-                </div>
-            </form>
-        </div>
-        <footer class="text-muted">
-            <div class="container">
-                <p class="float-end">
-                    <a href="#">Volver arriba</a>
-                </p>
-                <p>
-                    Este sitio forma parte de
-                    <a href="https://jovenesaprogramar.edu.uy/" target="_blank"
-                        >Jovenes a Programar</a
-                    >
-                </p>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet" />
+    <style>
+        body {
+            background-color: rgb(248, 249, 250);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid vh-100 d-flex justify-content-center align-items-center contenedor">
+        <form>
+            <div>
+                <label for="usuario">Usuario:</label>
+                <input type="text" id="usuario" name="usuario" required />
             </div>
-        </footer>
-        <script src="js/login.js"></script>
-        <script src="js/mostrarUsuarioLogueado.js"></script>
-    </body>
+            <div>
+                <label for="contrasena" class="form-label">Contraseña:</label>
+                <input type="password" id="contrasena" name="contrasena" required />
+            </div>
+            <div>
+                <button type="submit">Ingresar</button>
+            </div>
+            <div class="text-center">
+                <a href="registro.html" class="naranja">¿No tienes usuario? Registrate</a>
+            </div>
+        </form>
+    </div>
+    <footer class="text-muted">
+        <div class="container">
+            <p class="float-end">
+                <a href="#">Volver arriba</a>
+            </p>
+            <p>
+                Este sitio forma parte de
+                <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a>
+            </p>
+        </div>
+    </footer>
+    <script src="js/login.js"></script>
+    <script src="js/mostrarUsuarioLogueado.js"></script>
+</body>
+
 </html>
