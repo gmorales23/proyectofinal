@@ -1,15 +1,23 @@
-const contenedor = document.getElementById("catalogo-autos");
+const catID = localStorage.getItem("catID");
+let url = `https://japceibal.github.io/emercado-api/cats_products/${catID}.json`;
+
+const contenedor = document.getElementById("catalogo");
+const tituloCategoria = document.getElementById("titulo-categoria");
 
 {
-fetch("https://japceibal.github.io/emercado-api/cats_products/101.json")
-    .then((response) => response.json())
-    .then((data) => {
-        const productos = data.products;
+    fetch(url)
+        .then((response) => response.json())
+        .then((data) => {
+            const nombreCategoria = data.catName;
+            tituloCategoria.textContent = nombreCategoria;
+            document.title = `eMercado - ${nombreCategoria}`;
 
-        let htmlContent = "";
+            const productos = data.products;
 
-        productos.forEach((producto) => {
-            htmlContent += `
+            let htmlContent = "";
+
+            productos.forEach((producto) => {
+                htmlContent += `
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="card h-100 custom-shadow">
                     <img src="${producto.image}" class="card-img-top" alt="${producto.name}">
@@ -23,16 +31,16 @@ fetch("https://japceibal.github.io/emercado-api/cats_products/101.json")
                     </div>
                 </div>
             </div>`;
-        });
+            });
 
-        contenedor.innerHTML = htmlContent;
-    })
-    .catch((error) => {
-        contenedor.innerHTML = `
+            contenedor.innerHTML = htmlContent;
+        })
+        .catch((error) => {
+            contenedor.innerHTML = `
         <div class="alert alert-danger text-center" role="alert">
             Error al cargar los productos: ${error}
         </div>`;
-    });
+        });
 }
 
 window.addEventListener("DOMContentLoaded", () => {
