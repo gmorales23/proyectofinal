@@ -307,3 +307,7 @@ input::placeholder {
     color: #c4c4c4;
     opacity: 1;
 }
+
+.filtros {
+    padding-bottom: 8px;
+}
