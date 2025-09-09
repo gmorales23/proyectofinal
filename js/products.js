@@ -8,7 +8,7 @@ const ordenarAsc = document.getElementById("sortAsc");
 const ordenarDes = document.getElementById("sortDesc");
 const ordenarRel = document.getElementById("sortByCount");
 
-let productosOriginales = {};
+let productosOriginales = [];
 
 
 function mostrarProductos(productos) {
@@ -59,13 +59,19 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 ordenarAsc.addEventListener("click", () => {
-    const productosOrdenados = [...productosOriginales].sort((a, b) => b.cost - a.cost);
+    const productosOrdenados = [...productosOriginales].sort((a, b) => a.cost - b.cost);
     mostrarProductos(productosOrdenados);
 });
 
 ordenarDes.addEventListener("click", () => {
-    const productosOrdenados = [...productosOriginales].sort((a, b) => a.cost - b.cost);
+    const productosOrdenados = [...productosOriginales].sort((a, b) => b.cost - a.cost);
     mostrarProductos(productosOrdenados);
 });
+
+ordenarRel.addEventListener("click", () => {
+    const productosOrdenados = [...productosOriginales].sort((a, b) => b.soldCount - a.soldCount);
+    mostrarProductos(productosOrdenados);
+});
+
 
 
