@@ -55,7 +55,8 @@
             </div>
         </nav>
 
-        <main class="pb-5 container">
+        <main class="pb-5 container">     
+    <h1 class="text-center my-5 fw-bold" id="titulo-categoria"></h1>
             <h1 class="text-center my-5 fw-bold" id="titulo-categoria"></h1>
             <div class="container filtros">
                 <div class="row">
@@ -112,7 +113,7 @@
                                     class="form-control"
                                     type="number"
                                     id="precioMin"
-                                    placeholder="$"
+                                    placeholder="Min$"
                                 />
                             </div>
                             <div class="col">
@@ -120,7 +121,7 @@
                                     class="form-control"
                                     type="number"
                                     id="precioMax"
-                                    placeholder="$"
+                                    placeholder="Máx$"
                                 />
                             </div>
                             <div class="col-3 p-0">
@@ -145,12 +146,17 @@
                 <div class="row">
                     <div class="list-group" id="cat-list-container"></div>
                 </div>
-            </div>
+                 <div id="mensaje-alerta" class="alert alert-warning text-center d-none" 
+                     role="alert" style="margin-top: 15%;">
+                </div>
             <div class="row g-5 justify-content-center" id="catalogo">
                 <!-- Aquí se insertan las tarjetas dinámicamente -->
             </div>
-        </main>
+            
+            
 
+
+        </main>
         <footer class="text-muted">
             <div class="container">
                 <p class="float-end"><a href="#">Volver arriba</a></p>
