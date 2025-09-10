@@ -57,6 +57,17 @@
         <main class="pb-5 container">
             <h1 class="text-center my-5 fw-bold" id="titulo-categoria"></h1>
             <div class="container filtros">
+                <!--buscador-->
+                <div class="row mb-4">
+      <div class="col-md-6 offset-md-3">
+      <input
+      type="search"
+      id="searchInput"
+      class="form-control"
+      placeholder="Buscar productos por nombre o descripción..."
+    />
+  </div>
+</div>
                 <div class="row">
                     <div class="col text-end">
                         <div
@@ -112,6 +123,7 @@
                                     type="number"
                                     id="precioMin"
                                     placeholder="$"
+                                    min = "0"
                                 />
                             </div>
                             <div class="col">
@@ -120,6 +132,7 @@
                                     type="number"
                                     id="precioMax"
                                     placeholder="$"
+                                    min = "0"
                                 />
                             </div>
                             <div class="col-3 p-0">

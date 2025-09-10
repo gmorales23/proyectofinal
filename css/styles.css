@@ -309,5 +309,13 @@ input::placeholder {
 }
 
 .filtros {
-    padding-bottom: 8px;
+    padding-bottom: 16px;
+}
+
+.producto {
+    cursor: pointer;
+}
+
+.carousel-container {
+  max-width: 500px;  /* ajustá este valor al tamaño que quieras */
 }

@@ -54,13 +54,31 @@
                 </div>
             </div>
         </nav>
-        <main>
-            <div class="container">
-                <div class="alert alert-danger text-center" role="alert">
-                    <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
-                </div>
+<main class="my-4">
+    <div class="container">
+        <h1 id="product-name" class="mb-3 fw-bold"></h1>
+        <p id="product-category" class="mb-1"></p>
+        <p id="product-sold" class="mb-4"></p>
+
+        <div class="carousel-container mx-auto">
+        <div id="product-images" class="carousel slide mb-4" data-bs-ride="carousel">
+            <div class="carousel-inner" id="carousel-inner">
             </div>
-        </main>
+            <button class="carousel-control-prev" type="button" data-bs-target="#product-images" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Anterior</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#product-images" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Siguiente</span>
+            </button>
+        </div>
+        </div>
+
+        <div id="product-description" class="mb-5">
+        </div>
+    </div>
+</main>
         <footer class="text-muted">
             <div class="container">
                 <p class="float-end">
