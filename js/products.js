@@ -4,6 +4,7 @@ const url = `https://japceibal.github.io/emercado-api/cats_products/${catID}.jso
 const contenedor = document.getElementById("catalogo");
 const tituloCategoria = document.getElementById("titulo-categoria");
 const mensajeAlerta = document.getElementById("mensaje-alerta");
+const searchInput = document.getElementById("searchInput");
 
 const ordenarAsc = document.getElementById("sortAsc");
 const ordenarDes = document.getElementById("sortDesc");
@@ -17,16 +18,22 @@ const inputMax = document.getElementById("precioMax");
 let productosOriginales = [];
 let minPrice = undefined;
 let maxPrice = undefined;
+let searchQuery = "";
 
-// Mostrar productos (aplica filtrado por rango)
+// Mostrar productos con filtro por rango y búsqueda
 function mostrarProductos(productos) {
-    const productosFiltrados = productos.filter(producto => {
-        return (minPrice === undefined || producto.cost >= minPrice) &&
-               (maxPrice === undefined || producto.cost <= maxPrice);
+    let productosFiltrados = productos.filter((producto) => {
+        return (
+            (minPrice === undefined || producto.cost >= minPrice) &&
+            (maxPrice === undefined || producto.cost <= maxPrice) &&
+            (producto.name.toLowerCase().includes(searchQuery) ||
+                producto.description.toLowerCase().includes(searchQuery))
+        );
     });
 
     if (productosFiltrados.length === 0) {
-        mensajeAlerta.textContent = "Lo sentimos, no hay productos disponibles que correspondan al rango de precios seleccionado.";
+        mensajeAlerta.textContent =
+            "Lo sentimos, no hay productos que coincidan con los filtros.";
         mensajeAlerta.classList.remove("d-none");
         contenedor.innerHTML = "";
         return;
@@ -35,10 +42,10 @@ function mostrarProductos(productos) {
     }
 
     let htmlContent = "";
-    productosFiltrados.forEach(producto => {
+    productosFiltrados.forEach((producto) => {
         htmlContent += `
         <div class="col-12 col-md-6 col-lg-4">
-            <div class="card h-100 custom-shadow">
+            <div class="card h-100 custom-shadow" onclick="guardarProductoID(${producto.id})" style="cursor:pointer;">
                 <img src="${producto.image}" class="card-img-top" alt="${producto.name}">
                 <div class="card-body">
                     <h5 class="card-title fw-bold">${producto.name}</h5>
@@ -55,64 +62,83 @@ function mostrarProductos(productos) {
     contenedor.innerHTML = htmlContent;
 }
 
+// Función para guardar el ID y navegar
+function guardarProductoID(id) {
+    localStorage.setItem("productID", id);
+    window.location = "product-info.html";
+}
+
 // Fetch de productos
 fetch(url)
-    .then(response => response.json())
-    .then(data => {
+    .then((res) => res.json())
+    .then((data) => {
         tituloCategoria.textContent = data.catName;
         document.title = `eMercado - ${data.catName}`;
-
         productosOriginales = data.products;
         mostrarProductos(productosOriginales);
     })
-    .catch(error => {
+    .catch((error) => {
         contenedor.innerHTML = `
         <div class="alert alert-danger text-center" role="alert">
             Error al cargar los productos: ${error}
         </div>`;
     });
 
-// Validación de inputs (solo números positivos)
-[inputMin, inputMax].forEach(input => {
+// Validación inputs
+[inputMin, inputMax].forEach((input) => {
     input.addEventListener("input", () => {
         input.value = input.value.replace(/[^\d.]/g, "");
         if (parseFloat(input.value) < 0) input.value = "";
     });
 });
 
-// Ordenar productos
+// Buscador en tiempo real
+searchInput.addEventListener("input", () => {
+    searchQuery = searchInput.value.toLowerCase();
+    mostrarProductos(productosOriginales);
+});
+
+// Ordenar
 ordenarAsc.addEventListener("click", () => {
-    const productosOrdenados = [...productosOriginales].sort((a, b) => a.cost - b.cost);
+    const productosOrdenados = [...productosOriginales].sort(
+        (a, b) => a.cost - b.cost
+    );
     mostrarProductos(productosOrdenados);
 });
 
 ordenarDes.addEventListener("click", () => {
-    const productosOrdenados = [...productosOriginales].sort((a, b) => b.cost - a.cost);
+    const productosOrdenados = [...productosOriginales].sort(
+        (a, b) => b.cost - a.cost
+    );
     mostrarProductos(productosOrdenados);
 });
 
 ordenarRel.addEventListener("click", () => {
-    const productosOrdenados = [...productosOriginales].sort((a, b) => b.soldCount - a.soldCount);
+    const productosOrdenados = [...productosOriginales].sort(
+        (a, b) => b.soldCount - a.soldCount
+    );
     mostrarProductos(productosOrdenados);
 });
 
-// Filtrar por rango de precio
+// Filtrar por precio
 filtrarBtn.addEventListener("click", () => {
     minPrice = inputMin.value !== "" ? parseFloat(inputMin.value) : undefined;
     maxPrice = inputMax.value !== "" ? parseFloat(inputMax.value) : undefined;
     mostrarProductos(productosOriginales);
 });
 
-// Limpiar filtro
+// Limpiar filtros
 limpiarBtn.addEventListener("click", () => {
     inputMin.value = "";
     inputMax.value = "";
+    searchInput.value = "";
     minPrice = undefined;
     maxPrice = undefined;
+    searchQuery = "";
     mostrarProductos(productosOriginales);
 });
 
-// Ejecutar al cargar la página
+// Mostrar usuario logueado
 window.addEventListener("DOMContentLoaded", () => {
     mostrarUsuarioLogueado("#userNav", false);
 });
