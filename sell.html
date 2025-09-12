@@ -17,44 +17,34 @@
     </head>
 
     <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
-            <div class="container">
-                <button
-                    class="navbar-toggler"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#navbarNav"
-                    aria-controls="navbarNav"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation"
-                >
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav w-100 justify-content-between">
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.html">Inicio</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="categories.html"
-                                >Categorías</a
-                            >
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="sell.html"
-                                >Vender</a
-                            >
-                        </li>
+    <!-- Header -->
+    <header class="bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#f8f9fa;">
+        <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
+            <img src="/img/japLogo.png " href="index.html" alt="Logo JAP" width="80" class="me-2">
+            <span class="fw-bold text-dark">e-Mercado</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav mb-2 mb-lg-0 align-items-lg-center">
+                <li>
+                    <a href="index.html" class="nav-item ms-lg-3">Inicio</a>
+                </li>
+                <li>
+                    <a href="categories.html" class="nav-item ms-lg-3">Ver Categorías</a>
+                </li>
+            <li class="nav-item ms-lg-3" id="userNav">
+            <a id="btnLogin" class="btn" href="login.html" style="background-color:#ff6b00; color:white;">Iniciar sesión</a>
+            </li>
+            </ul>
+        </div>
+        </div>
+    </nav>
 
-                        <li class="nav-item" id="userNav">
-                            <a class="nav-link" href="login.html"
-                                >Iniciar sesión</a
-                            >
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+<!-- ================================SECCIÓN PRINCIPAL: FORMULARIO DE VENTA================================= -->
         <div class="container">
             <div class="text-center p-4">
                 <h2>Vender</h2>
@@ -62,8 +52,12 @@
             </div>
             <div class="row justify-content-md-center">
                 <div class="col-md-8 order-md-1">
+
+    <!-- Formulario de información del producto -->
                     <h4 class="mb-3">Información del producto</h4>
                     <form class="needs-validation" id="sell-info">
+
+
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="productName">Nombre</label>
@@ -79,6 +73,8 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Imágenes (Dropzone) -->
                         <div class="row">
                             <div class="col-md-8 order-md-1">
                                 <label>Imágenes</label>
@@ -92,18 +88,16 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Descripción -->
                         <div class="row">
                             <div class="col-md-12 mb-3">
-                                <label for="productDescription"
-                                    >Descripción</label
-                                >
-                                <textarea
-                                    name="productDescription"
-                                    class="form-control"
-                                    id="productDescription"
-                                ></textarea>
+                                <label for="productDescription">Descripción</label>
+                                <textarea name="productDescription"class="form-control"id="productDescription"></textarea>
                             </div>
                         </div>
+
+                        <!-- Costo y Moneda -->
                         <div class="row">
                             <div class="col-md-3 mb-3">
                                 <label for="productCostInput">Costo</label>
@@ -140,6 +134,8 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Categoría y Stock -->
                         <div class="row">
                             <div class="col-md-7 mb-3">
                                 <label for="productCategory">Categoría</label>
@@ -182,6 +178,8 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Tipo de publicación -->
                         <hr class="mb-4" />
                         <h5 class="mb-3">Tipo de publicación</h5>
                         <div class="d-block my-3">
@@ -239,6 +237,8 @@
                                 </button>
                             </div>
                         </div>
+
+                        <!-- Costos -->
                         <hr class="mb-4" />
                         <h4 class="mb-3">Costos</h4>
                         <ul class="list-group mb-3">
@@ -275,6 +275,8 @@
                                 <strong id="totalCostText">-</strong>
                             </li>
                         </ul>
+
+                        <!-- Botón enviar -->
                         <hr class="mb-4" />
                         <button class="btn btn-primary btn-lg" type="submit">
                             Vender
@@ -283,6 +285,8 @@
                 </div>
             </div>
         </div>
+
+        <!-- ================================FOOTER================================= -->
         <footer class="text-muted">
             <div class="container">
                 <p class="float-end">
@@ -297,6 +301,7 @@
             </div>
         </footer>
 
+        <!-- ================================MODALES Y ALERTS================================ -->
         <div
             class="alert alert-primary-dismissible fade"
             id="alertResult"

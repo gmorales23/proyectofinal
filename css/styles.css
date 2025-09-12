@@ -1,108 +1,92 @@
+/* ==============================TIPOGRAFÍA GENERAL ============================== */
+/*Aplica Verdana a varias secciones importantes */
 .jumbotron,
 .card-body,
 .container,
 .site-header {
     font-family: "Verdana", serif !important;
 }
-
-.jumbotron .display-4 {
-    font-weight: bold;
+body {
+    background-color: #f8f9fa; /* gris clarito */
 }
-
+/* ==============================ESTILOS DE NAVEGACIÓN============================== */
 nav a {
-    text-decoration: none;
+    text-decoration: none; /* quita subrayado de links */
+}
+.site-header a {
+    color: white;
+    transition: ease-in-out color 0.15s;
+}
+.site-header .dropdown-menu a {
+    color: black;
 }
 
+/* ==============================PLACEHOLDER Y RESPONSIVE IMÁGENES============================== */
 .bd-placeholder-img {
     font-size: 1.125rem;
     text-anchor: middle;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
     user-select: none;
 }
-
 @media (min-width: 768px) {
     .bd-placeholder-img-lg {
         font-size: 3.5rem;
     }
 }
 
-.jumbotron {
-    height: 50vh;
-    padding: 5em inherit;
-    margin-bottom: 0;
-    background-color: #53c0fb;
-    background: url("../img/cover_back.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    color: black;
-    font-weight: bold;
-}
-
+/* ==============================JUMBOTRON (SECCIÓN DESTACADA)============================== */
 @media (min-width: 768px) {
     .jumbotron {
         padding-top: 6rem;
         padding-bottom: 6rem;
     }
 }
-
 .jumbotron p:last-child {
     margin-bottom: 0;
 }
-
 .jumbotron-heading {
     font-weight: 300;
 }
-
 .jumbotron .container {
     max-width: 40rem;
     background-color: rgba(255, 255, 255, 0.5);
     border-radius: 10px;
     text-shadow: 1px 1px 2px grey;
 }
-
 .jumbotron .lead {
     font-size: 38px;
 }
 
+/* ==============================FOOTER============================== */
 footer {
     padding-top: 3rem;
     padding-bottom: 3rem;
+    background-color:#f8f9fa;
 }
-
 footer p {
     margin-bottom: 0.25rem;
 }
 
-.site-header a {
-    color: white;
-    transition: ease-in-out color 0.15s;
-}
-
-.site-header .dropdown-menu a {
-    color: black;
-}
-
+/* ==============================DROPZONE (CARGA DE ARCHIVOS)============================== */
 .dropzone {
     border: 2px dashed #0087f7;
     border-radius: 5px;
     background: white;
 }
 
+/* ==============================UTILIDADES GENERALES============================== */
 .img-fit {
     max-height: 100%;
 }
-
-.alert {
-    position: fixed;
-    top: 80px;
-    width: 50%;
-    left: 50%;
-    transform: translate(-50%, 0);
+.cursor-active {
+    cursor: pointer;
+}
+.left {
+    float: left;
+    padding: 4px;
+    background-color: rgba(255, 255, 255, 0.5);
 }
 
+/* ==============================ANIMACIÓN SPINNER============================== */
 .lds-ring {
     display: inline-block;
     position: relative;
@@ -111,17 +95,6 @@ footer p {
     top: 50%;
     left: 50%;
 }
-
-.cursor-active {
-    cursor: pointer;
-}
-
-.left {
-    float: left;
-    padding: 4px;
-    background-color: rgba(255, 255, 255, 0.5);
-}
-
 .lds-ring div {
     box-sizing: border-box;
     display: block;
@@ -134,34 +107,13 @@ footer p {
     animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
     border-color: #fff transparent transparent transparent;
 }
-
-.lds-ring div:nth-child(1) {
-    animation-delay: -0.45s;
-}
-
-.lds-ring div:nth-child(2) {
-    animation-delay: -0.3s;
-}
-
-.lds-ring div:nth-child(3) {
-    animation-delay: -0.15s;
-}
+.lds-ring div:nth-child(1) { animation-delay: -0.45s; }
+.lds-ring div:nth-child(2) { animation-delay: -0.3s; }
+.lds-ring div:nth-child(3) { animation-delay: -0.15s; }
 
 @keyframes lds-ring {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-.signin {
-    width: 100%;
-    max-width: 330px;
-    padding: 15px;
-    margin: auto;
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 #spinner-wrapper {
@@ -175,89 +127,28 @@ footer p {
     display: none;
 }
 
-main {
-    min-height: calc(100vh - 210px);
-}
-
-a.custom-card,
-a.custom-card:hover {
-    color: inherit;
-    text-decoration: inherit;
-}
-
-.checked {
-    color: orange;
-}
-
-.contenedor {
-    padding-left: 54px;
-    padding-right: 54px;
-}
-
-a.naranja,
-a.naranja:link,
-a.naranja:visited {
-    color: #f09100;
-    text-decoration: none;
-    font-size: clamp(14px, 3vw, 24px);
-}
-
-a.naranja:hover,
-a.naranja:active {
-    color: #d97f00;
-    text-decoration: none !important;
-    font-size: clamp(14px, 3vw, 24px);
-}
-
+/* ==============================LOGIN / FORMULARIOS============================== */
+/* Contenedor del formulario (centrado y con ancho máximo) */
 form {
     width: 100%;
-
     max-width: 500px;
+    margin: auto;
 }
 
+/* Cada bloque dentro del form (inputs y botón) */
 form > div {
-    margin-bottom: 27px;
+    margin-bottom: 7px;
 }
 
-label {
-    font-size: clamp(14px, 3vw, 24px);
-    margin-bottom: 6px;
-    color: #212529;
-}
-
-input[type="text"],
-input[type="password"] {
-    border: none;
-    width: 100%;
-    padding: 14px;
-    font-size: clamp(14px, 3vw, 24px);
-    outline: none;
-    border-radius: 3px;
-    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.4);
-}
-
-button[type="submit"] {
-    border-radius: 3px;
-    text-align: center;
-    margin-top: 18px;
-    width: 100%;
-    font-size: clamp(14px, 3vw, 24px);
-    color: white;
-    cursor: pointer;
-    background-color: #212529;
-    width: 100%;
-    padding: 14px;
-}
-
+/* Último div (botón + enlace) */
 form > div:last-child {
     text-align: center;
-
     margin-top: 10px;
 }
 
+/* Enlaces dentro del último div */
 form > div:last-child a {
     text-decoration: none;
-
     color: #007bff;
 }
 
@@ -265,23 +156,159 @@ form > div:last-child a:hover {
     text-decoration: underline;
 }
 
+/* Labels de los inputs */
+label {
+    font-size: clamp(14px, 3vw, 24px);
+    margin-bottom: 6px;
+    color: #000000;
+    display: block;
+}
+
+/* Inputs de texto y contraseña */
+input[type="text"],
+input[type="password"] {
+    border: none;
+    width: 100%;
+    padding: 10px;
+    font-size: clamp(14px, 3vw, 24px);
+    outline: none;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.4);
+}
+
+/* Placeholder de los inputs */
+input::placeholder {
+    color: #000000;
+    opacity: 1;
+}
+
+/* Botón de enviar */
+button[type="submit"] {
+    border-radius: 12px;
+    text-align: center;
+    margin-top: 18px;
+    width: 100%;
+    font-size: clamp(14px, 3vw, 24px);
+    color: white;
+    cursor: pointer;
+    background-color: #d97f00;
+    padding: 14px;
+}
+
+/* ==============================
+   PASSWORD (OJO PARA MOSTRAR/OCULTAR)
+============================== */
+.password-container {
+    position: relative;
+    width: 100%;
+}
+
+/* Input dentro del contenedor de contraseña */
+.password-container input {
+    width: 100%;
+    padding-right: 40px; /* espacio para el icono */
+}
+
+/* Icono del ojo */
+.eye-icon {
+    position: absolute;
+    right: 10px; /* distancia desde el borde derecho */
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+
+/* ==============================
+   OVERLAY Y VENTANA MODAL
+============================== */
+
+/* Fondo semitransparente que cubre toda la página */
+.login-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* fondo oscuro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1050;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+/* Ventana del login */
+.login-modal {
+    background: #fff;
+    border-radius: 12px;
+    padding: 30px;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Animación de entrada */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Botón de cerrar arriba a la derecha */
+.login-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 20px;
+    cursor: pointer;
+    color: #555;
+}
+
+.login-close:hover {
+    color: #000;
+}
+/*===========================BOTONES PERSONALIZADOS============================== */
 .btn-dark-custom {
     background-color: #212529;
     border-color: #212529;
     color: white;
 }
-
 .btn-dark-custom:hover {
     background-color: #343a40;
     border-color: #343a40;
     color: white;
 }
-
+.btn-login {
+    background-color: #ff6b00;
+    color: white;
+    border-radius: 12px;
+    padding: 10px 25px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+.btn-login:hover {
+    background-color: #e55b00;
+    color: #fff;
+}
+.btn-light {
+    color: #000; 
+    background-color: #e4e4e4;
+    border-color: #000;
+}
+.btn-light:hover {
+    background-color: #000; /* fondo negro al pasar el mouse */
+    color: #fff; /* texto blanco para contraste */
+    border-color: #000; /* borde también negro */
+}
+/* ==============================ESTILOS VARIOS============================== */
 .custom-shadow {
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.4);
     border: none;
 }
-
 #regMessage {
     text-align: center;
     padding-top: 16px;
@@ -292,7 +319,6 @@ form > div:last-child a:hover {
 .card:hover {
     transform: translateY(-5px);
 }
-
 .navbar .btn:focus,
 .navbar .btn:focus-visible,
 .navbar .btn:active,
@@ -303,19 +329,29 @@ form > div:last-child a:hover {
     box-shadow: none !important;
 }
 
-input::placeholder {
-    color: #c4c4c4;
-    opacity: 1;
+/* ==============================LINKS PERSONALIZADOS============================== */
+a.custom-card,
+a.custom-card:hover {
+    color: inherit;
+    text-decoration: inherit;
+}
+a.naranja,
+a.naranja:link,
+a.naranja:visited {
+    color: #f09100;
+    text-decoration: none;
+    font-size: clamp(14px, 3vw, 24px);
+}
+a.naranja:hover,
+a.naranja:active {
+    color: #d97f00;
+    text-decoration: none !important;
 }
 
-.filtros {
-    padding-bottom: 16px !important;
-}
-
-.producto {
-    cursor: pointer;
-}
-
-.carousel-container {
-  max-width: 500px;  /* ajustá este valor al tamaño que quieras */
-}
+/* ==============================UTILIDADES DE DISEÑO============================== */
+.checked { color: orange; }
+.contenedor { padding-left: 54px; padding-right: 54px; }
+.filtros { padding-bottom: 16px !important; }
+.producto { cursor: pointer; }
+.carousel-container { max-width: 500px; }
+main { min-height: calc(100vh - 210px); }
