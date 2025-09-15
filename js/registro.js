@@ -1,7 +1,7 @@
 const formRegistro = document.getElementById("registerForm");
 const regMessage = document.getElementById("regMessage");
 
-formRegistro.addEventListener("submit", function(e) {
+formRegistro.addEventListener("submit", function (e) {
     e.preventDefault();
 
     const usuario = document.getElementById("newUsername").value;

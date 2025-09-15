@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -13,101 +14,119 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
-        <div class="container">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav w-100 justify-content-between">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="categories.html">Categorías</a></li>
-                    <li class="nav-item"><a class="nav-link" href="sell.html">Vender</a></li>
-                    <li class="nav-item" id="userNav"><a class="nav-link" href="login.html">Iniciar sesión</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <main class="pb-5 container">
-        <h1 class="text-center my-5 fw-bold" id="titulo-categoria"></h1>
-
-        <div class="container">
-            <!-- Buscador -->
-            <div class="row mb-4">
-                <div class="col-md-6 offset-md-3">
-                    <input type="search" id="searchInput" class="form-control"
-                        placeholder="Buscar productos por nombre o descripción..." />
+    <!-- Header + Hero -->
+    <header class="bg-light">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#f8f9fa;">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" href="index.html">
+                    <img src="/img/japLogo.png " href="index.html" alt="Logo JAP" width="80" class="me-2">
+                    <span class="fw-bold text-dark">e-Mercado</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav mb-2 mb-lg-0 align-items-lg-center">
+                        <li>
+                            <a href="index.html" class="nav-item ms-lg-3 nav-orange">Inicio</a>
+                        </li>
+                        <li>
+                            <a href="sell.html" class="nav-item ms-lg-3 nav-orange">Vender ahora</a>
+                        </li>
+                        <li>
+                            <a href="categories.html" class="nav-item ms-lg-3 nav-orange">Ver Categorías</a>
+                        </li>
+                        <li class="nav-item ms-lg-3" id="userNav">
+                            <a id="btnLogin" class="btn" href="login.html"
+                                style="background-color:#ff6b00; color:white;">Iniciar sesión</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
+        </nav>
 
-            <!-- Ordenamiento -->
-            <div class="row">
-                <div class="col text-end">
-                    <div class="btn-group btn-group-toggle mb-4" data-bs-toggle="buttons">
-                        <input type="radio" class="btn-check" name="options" id="sortAsc" />
-                        <label class="btn btn-light" for="sortAsc"><i class="fas mr-1 fa-sort-amount-down"></i>
-                            <b>$</b></label>
 
-                        <input type="radio" class="btn-check" name="options" id="sortDesc" />
-                        <label class="btn btn-light" for="sortDesc"><i class="fa-solid fa-arrow-up-short-wide"></i>
-                            <b>$</b></label>
+        <main class="pb-5 container">
+            <h1 class="text-center my-5 fw-bold" id="titulo-categoria"></h1>
 
-                        <input type="radio" class="btn-check" name="options" id="sortByCount" checked />
-                        <label class="btn btn-light" for="sortByCount"><i
-                                class="fas fa-sort-amount-down mr-1"></i><b>Rel.</b></label>
+            <div class="container">
+                <!-- Buscador -->
+                <div class="row mb-4">
+                    <div class="col-md-6 offset-md-3">
+                        <input type="search" id="searchInput" class="form-control"
+                            placeholder="Buscar productos por nombre o descripción..." />
                     </div>
                 </div>
-            </div>
 
-            <!-- Filtro por rango de precio -->
-            <div class="row filtros">
-                <div class="col-lg-6 offset-lg-6 col-md-12 mb-1 container">
-                    <div class="row container p-0 m-0">
-                        <div class="col">
-                            <p class="font-weight-normal text-end my-2">Precio</p>
+                <!-- Ordenamiento -->
+                <div class="row">
+                    <div class="col text-end">
+                        <div class="btn-group btn-group-toggle mb-4" data-bs-toggle="buttons">
+                            <input type="radio" class="btn-check" name="options" id="sortAsc" />
+                            <label class="btn btn-light" for="sortAsc"><i class="fas mr-1 fa-sort-amount-down"></i>
+                                <b>$</b></label>
+
+                            <input type="radio" class="btn-check" name="options" id="sortDesc" />
+                            <label class="btn btn-light" for="sortDesc"><i class="fa-solid fa-arrow-up-short-wide"></i>
+                                <b>$</b></label>
+
+                            <input type="radio" class="btn-check" name="options" id="sortByCount" checked />
+                            <label class="btn btn-light" for="sortByCount"><i
+                                    class="fas fa-sort-amount-down mr-1"></i><b>Rel.</b></label>
                         </div>
-                        <div class="col">
-                            <input class="form-control" type="number" id="precioMin" placeholder="Min$" min="0" />
-                        </div>
-                        <div class="col">
-                            <input class="form-control" type="number" id="precioMax" placeholder="Máx$" min="0" />
-                        </div>
-                        <div class="col-3 p-0">
-                            <div class="btn-group" role="group">
-                                <button class="btn btn-light btn-block" id="filtrarPrecio">Filtrar</button>
-                                <button class="btn btn-link btn-sm" id="clearRangeFilter">Limpiar</button>
+                    </div>
+                </div>
+
+                <!-- Filtro por rango de precio -->
+                <div class="row filtros">
+                    <div class="col-lg-6 offset-lg-6 col-md-12 mb-1 container">
+                        <div class="row container p-0 m-0">
+                            <div class="col">
+                                <p class="font-weight-normal text-end my-2">Precio</p>
+                            </div>
+                            <div class="col">
+                                <input class="form-control" type="number" id="precioMin" placeholder="Min$" min="0" />
+                            </div>
+                            <div class="col">
+                                <input class="form-control" type="number" id="precioMax" placeholder="Máx$" min="0" />
+                            </div>
+                            <div class="col-3 p-0">
+                                <div class="btn-group" role="group">
+                                    <button class="btn btn-light btn-block" id="filtrarPrecio">Filtrar</button>
+                                    <button class="btn btn-link btn-sm" id="clearRangeFilter">Limpiar</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <div class="row">
+                    <div class="list-group" id="cat-list-container"></div>
+                </div>
+
+                <div id="mensaje-alerta" class="alert alert-warning text-center d-none" role="alert"
+                    style="margin-top: 15%;"></div>
+
+                <div class="row g-5 justify-content-center" id="catalogo">
+                    <!-- Aquí se insertan las tarjetas dinámicamente -->
+                </div>
             </div>
+        </main>
 
-            <div class="row">
-                <div class="list-group" id="cat-list-container"></div>
+        <footer class="text-muted">
+            <div class="container">
+                <p class="float-end"><a href="#">Volver arriba</a></p>
+                <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jóvenes a
+                        Programar</a></p>
             </div>
+        </footer>
 
-            <div id="mensaje-alerta" class="alert alert-warning text-center d-none" role="alert"
-                style="margin-top: 15%;"></div>
-
-            <div class="row g-5 justify-content-center" id="catalogo">
-                <!-- Aquí se insertan las tarjetas dinámicamente -->
-            </div>
-        </div>
-    </main>
-
-    <footer class="text-muted">
-        <div class="container">
-            <p class="float-end"><a href="#">Volver arriba</a></p>
-            <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jóvenes a Programar</a></p>
-        </div>
-    </footer>
-
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/init.js"></script>
-    <script src="js/mostrarUsuarioLogueado.js"></script>
-    <script src="js/proteccion.js"></script>
-    <script src="js/products.js"></script>
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script src="js/init.js"></script>
+        <script src="js/mostrarUsuarioLogueado.js"></script>
+        <script src="js/proteccion.js"></script>
+        <script src="js/products.js"></script>
 </body>
+
 </html>

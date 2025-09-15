@@ -26,3 +26,21 @@ formLogin.addEventListener("submit", function (e) {
 window.addEventListener("DOMContentLoaded", () => {
     mostrarUsuarioLogueado(".loginContenedor", true);
 });
+
+//Ver contraseña (o no ahre)
+const togglePassword = document.getElementById('togglePassword');
+const passwordInput = document.getElementById('contrasena');
+
+// rutas a tus imágenes
+const ojoAbierto = "./img/ojo abierto.png";
+const ojoCerrado = "./img/ojo cerrado.png";
+
+togglePassword.addEventListener("click", () => {
+    if (passwordInput.type === "password") {
+        passwordInput.type = "text";            // muestra la contraseña
+        togglePassword.src = ojoCerrado;        // cambia a ojo cerrado
+    } else {
+        passwordInput.type = "password";        // oculta la contraseña
+        togglePassword.src = ojoAbierto;        // cambia a ojo abierto
+    }
+});

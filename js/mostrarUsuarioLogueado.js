@@ -20,7 +20,8 @@ function mostrarUsuarioLogueado(containerSelector, mostrarGoHome = false) {
     if (mostrarGoHome) {
         html += `<button id="logout" class="btn btn-outline-dark no-focus">Cerrar sesión</button>`;
     } else {
-        html += `<button id="logout" class="btn btn-sm btn-outline-light no-focus">Cerrar sesión</button>`;
+        html += `<button id="logout" class="btn btn-login no-focus">Cerrar sesión</button>`;
+
     }
 
     html += `</div>`;
