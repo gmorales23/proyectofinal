@@ -36,11 +36,11 @@ const ojoAbierto = "./img/ojo abierto.png";
 const ojoCerrado = "./img/ojo cerrado.png";
 
 togglePassword.addEventListener("click", () => {
-if (passwordInput.type === "password") {
-    passwordInput.type = "text";            // muestra la contraseña
-    togglePassword.src = ojoCerrado;        // cambia a ojo cerrado
-} else {
-    passwordInput.type = "password";        // oculta la contraseña
-    togglePassword.src = ojoAbierto;        // cambia a ojo abierto
-}
+    if (passwordInput.type === "password") {
+        passwordInput.type = "text";            // muestra la contraseña
+        togglePassword.src = ojoCerrado;        // cambia a ojo cerrado
+    } else {
+        passwordInput.type = "password";        // oculta la contraseña
+        togglePassword.src = ojoAbierto;        // cambia a ojo abierto
+    }
 });

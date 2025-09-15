@@ -21,12 +21,12 @@ window.addEventListener("DOMContentLoaded", () => {
 				const item = document.createElement("div");
 				item.className = "carousel-item" + (index === 0 ? " active" : "");
 				item.innerHTML = `<img src="${imgUrl}" class="d-block w-100" alt="${producto.name}">`;
-				carouselInner.appendChild(item); 
+				carouselInner.appendChild(item);
 				// Miniaturas
 				const thumbCol = document.createElement("div");
 				thumbCol.className = "col-auto mb-2";
 				thumbCol.innerHTML = `
-          <img src="${imgUrl}" class="img-fluid img-thumbnail" style="cursor:pointer; max-width:80px;" data-bs-target="#product-images" data-bs-slide-to="${index}">
+        <img src="${imgUrl}" class="img-fluid img-thumbnail" style="cursor:pointer; max-width:80px;" data-bs-target="#product-images" data-bs-slide-to="${index}">
         `;
 				thumbsContainer.appendChild(thumbCol);
 			});
@@ -36,7 +36,7 @@ window.addEventListener("DOMContentLoaded", () => {
 			const thumbs = thumbsContainer.querySelectorAll('img');
 			thumbs[0].classList.add('active-thumb');
 
-			carouselElement.addEventListener('slide.bs.carousel', function(e) {
+			carouselElement.addEventListener('slide.bs.carousel', function (e) {
 				thumbs.forEach(img => img.classList.remove('active-thumb'));
 				thumbs[e.to].classList.add('active-thumb');
 			});
@@ -45,9 +45,9 @@ window.addEventListener("DOMContentLoaded", () => {
 		.catch(err => {
 			document.querySelector(".container").innerHTML = `
         <div class="alert alert-danger text-center" role="alert">
-          Error al cargar el producto: ${err}
+        Error al cargar el producto: ${err}
         </div>
-      `;
+    `;
 		});
 });
 
