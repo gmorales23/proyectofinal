@@ -163,23 +163,23 @@ form {
 }
 
 /* Cada bloque dentro del form (inputs y botón) */
-form>div {
+form > div {
     margin-bottom: 7px;
 }
 
 /* Último div (botón + enlace) */
-form>div:last-child {
+form > div:last-child {
     text-align: center;
     margin-top: 10px;
 }
 
 /* Enlaces dentro del último div */
-form>div:last-child a {
+form > div:last-child a {
     text-decoration: none;
     color: #007bff;
 }
 
-form>div:last-child a:hover {
+form > div:last-child a:hover {
     text-decoration: underline;
 }
 
@@ -350,7 +350,7 @@ button[type="submit"] {
 }
 
 .nav-orange {
-    color: #ff6b00 !important
+    color: #ff6b00 !important;
 }
 
 .nav-orange:hover {
@@ -441,7 +441,6 @@ main {
 .producto {
     cursor: pointer;
 }
-
 
 /* Estilo de las páginas creadas en product-info.html */
 
@@ -534,4 +533,40 @@ main {
         content: "";
         /* eliminamos “Volver” para móvil */
     }
+}
+
+.btn-light {
+    outline: 3px solid black;
+}
+
+.btn-light,
+.btn-light:focus,
+.btn-light:active,
+.btn-light:focus:active,
+.btn-light:visited,
+.btn-light.active,
+.show > .btn-light.dropdown-toggle,
+.btn-check:checked + .btn-light,
+.btn-check:active + .btn-light {
+    border: none !important; /* elimina el borde */
+    outline: 1px solid black;
+    box-shadow: none !important; /* elimina la sombra */
+}
+
+#rangeFilterCount,
+#filtrarPrecio {
+    border-radius: 3px !important;
+}
+
+#clearRangeFilter {
+    color: black;
+}
+
+#product-name {
+    text-align: center;
+    padding-bottom: 32px;
+}
+
+#product-description {
+    text-align: center;
 }
