@@ -535,6 +535,42 @@ main {
     }
 }
 
+/* Estilo de seccion de rating */
+
+.p-3.bg-light.border {
+    text-align: center;
+}
+
+.estrellas {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+}
+
+.estrellas input {
+    display: none;
+}
+
+.estrellas label {
+    font-size: 2rem;
+    color: #ccc;
+    cursor: pointer;
+    margin: 0 5px;
+}
+
+.estrellas input:checked ~ label {
+    color: rgb(255, 191, 0);
+}
+
+.estrellas label:hover,
+.estrellas label:hover ~ label {
+    color: rgb(255, 191, 0);
+}
+
+.p-3.bg-light.border {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
 .btn-light {
     outline: 3px solid black;
 }
