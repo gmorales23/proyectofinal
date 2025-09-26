@@ -2,7 +2,7 @@
 <html lang="es">
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <title>eMercado - Todo lo que busques está aquí</title>
 
@@ -10,17 +10,20 @@
     <link href="css/font-awesome.min.css" rel="stylesheet" />
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/styles.css" rel="stylesheet" />
+    <!-- Font Awesome 6 para las estrellas -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 
 <body>
-        <!-- Header + Hero -->
+    <!-- Header -->
     <header class="bg-light">
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#f8f9fa;">
             <div class="container">
                 <a class="navbar-brand d-flex align-items-center" href="index.html">
-                    <img src="/img/japLogo.png " href="index.html" alt="Logo JAP" width="80" class="me-2">
-                    <span class="fw-bold text-dark">e-Mercado</span></a>
+                    <img src="/img/japLogo.png" alt="Logo JAP" width="80" class="me-2">
+                    <span class="fw-bold text-dark">e-Mercado</span>
+                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -43,93 +46,102 @@
                 </div>
             </div>
         </nav>
-        <main class="my-4">
-            </div>
+    </header>
 
-            <div class="category-header">
-                <button id="back-to-category" class="btn">
-                    <span class="d-none d-sm-inline"><i class="fas fa-angle-left"></i> Volver</span>
-                    <span class="d-inline d-sm-none"><i class="fas fa-angle-left"></i></span>
+    <main class="my-4">
+        <div class="category-header">
+            <button id="back-to-category" class="btn">
+                <span class="d-none d-sm-inline"><i class="fas fa-angle-left"></i> Volver</span>
+                <span class="d-inline d-sm-none"><i class="fas fa-angle-left"></i></span>
+            </button>
+            <p id="product-category" class="mb-0"></p>
+        </div>
+
+        <h1 id="product-name" class="mb-3 ms-5 fw-bold"></h1>
+
+        <div class="carousel-container">
+            <div id="product-images" class="carousel slide mb-4" data-bs-ride="carousel">
+                <div class="carousel-inner" id="carousel-inner"></div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#product-images"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Anterior</span>
                 </button>
-                <p id="product-category" class="mb-0"></p>
+                <button class="carousel-control-next" type="button" data-bs-target="#product-images"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Siguiente</span>
+                </button>
             </div>
 
-            <h1 id="product-name" class="mb-3 ms-5 fw-bold"></h1>
-            <div class="carousel-container">
-                <div id="product-images" class="carousel slide mb-4" data-bs-ride="carousel">
-                    <div class="carousel-inner" id="carousel-inner">
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#product-images"
-                        data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Anterior</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#product-images"
-                        data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Siguiente</span>
-                    </button>
-                </div>
-                <div class="row mt-3 justify-content-center" id="carousel-thumbs">
-                </div>
-                <div class="text-end mt-2" style="width:100%;">
-                    <p id="product-sold" class="mb-0 ms-5"></p>
-                </div>
-            </div>
-            <div id="product-description" class="mb-5 ms-5">
-            </div>
-            </div>
-            <!--Ratings-->
-                <div id="rating" class="container bg-light">
-                <div class="row">
-                <div class="col-8 offset-2">
-                    <div class="p-3 bg-light border">
-                        Califica el producto
-                    <form class="rating-form">
-                        <div class="estrellas">
-                            <input type="radio" id="estrella5" name="rating" value="5">
-                            <label for="estrella5" title="5 estrellas"><i class="fa-solid fa-star"></i></label>
-                            <input type="radio" id="estrella4" name="rating" value="4">
-                            <label for="estrella4" title="4 estrellas"><i class="fa-solid fa-star"></i></label>
-                            <input type="radio" id="estrella3" name="rating" value="3">
-                            <label for="estrella3" title="3 estrellas"><i class="fa-solid fa-star"></i></label>
-                            <input type="radio" id="estrella2" name="rating" value="2">
-                            <label for="estrella2" title="2 estrellas"><i class="fa-solid fa-star"></i></label>
-                            <input type="radio" id="estrella1" name="rating" value="1">
-                            <label for="estrella1" title="1 estrella"><i class="fa-solid fa-star"></i></label>
-                        </div>
-                    </form>
-                </div>
-                </div>
-                </div>
-                </div>
-    
-        </main>
-        <footer class="text-muted">
-            <div class="container">
-                <p class="float-end">
-                    <a href="#">Volver arriba</a>
-                </p>
-                <p>
-                    Este sitio forma parte de
-                    <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a>
-                </p>
-            </div>
-        </footer>
-        <div id="spinner-wrapper">
-            <div class="lds-ring">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
+            <div class="row mt-3 justify-content-center" id="carousel-thumbs"></div>
+
+            <div class="text-end mt-2" style="width:100%;">
+                <p id="product-sold" class="mb-0 ms-5"></p>
             </div>
         </div>
-        <script src="js/bootstrap.bundle.min.js"></script>
-        <script src="js/init.js"></script>
-        <script src="js/product-info.js"></script>
-        <script src="js/mostrarUsuarioLogueado.js"></script>
-        <script src="js/proteccion.js"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-</body>
 
+        <div id="product-description" class="mb-5 ms-5"></div>
+
+        <!-- Ratings -->
+        <div id="rating" class="container bg-light">
+            <div class="row">
+                <div class="col-8 offset-2">
+                    <div class="p-3 bg-light border">
+                        <p class="fw-bold">Califica el producto</p>
+                        <form class="rating-form">
+                            <div class="estrellas">
+                                <input type="radio" id="estrella5" name="rating" value="5">
+                                <label for="estrella5" title="5 estrellas"><i class="fa-solid fa-star"></i></label>
+                                <input type="radio" id="estrella4" name="rating" value="4">
+                                <label for="estrella4" title="4 estrellas"><i class="fa-solid fa-star"></i></label>
+                                <input type="radio" id="estrella3" name="rating" value="3">
+                                <label for="estrella3" title="3 estrellas"><i class="fa-solid fa-star"></i></label>
+                                <input type="radio" id="estrella2" name="rating" value="2">
+                                <label for="estrella2" title="2 estrellas"><i class="fa-solid fa-star"></i></label>
+                                <input type="radio" id="estrella1" name="rating" value="1">
+                                <label for="estrella1" title="1 estrella"><i class="fa-solid fa-star"></i></label>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Comentarios -->
+        <div class="container mt-5">
+            <h3 class="fw-bold mb-3">Comentarios</h3>
+            <div id="comentarios-container"></div>
+        </div>
+    </main>
+
+    <footer class="text-muted">
+        <div class="container">
+            <p class="float-end">
+                <a href="#">Volver arriba</a>
+            </p>
+            <p>
+                Este sitio forma parte de
+                <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Spinner -->
+    <div id="spinner-wrapper">
+        <div class="lds-ring">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+    <!-- JS -->
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/init.js"></script>
+    <script src="js/product-info.js"></script>
+    <script src="js/mostrarUsuarioLogueado.js"></script>
+    <script src="js/proteccion.js"></script>
+</body>
 </html>
