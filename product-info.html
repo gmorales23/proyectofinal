@@ -55,30 +55,39 @@
             </div>
 
             <h1 id="product-name" class="mb-3 ms-5 fw-bold"></h1>
-            <div class="carousel-container">
-                <div id="product-images" class="carousel slide mb-4" data-bs-ride="carousel">
-                    <div class="carousel-inner" id="carousel-inner">
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#product-images"
-                        data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Anterior</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#product-images"
-                        data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Siguiente</span>
-                    </button>
-                </div>
-                <div class="row mt-3 justify-content-center" id="carousel-thumbs">
-                </div>
-                <div class="text-end mt-2" style="width:100%;">
-                    <p id="product-sold" class="mb-0 ms-5"></p>
-                </div>
+            
+           <div class="d-flex justify-content-between align-items-start mb-8 ms-5 me-5">
+        <!-- Carrusel de imágenes -->
+        <div class="flex-grow-1 me-4">
+            <div id="product-images" class="carousel slide mb-4" data-bs-ride="carousel">
+                <div class="carousel-inner" id="carousel-inner"></div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#product-images" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Anterior</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#product-images" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Siguiente</span>
+                </button>
             </div>
-            <div id="product-description" class="mb-5 ms-5">
+
+            <div class="row mt-3 justify-content-center" id="carousel-thumbs"></div>
+            <div class="text-end mt-2" style="width:100%;">
+                <p id="product-sold" class="mb-0 ms-5"></p>
             </div>
+
+            <div id="product-description" class="mb-5 mt-4"></div>
+        </div>
+
+        <!-- Contenedor de productos relacionados con título fuera -->
+        <div style="width: 250px;">
+            <h5 class="fw-bold mb-3 text-center">Productos relacionados</h5>
+            <div id="related-products" class="d-flex flex-column align-items-center">
+                <!-- Tarjetas insertadas desde JS -->
             </div>
+        </div>
+
+    </div>
         </main>
         <footer class="text-muted">
             <div class="container">

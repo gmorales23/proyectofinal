@@ -11,7 +11,7 @@ window.addEventListener("DOMContentLoaded", () => {
 			document.getElementById("product-name").textContent = producto.name;
 			document.getElementById("product-category").textContent = ` ${producto.category}`;
 			document.getElementById("product-sold").textContent = `Vendidos: ${producto.soldCount}`;
-			document.getElementById("product-description").innerHTML = `  <h5 class="fw-bold mb-2">Descripción del producto:</h5>  <p>${producto.description}</p>
+			document.getElementById("product-description").innerHTML = `  <h5 class="fw-bold mb-2">Descripción</h5>  <p>${producto.description}</p>
 `;
 			const carouselInner = document.getElementById("carousel-inner");
 			const thumbsContainer = document.getElementById("carousel-thumbs");
@@ -40,7 +40,8 @@ window.addEventListener("DOMContentLoaded", () => {
 				thumbs.forEach(img => img.classList.remove('active-thumb'));
 				thumbs[e.to].classList.add('active-thumb');
 			});
-
+			// Mostrar productos relacionados
+			mostrarRelacionados(producto.relatedProducts);
 		})
 		.catch(err => {
 			document.querySelector(".container").innerHTML = `
@@ -60,4 +61,26 @@ document.getElementById("back-to-category").addEventListener("click", () => {
 		window.location.href = "categories.html";
 	}
 });
+
+// Renderizar las tarjetas de productos relacionados
+function mostrarRelacionados(relacionados) {
+    const container = document.getElementById("related-products");
+    container.innerHTML = "";
+
+    relacionados.forEach(producto => {
+        let tarjetarelacionada = document.createElement("div");
+        tarjetarelacionada.className = "tarjetarelacionada";
+        tarjetarelacionada.innerHTML = `
+            <img src="${producto.image}" alt="${producto.name}">
+            <h5>${producto.name}</h5>
+        `;
+
+        tarjetarelacionada.addEventListener("click", () => {
+            localStorage.setItem("productID", producto.id);
+            window.location = "product-info.html";
+        });
+
+        container.appendChild(tarjetarelacionada);
+    });
+}
 
