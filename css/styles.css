@@ -426,10 +426,6 @@ a.naranja:active {
     cursor: pointer;
 }
 
-.carousel-container {
-    max-width: 500px;
-}
-
 main {
     min-height: calc(100vh - 210px);
 }
@@ -479,10 +475,10 @@ main {
     max-width: 900px;
     margin: 0 auto 2rem;
     margin-bottom: 2rem;
-    background-color: #d2d5d8ad;
+    background-color: #ff6b00;
     padding: 15px;
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* Esto es para centrar el contenido de la página por ahora, seguramente se modifique luego */
@@ -552,10 +548,11 @@ main {
 }
 
 .estrellas label {
-    font-size: 2rem;
+    font-size: clamp(1rem, 5vw, 2.5rem);
     color: #ccc;
     cursor: pointer;
     margin: 0 5px;
+    padding-bottom: 12px;
 }
 
 .estrellas input:checked ~ label {
@@ -605,4 +602,33 @@ main {
 
 #product-description {
     text-align: center;
+}
+
+#send-rating {
+    background-color: #ff6b00;
+    border: none;
+    margin-top: 0px;
+    padding: 6px;
+    font-size: 1rem;
+}
+
+#send-rating:focus,
+#send-rating:active {
+    outline: none;
+    box-shadow: none;
+}
+
+#comentario:focus {
+    border-color: #ff6b00 !important;
+    box-shadow: 0 0 0 0.25rem rgba(255, 107, 0, 0.4) !important;
+    outline: none !important;
+}
+
+#rating {
+    padding-top: 32px;
+}
+
+#rating-box {
+    background-color: white !important;
+    padding: 32px !important;
 }
