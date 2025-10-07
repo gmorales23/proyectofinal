@@ -104,15 +104,17 @@ function configurarCarrusel(producto) {
         // Main carousel image
         const item = document.createElement("div");
         item.className = "carousel-item" + (index === 0 ? " active" : "");
-        item.innerHTML = `<img src="${imgUrl}" class="d-block w-100" alt="${producto.name}">`;
+        item.innerHTML = `
+            <img src="${imgUrl}" class="d-block w-100" style="height: 500px; object-fit: contain; background-color: #f8f9fa;" alt="${producto.name}">
+        `;
         carouselInner.appendChild(item);
 
         // Thumbnail
         const thumbCol = document.createElement("div");
-        thumbCol.className = "col-auto mb-2";
+        thumbCol.className = "col-auto";
         thumbCol.innerHTML = `
-            <img src="${imgUrl}" class="img-fluid img-thumbnail"
-                 style="cursor:pointer; max-width:80px;"
+            <img src="${imgUrl}" class="rounded border"
+                 style="cursor:pointer; height: 60px; width: 60px; object-fit: cover;"
                  data-bs-target="#product-images" 
                  data-bs-slide-to="${index}"
                  alt="Miniatura ${index + 1}">
@@ -129,14 +131,18 @@ function configurarMiniaturas(thumbsContainer) {
     const thumbs = thumbsContainer.querySelectorAll("img");
     
     if (thumbs.length > 0) {
-        thumbs[0].classList.add("active-thumb");
+        thumbs[0].classList.add("border-warning", "border-3");
     }
 
     if (carouselElement) {
         carouselElement.addEventListener("slide.bs.carousel", e => {
-            thumbs.forEach(img => img.classList.remove("active-thumb"));
+            thumbs.forEach(img => {
+                img.classList.remove("border-warning", "border-3");
+                img.classList.add("border-light");
+            });
             if (thumbs[e.to]) {
-                thumbs[e.to].classList.add("active-thumb");
+                thumbs[e.to].classList.remove("border-light");
+                thumbs[e.to].classList.add("border-warning", "border-3");
             }
         });
     }
@@ -148,16 +154,33 @@ function mostrarComentarios(comments) {
     
     contenedor.innerHTML = "";
 
+    if (comments.length === 0) {
+        contenedor.innerHTML = `
+            <div class="text-center py-4">
+                <i class="fas fa-comment-slash fa-3x text-muted mb-3"></i>
+                <p class="text-muted">No hay comentarios aún. ¡Sé el primero en opinar!</p>
+            </div>
+        `;
+        return;
+    }
+
     comments.forEach(comment => {
         const comentarioDiv = document.createElement("div");
-        comentarioDiv.className = "list-group-item";
+        comentarioDiv.className = "list-group-item border-0";
         comentarioDiv.innerHTML = `
-            <div class="d-flex justify-content-between align-items-center">
-                <h5 class="mb-1">${comment.user}</h5>
+            <div class="d-flex justify-content-between align-items-start mb-2">
+                <div class="d-flex align-items-center">
+                    <div class="rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px; background-color: var(--primary-color);">
+                        <i class="fas fa-user text-white"></i>
+                    </div>
+                    <div>
+                        <h6 class="mb-0 fw-bold">${comment.user}</h6>
+                        <div style="color: var(--primary-color);">${generarEstrellas(comment.score)}</div>
+                    </div>
+                </div>
                 <small class="text-muted">${comment.dateTime}</small>
             </div>
-            <p class="mb-1">${comment.description}</p>
-            <div>${generarEstrellas(comment.score)}</div>
+            <p class="mb-0 ms-5">${comment.description}</p>
         `;
         contenedor.appendChild(comentarioDiv);
     });
@@ -166,8 +189,9 @@ function mostrarComentarios(comments) {
 function generarEstrellas(score) {
     let html = "";
     for (let i = 1; i <= 5; i++) {
-        const clase = i <= score ? "checked text-warning" : "";
-        html += `<span class="fa fa-star ${clase}"></span>`;
+        const clase = i <= score ? "checked" : "";
+        const color = i <= score ? "style='color: var(--primary-color);'" : "style='color: #dee2e6;'";
+        html += `<span class="fa fa-star ${clase}" ${color}></span>`;
     }
     return html;
 }
@@ -178,17 +202,45 @@ function mostrarRelacionados(relacionados) {
     
     container.innerHTML = "";
 
+    if (relacionados.length === 0) {
+        container.innerHTML = `
+            <div class="text-center py-4">
+                <i class="fas fa-box-open fa-2x text-muted mb-2"></i>
+                <p class="text-muted small">No hay productos relacionados</p>
+            </div>
+        `;
+        return;
+    }
+
     relacionados.forEach(prod => {
         const tarjeta = document.createElement("div");
-        tarjeta.className = "tarjetarelacionada";
+        tarjeta.className = "list-group-item list-group-item-action border-0 p-3";
+        tarjeta.style.cursor = "pointer";
         tarjeta.innerHTML = `
-            <img src="${prod.image}" alt="${prod.name}">
-            <h5>${prod.name}</h5>
+            <div class="d-flex align-items-center">
+                <img src="${prod.image}" alt="${prod.name}" 
+                     class="rounded me-3" style="width: 60px; height: 60px; object-fit: cover;">
+                <div class="flex-grow-1">
+                    <h6 class="mb-1 fw-bold text-dark">${prod.name}</h6>
+                    <small class="text-muted">Ver detalles</small>
+                </div>
+                <i class="fas fa-chevron-right text-muted"></i>
+            </div>
         `;
+        
         tarjeta.addEventListener("click", () => {
             localStorage.setItem("productID", prod.id);
             window.location = "product-info.html";
         });
+        
+        tarjeta.addEventListener("mouseenter", () => {
+            tarjeta.classList.add("bg-light");
+        });
+        
+        tarjeta.addEventListener("mouseleave", () => {
+            tarjeta.classList.remove("bg-light");
+        });
+        
         container.appendChild(tarjeta);
     });
 }
