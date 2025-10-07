@@ -14,28 +14,40 @@
 
 <body>
     <!-- Header + Hero -->
-    <header class="bg-light">
+    <header class="shadow-sm">
         <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#f8f9fa;">
-            <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container-fluid">
                 <a class="navbar-brand d-flex align-items-center" href="index.html">
-                    <img src="/img/japLogo.png " href="index.html" alt="Logo JAP" width="80" class="me-2">
-                    <span class="fw-bold text-dark">e-Mercado</span>
+                    <img src="img/japLogo.png" alt="Logo JAP" class="me-2 logo-nav">
+                    <span class="fw-bold text-white fs-4">e-Mercado</span>
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                
+                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                    <ul class="navbar-nav mb-2 mb-lg-0 align-items-lg-center">
-                        <li>
-                            <a href="index.html" class="nav-item ms-lg-3 nav-orange">Inicio</a>
+                
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link fw-semibold text-white" href="index.html">
+                                <i class="fas fa-home me-1"></i>Inicio
+                            </a>
                         </li>
-                        <li>
-                            <a href="sell.html" class="nav-item ms-lg-3 nav-orange">Vender ahora</a>
+                        <li class="nav-item">
+                            <a class="nav-link fw-semibold text-white" href="categories.html">
+                                <i class="fas fa-th-large me-1"></i>Categorías
+                            </a>
                         </li>
-                        <li class="nav-item ms-lg-3" id="userNav">
-                            <a id="btnLogin" class="btn" href="login.html"
-                                style="background-color:#ff6b00; color:white;">Iniciar sesión</a>
+                        <li class="nav-item">
+                            <a class="nav-link fw-semibold text-white" href="sell.html">
+                                <i class="fas fa-plus-circle me-1"></i>Vender
+                            </a>
+                        </li>
+                        <li class="nav-item" id="userNav">
+                            <a id="btnLogin" class="btn btn-warning text-white fw-semibold px-3" href="login.html">
+                                <i class="fas fa-sign-in-alt me-1"></i>Iniciar sesión
+                            </a>
                         </li>
                     </ul>
                 </div>

@@ -1,110 +1,301 @@
-/* ============================== TIPOGRAFÍA GENERAL ============================== */
-.jumbotron,
-.card-body,
-.container,
-.site-header {
-    font-family: "Verdana", serif !important;
+/* ============================== VARIABLES CSS ============================== */
+:root {
+    --primary-color: #ff6b00;
+    --primary-hover: #e55b00;
+    --secondary-color: #f8f9fa;
+    --text-dark: #212529;
+    --text-muted: #6c757d;
+    --border-color: #dee2e6;
+    --shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    --shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    --border-radius: 0.375rem;
+    --transition: all 0.3s ease;
+}
+
+/* ============================== RESET Y BASE ============================== */
+* {
+    box-sizing: border-box;
 }
 
 body {
-    background-color: #f8f9fa;
+    font-family: "Raleway", "Verdana", sans-serif;
+    background-color: var(--secondary-color);
+    line-height: 1.6;
 }
 
 /* ============================== NAVEGACIÓN ============================== */
-nav a {
-    text-decoration: none; /* quita subrayado de links */
+.navbar {
+    box-shadow: var(--shadow-sm);
+    background-color: #212529 !important;
 }
 
-.site-header a {
+.navbar-brand {
+    font-weight: 700;
+    color: white !important;
+}
+
+.navbar-nav .nav-link {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: white !important;
+    transition: var(--transition);
+}
+
+.navbar-nav .nav-link:hover {
+    color: var(--primary-color) !important;
+}
+
+.navbar-nav .nav-link i {
     color: white;
-    transition: ease-in-out color 0.15s;
 }
 
-.site-header .dropdown-menu a {
-    color: black;
+.navbar-nav .nav-link:hover i {
+    color: var(--primary-color);
 }
 
-/* ============================== PLACEHOLDER Y RESPONSIVE IMÁGENES ============================== */
-.bd-placeholder-img {
-    font-size: 1.125rem;
-    text-anchor: middle;
-    user-select: none;
+.navbar-toggler {
+    border: none;
+    padding: 0.25rem 0.5rem;
+    color: white;
 }
 
-@media (min-width: 768px) {
-    .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-    }
+.navbar-toggler:focus {
+    box-shadow: none;
 }
 
-/* ============================== JUMBOTRON ============================== */
-@media (min-width: 768px) {
-    .jumbotron {
-        padding-top: 6rem;
-        padding-bottom: 6rem;
-    }
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
-.jumbotron p:last-child {
-    margin-bottom: 0;
+.logo-nav {
+    width: 90px;
+    height: 90px;
+    margin-left: 30px;
 }
 
-.jumbotron-heading {
-    font-weight: 300;
+/* ============================== BOTONES ============================== */
+.btn-warning {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+    font-weight: 600;
+    transition: var(--transition);
 }
 
-.jumbotron .container {
-    max-width: 40rem;
-    background-color: rgba(255, 255, 255, 0.5);
-    border-radius: 10px;
-    text-shadow: 1px 1px 2px grey;
+.btn-warning:hover {
+    background-color: var(--primary-hover);
+    border-color: var(--primary-hover);
+    color: white;
 }
 
-.jumbotron .lead {
-    font-size: 38px;
+.btn-warning:focus {
+    box-shadow: 0 0 0 0.25rem rgba(255, 107, 0, 0.25);
 }
 
-/* ============================== FOOTER ============================== */
-footer {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
+/* ============================== CARDS ============================== */
+.card {
+    border: none;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+}
+
+.card:hover {
+    box-shadow: var(--shadow);
+    transform: translateY(-2px);
+}
+
+.card-header {
+    background-color: var(--secondary-color);
+    border-bottom: 1px solid var(--border-color);
+    font-weight: 600;
+}
+
+/* ============================== CARRUSEL ============================== */
+#product-images {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.carousel-item img {
+    height: 500px;
+    object-fit: contain;
+    width: 100%;
     background-color: #f8f9fa;
 }
 
-footer p {
-    margin-bottom: 0.25rem;
+.carousel-control-prev,
+.carousel-control-next {
+    width: 8%;
+    background: none;
+    border: none;
+    margin: 0;
 }
 
-/* ============================== DROPZONE (CARGA DE ARCHIVOS) ============================== */
-.dropzone {
-    border: 2px dashed #0087f7;
-    border-radius: 5px;
-    background: white;
+.carousel-control-prev {
+    left: 0;
 }
 
-/* ============================== UTILIDADES GENERALES ============================== */
-.img-fit {
-    max-height: 100%;
+.carousel-control-next {
+    right: 0;
 }
 
-.cursor-active {
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    width: 4rem;
+    height: 4rem;
+    background-size: 100% 100%;
+    filter: brightness(0) invert(1);
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    background: none;
+}
+
+.carousel-control-prev:hover .carousel-control-prev-icon,
+.carousel-control-next:hover .carousel-control-next-icon {
+    background-color: transparent;
+    border: none;
+    filter: brightness(0) invert(1);
+}
+
+/* Miniaturas del carrusel */
+#carousel-thumbs {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+#carousel-thumbs img {
+    height: 60px;
+    width: 60px;
+    object-fit: cover;
+    cursor: pointer;
+    transition: var(--transition);
+    border: 2px solid transparent;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+#carousel-thumbs img:hover {
+    transform: scale(1.05);
+    border-color: var(--primary-color);
+}
+
+#carousel-thumbs img.border-warning {
+    border-color: var(--primary-color) !important;
+    transform: scale(1.05);
+}
+
+/* ============================== RATING/ESTRELLAS ============================== */
+.rating-stars {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    gap: 0.25rem;
+    margin-top: 0.5rem;
+}
+
+.rating-stars input {
+    display: none;
+}
+
+.rating-stars label {
+    font-size: 1.5rem;
+    color: #dee2e6;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.rating-stars input:checked ~ label,
+.rating-stars label:hover,
+.rating-stars label:hover ~ label {
+    color: var(--primary-color);
+}
+
+/* ============================== COMENTARIOS ============================== */
+.list-group-item {
+    border: none;
+    padding: 1rem;
+}
+
+.list-group-item:not(:last-child) {
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* ============================== CATEGORÍAS ============================== */
+.list-group-item-action {
+    cursor: pointer !important;
+    transition: var(--transition);
+    border: 1px solid var(--border-color) !important;
+    margin-bottom: 0.5rem;
+    border-radius: var(--border-radius) !important;
+}
+
+.list-group-item-action:hover {
+    background-color: #212529 !important;
+    color: white !important;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+.list-group-item-action:hover h4,
+.list-group-item-action:hover small,
+.list-group-item-action:hover p {
+    color: white !important;
+}
+
+.list-group-item-action:hover .img-thumbnail {
+    border-color: white !important;
+}
+
+/* ============================== PRODUCTOS RELACIONADOS ============================== */
+.related-products-card {
+    top: 2rem;
+}
+
+.related-products-header {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+#related-products .list-group-item {
+    transition: var(--transition);
     cursor: pointer;
 }
 
-.left {
-    float: left;
-    padding: 4px;
-    background-color: rgba(255, 255, 255, 0.5);
+#related-products .list-group-item:hover {
+    background-color: var(--primary-color);
+    color: white;
+    transform: translateX(5px);
 }
 
-/* ============================== ANIMACIÓN SPINNER ============================== */
+#related-products .list-group-item:hover h6,
+#related-products .list-group-item:hover small {
+    color: white;
+}
+
+/* ============================== FORMULARIOS ============================== */
+.form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.25rem rgba(255, 107, 0, 0.25);
+}
+
+.form-label {
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+/* ============================== SPINNER ============================== */
 .lds-ring {
     display: inline-block;
     position: relative;
     width: 64px;
     height: 64px;
-    top: 50%;
-    left: 50%;
 }
 
 .lds-ring div {
@@ -114,10 +305,10 @@ footer p {
     width: 51px;
     height: 51px;
     margin: 6px;
-    border: 6px solid #fff;
+    border: 6px solid var(--primary-color);
     border-radius: 50%;
     animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-    border-color: #fff transparent transparent transparent;
+    border-color: var(--primary-color) transparent transparent transparent;
 }
 
 .lds-ring div:nth-child(1) { animation-delay: -0.45s; }
@@ -138,402 +329,227 @@ footer p {
     left: 0;
     z-index: 1021;
     display: none;
-}
-
-/* ============================== LOGIN / FORMULARIOS ============================== */
-form {
-    width: 100%;
-    max-width: 500px;
-    margin: auto;
-}
-
-form > div {
-    margin-bottom: 7px;
-}
-
-form > div:last-child {
-    text-align: center;
-    margin-top: 10px;
-}
-
-form > div:last-child a {
-    text-decoration: none;
-    color: #007bff;
-}
-
-form > div:last-child a:hover {
-    text-decoration: underline;
-}
-
-label {
-    font-size: clamp(14px, 3vw, 24px);
-    margin-bottom: 6px;
-    color: #000000;
-    display: block;
-}
-
-input[type="text"],
-input[type="password"] {
-    border: none;
-    width: 100%;
-    padding: 10px;
-    font-size: clamp(14px, 3vw, 24px);
-    outline: none;
-    border-radius: 8px;
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.4);
-}
-
-input::placeholder {
-    color: #000000;
-    opacity: 1;
-}
-
-button[type="submit"] {
-    border-radius: 12px;
-    text-align: center;
-    margin-top: 18px;
-    width: 100%;
-    font-size: clamp(14px, 3vw, 24px);
-    color: white;
-    cursor: pointer;
-    background-color: #d97f00;
-    padding: 14px;
-}
-
-/* ============================== PASSWORD ============================== */
-.password-container {
-    position: relative;
-    width: 100%;
-}
-
-.password-container input {
-    width: 100%;
-    padding-right: 40px;
-}
-
-.eye-icon {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 24px;
-    height: 24px;
-    cursor: pointer;
-}
-
-/* ============================== OVERLAY Y MODAL ============================== */
-.login-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
-    display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1050;
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
 }
 
-.login-modal {
-    background: #fff;
-    border-radius: 12px;
-    padding: 30px;
-    max-width: 400px;
-    width: 90%;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-    animation: fadeIn 0.3s ease-in-out;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: scale(0.9); }
-    to { opacity: 1; transform: scale(1); }
-}
-
-.login-close {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    font-size: 20px;
-    cursor: pointer;
-    color: #555;
-}
-
-.login-close:hover { color: #000; }
-
-/* ============================== BOTONES PERSONALIZADOS ============================== */
-.btn-dark-custom {
+/* ============================== HERO SECTION ============================== */
+.hero-section {
     background-color: #212529;
-    border-color: #212529;
-    color: white;
 }
 
-.btn-dark-custom:hover {
-    background-color: #343a40;
-    border-color: #343a40;
-    color: white;
-}
-
-.btn-login {
-    background-color: #ff6b00;
-    color: white;
-    border-radius: 12px;
-    padding: 10px 25px;
-    font-weight: bold;
-    transition: all 0.3s ease;
-    text-decoration: none;
-}
-
-.btn-login:hover { background-color: #e55b00; }
-
-.btn-light {
-    color: #000;
-    background-color: #e4e4e4;
-    border-color: #000;
-}
-
-.btn-light:hover {
-    background-color: #000;
-    color: #fff;
-    border-color: #000;
-}
-
-.nav-orange { color: #ff6b00 !important; }
-.nav-orange:hover { color: #ff6b00; }
-
-/* ============================== ESTILOS VARIOS ============================== */
-.custom-shadow {
-    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.4);
-    border: none;
-}
-
-#regMessage { text-align: center; padding-top: 16px; }
-
-.card {
-    transition: transform 0.2s;
-}
-
-.card:hover { transform: translateY(-5px); }
-
-.navbar .btn:focus,
-.navbar .btn:focus-visible,
-.navbar .btn:active,
-.loginContenedor .btn:focus,
-.loginContenedor .btn:focus-visible,
-.loginContenedor .btn:active {
-    outline: none !important;
-    box-shadow: none !important;
-}
-
-/* ============================== LINKS PERSONALIZADOS ============================== */
-a.custom-card,
-a.custom-card:hover { color: inherit; text-decoration: inherit; }
-
-a.naranja,
-a.naranja:link,
-a.naranja:visited {
-    color: #f09100;
-    text-decoration: none;
-    font-size: clamp(14px, 3vw, 24px);
-}
-
-a.naranja:hover,
-a.naranja:active { color: #d97f00; text-decoration: none !important; }
-
-/* ============================== UTILIDADES DE DISEÑO ============================== */
-.checked { color: orange; }
-.contenedor { padding-left: 54px; padding-right: 54px; }
-.filtros { padding-bottom: 16px !important; }
-.producto { cursor: pointer; }
-.carousel-container {
-    max-width: 900px;
-    margin: 0 auto 2rem;
-    background-color: #d2d5d8ad;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-main { min-height: calc(100vh - 210px); }
-
-/* ============================== PRODUCT INFO ============================== */
-.carousel-item img {
-    max-height: 600px;
-    object-fit: contain;
-    width: 100%;
-}
-
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-    background-color: rgba(0, 0, 0, 0.35);
-    border-radius: 10%;
-    padding: 10px;
-    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5));
-}
-
-#product-images .carousel-control-prev,
-#product-images .carousel-control-next {
-    width: 38%; 
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-#carousel-thumbs img {
-    max-height: 80px;
-    object-fit: cover;
-    border: 0.1px solid rgba(0, 0, 0, 0.3);
-    border-radius: 3px;
-    cursor: pointer;
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-}
-
-#carousel-thumbs img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 2px 6px #ff6b00;
-}
-
-.active-thumb {
-    border: 2px solid #ff6b00 !important;
-    transform: scale(1.3);
-    transition: transform 0.2s;
-}
-
-.product-info-container { margin: 0 auto; max-width: 900px; }
-
-#product-category,
-#product-sold { color: #ff6b00; align-items: center; }
-
-#back-to-category {
-    padding: 8px 16px;
-    background-color: #ff6b00;
-    color: white;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-}
-
-.category-header {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+.hero-title {
     margin-bottom: 1rem;
-    margin-left: 20px;
 }
 
-@media (max-width: 768px) {
-    #back-to-category .back-text { font-size: 1.2rem; }
-    #back-to-category .back-text::after { content: ""; }
+.hero-welcome {
+    color: white;
 }
 
-/* Productos relacionados */
-#related-products {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
+.hero-brand {
+    color: var(--primary-color);
 }
 
-.tarjetarelacionada {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 10px;
-    width: 100%;
-    text-align: center;
-    cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
+/* ============================== BOTÓN VOLVER ============================== */
+.back-button {
+    color: var(--primary-color) !important;
+    transition: var(--transition);
 }
 
-.tarjetarelacionada img {
-    max-width: 100%;
-    border-radius: 8px 8px 0 0;
+.back-button:hover {
+    color: var(--primary-hover) !important;
+    transform: translateX(-2px);
 }
 
-.tarjetarelacionada:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 12px #ff6b00;
-}
-
-/* Botones filtros */
-.btn-group-toggle .btn {
-    border: 1px solid black !important; 
-    border-radius: 5px;
-    color: black; 
-}
-
+/* ============================== BOTONES FILTROS ============================== */
 #clearRangeFilter {
-    color: black;              
-    border: 1px solid black;   
-    padding: 0.25rem 0.5rem;   
-    font-size: 0.85rem;        
-    border-radius: 3px !important;
+    color: var(--primary-color) !important;
+    border: none !important;
+    background-color: transparent !important;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+    transition: var(--transition);
+}
+
+#clearRangeFilter:hover {
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.15) !important;
+}
+
+#clearRangeFilter:focus,
+#clearRangeFilter:active {
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+    outline: none !important;
 }
 
 #filtrarPrecio {
-    background-color: #ff6b00; 
-    color: #fff; 
-    border: 1px solid black;
-    border-radius: 3px !important;
+    background-color: var(--primary-color) !important;
+    color: white !important;
+    border: none !important;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+    transition: var(--transition);
 }
 
-/* Rating */
-.p-3.bg-light.border {
-    text-align: center;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+#filtrarPrecio:hover {
+    background-color: var(--primary-hover) !important;
+    color: white !important;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.15) !important;
 }
 
-.estrellas {
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: center;
-}
-
-.estrellas input { display: none; }
-
-.estrellas label {
-    font-size: clamp(1rem, 5vw, 2.5rem);
-    color: #ccc;
-    cursor: pointer;
-    margin: 0 5px;
-    padding-bottom: 12px;
-}
-
-.estrellas input:checked ~ label { color: rgb(255, 191, 0); }
-.estrellas label:hover,
-.estrellas label:hover ~ label { color: rgb(255, 191, 0); }
-
-#send-rating {
-    background-color: #ff6b00;
-    border: none;
-    margin-top: 0px;
-    padding: 6px;
-    font-size: 1rem;
-}
-
-#send-rating:focus,
-#send-rating:active { outline: none; box-shadow: none; }
-
-#comentario:focus {
-    border-color: #ff6b00 !important;
-    box-shadow: 0 0 0 0.25rem rgba(255, 107, 0, 0.4) !important;
+#filtrarPrecio:focus,
+#filtrarPrecio:active {
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.1) !important;
     outline: none !important;
 }
 
-#rating { padding-top: 32px; }
-#rating-box { background-color: white !important; padding: 32px !important; }
-
-/* ============================== BTN LIGHT FIX ============================== */
-.btn-light,
-.btn-light:focus,
-.btn-light:active,
-.btn-light:focus:active,
-.btn-light:visited,
-.btn-light.active,
-.show > .btn-light.dropdown-toggle,
-.btn-check:checked + .btn-light,
-.btn-check:active + .btn-light {
+/* ============================== BOTONES ORDENAR ============================== */
+.btn-group-toggle .btn {
+    color: var(--primary-color) !important;
     border: none !important;
-    outline: 1px solid black;
-    box-shadow: none !important;
+    background-color: transparent !important;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+    transition: var(--transition);
+}
+
+.btn-group-toggle .btn:hover {
+    background-color: #212529 !important;
+    color: white !important;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.15) !important;
+}
+
+.btn-group-toggle .btn:focus,
+.btn-group-toggle .btn:active,
+.btn-group-toggle .btn.active {
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+    outline: none !important;
+    background-color: #212529 !important;
+    color: white !important;
+}
+
+/* ============================== UTILIDADES ============================== */
+.cursor-active {
+    cursor: pointer;
+}
+
+.text-primary-custom { color: var(--primary-color) !important; }
+.bg-primary-custom { background-color: var(--primary-color) !important; }
+.border-primary-custom { border-color: var(--primary-color) !important; }
+
+.shadow-custom { box-shadow: var(--shadow) !important; }
+.shadow-sm-custom { box-shadow: var(--shadow-sm) !important; }
+
+.transition-custom { transition: var(--transition) !important; }
+
+/* ============================== RESPONSIVE ============================== */
+@media (max-width: 992px) {
+    #product-images {
+        max-width: 100%;
+    }
+    
+    .carousel-item img {
+        height: 400px;
+    }
+}
+
+@media (max-width: 768px) {
+    .carousel-item img {
+        height: 300px;
+    }
+    
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        width: 3rem;
+        height: 3rem;
+    }
+    
+    .rating-stars {
+        justify-content: center;
+    }
+    
+    .rating-stars label {
+        font-size: 1.25rem;
+    }
+    
+    .card-body {
+        padding: 1rem;
+    }
+    
+    .navbar-brand img {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 576px) {
+    .carousel-item img {
+        height: 250px;
+    }
+    
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+    
+    .rating-stars label {
+        font-size: 1rem;
+    }
+    
+    .display-6 {
+        font-size: 1.5rem;
+    }
+}
+
+/* ============================== ANIMACIONES ============================== */
+@keyframes fadeIn {
+    from { 
+        opacity: 0; 
+        transform: translateY(20px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* ============================== FOOTER ============================== */
+footer {
+    background-color: var(--secondary-color);
+    border-top: 1px solid var(--border-color);
+    padding: 2rem 0;
+    margin-top: 3rem;
+}
+
+footer a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+footer a:hover {
+    color: var(--primary-hover);
+    text-decoration: underline;
+}
+
+/* ============================== LEGACY SUPPORT ============================== */
+/* Mantener compatibilidad con clases existentes */
+.checked { color: var(--primary-color); }
+.nav-orange { color: var(--primary-color) !important; }
+.nav-orange:hover { color: var(--primary-hover) !important; }
+
+/* Estilos para elementos que podrían no estar actualizados */
+.jumbotron {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
+    color: white;
+    padding: 3rem 0;
+    margin-bottom: 2rem;
+}
+
+.jumbotron .container {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    backdrop-filter: blur(10px);
 }

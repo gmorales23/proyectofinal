@@ -16,24 +16,40 @@
 </head>
 
 <body>
-    <!-- Header -->
-    <header class="bg-light">
-        <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#f8f9fa;">
-            <div class="container">
+    <!-- Header Responsive -->
+    <header class="shadow-sm">
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container-fluid">
                 <a class="navbar-brand d-flex align-items-center" href="index.html">
-                    <img src="/img/japLogo.png" alt="Logo JAP" width="80" class="me-2">
-                    <span class="fw-bold text-dark">e-Mercado</span>
+                    <img src="img/japLogo.png" alt="Logo JAP" class="me-2 logo-nav">
+                    <span class="fw-bold text-white fs-4">e-Mercado</span>
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                
+                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                    <ul class="navbar-nav mb-2 mb-lg-0 align-items-lg-center">
-                        <li><a href="index.html" class="nav-item ms-lg-3 nav-orange">Inicio</a></li>
-                        <li><a href="categories.html" class="nav-item ms-lg-3 nav-orange">Ver Categorías</a></li>
-                        <li><a href="sell.html" class="nav-item ms-lg-3 nav-orange">Vender ahora</a></li>
-                        <li class="nav-item ms-lg-3" id="userNav">
-                            <a id="btnLogin" class="btn" href="login.html" style="background-color:#ff6b00; color:white;">Iniciar sesión</a>
+                
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link fw-semibold text-white" href="index.html">
+                                <i class="fas fa-home me-1"></i>Inicio
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link fw-semibold text-white" href="categories.html">
+                                <i class="fas fa-th-large me-1"></i>Categorías
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link fw-semibold text-white" href="sell.html">
+                                <i class="fas fa-plus-circle me-1"></i>Vender
+                            </a>
+                        </li>
+                        <li class="nav-item" id="userNav">
+                            <a id="btnLogin" class="btn btn-warning text-white fw-semibold px-3" href="login.html">
+                                <i class="fas fa-sign-in-alt me-1"></i>Iniciar sesión
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -41,84 +57,144 @@
         </nav>
     </header>
 
-    <main class="my-4">
-        <!-- Cabecera categoría -->
-        <div class="category-header">
-            <button id="back-to-category" class="btn">
-                <span class="d-none d-sm-inline"><i class="fas fa-angle-left"></i> Volver</span>
-                <span class="d-inline d-sm-none"><i class="fas fa-angle-left"></i></span>
-            </button>
-            <p id="product-category" class="mb-0"></p>
+    <main class="container-fluid py-4">
+        <!-- Breadcrumb y navegación -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <button id="back-to-category" class="btn btn-link p-0 text-decoration-none back-button">
+                                <i class="fas fa-arrow-left me-1"></i>Volver
+                            </button>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">
+                            <span id="product-category"></span>
+                        </li>
+                    </ol>
+                </nav>
+            </div>
         </div>
 
-        <h1 id="product-name" class="mb-3 ms-5 fw-bold"></h1>
-
-        <!-- Sección principal: carrusel + relacionados -->
-        <div class="d-flex justify-content-between align-items-start mb-8 ms-5 me-5">
-            <!-- Carrusel -->
-            <div class="flex-grow-1 me-4">
-                <div id="product-images" class="carousel slide mb-4" data-bs-ride="carousel">
-                    <div class="carousel-inner" id="carousel-inner"></div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#product-images" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Anterior</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#product-images" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Siguiente</span>
-                    </button>
+        <!-- Título del producto -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card shadow-sm">
+                    <div class="card-body text-center">
+                        <h1 id="product-name" class="display-6 fw-bold text-dark mb-2"></h1>
+                        <p id="product-sold" class="text-muted mb-0"></p>
+                    </div>
                 </div>
+            </div>
+        </div>
 
-                <div class="row mt-3 justify-content-center" id="carousel-thumbs"></div>
-                <div class="text-end mt-2" style="width:100%;">
-                    <p id="product-sold" class="mb-0 ms-5"></p>
-                </div>
-
-                <div id="product-description" class="mb-5 mt-4"></div>
-
-                <!-- Comentarios -->
-                <div class="container mt-5">
-                    <h3 class="fw-bold mb-3">Comentarios</h3>
-                    <div id="comentarios-container"></div>
-                </div>
-
-                <!-- Calificaciones -->
-                <div id="rating" class="container bg-light mt-4">
-                    <div class="row">
-                        <div class="col-8 offset-2">
-                            <div class="p-3 bg-light border" id="rating-bx">
-                                <p class="fw-bold">Califica el producto</p>
-                                <form class="rating-form">
-                                    <div class="estrellas">
-                                        <input type="radio" id="estrella5" name="rating" value="5" />
-                                        <label for="estrella5" title="5 estrellas"><i class="fa-solid fa-star"></i></label>
-                                        <input type="radio" id="estrella4" name="rating" value="4" />
-                                        <label for="estrella4" title="4 estrellas"><i class="fa-solid fa-star"></i></label>
-                                        <input type="radio" id="estrella3" name="rating" value="3" />
-                                        <label for="estrella3" title="3 estrellas"><i class="fa-solid fa-star"></i></label>
-                                        <input type="radio" id="estrella2" name="rating" value="2" />
-                                        <label for="estrella2" title="2 estrellas"><i class="fa-solid fa-star"></i></label>
-                                        <input type="radio" id="estrella1" name="rating" value="1" />
-                                        <label for="estrella1" title="1 estrella"><i class="fa-solid fa-star"></i></label>
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <textarea id="comentario" name="comentario" class="form-control" rows="3" placeholder="Escribe tu opinión sobre el producto..."></textarea>
-                                    </div>
-
-                                    <button id="send-rating" type="submit" class="btn btn-primary">Enviar</button>
-                                </form>
+        <!-- Layout principal: Producto + Relacionados -->
+        <div class="row">
+            <!-- Columna principal del producto -->
+            <div class="col-lg-8 col-xl-9">
+                <!-- Carrusel de imágenes -->
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body p-0">
+                        <div id="product-images" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner" id="carousel-inner">
+                                <!-- Imágenes se cargan dinámicamente -->
+                            </div>
+                            
+                            <!-- Controles del carrusel -->
+                            <button class="carousel-control-prev" type="button" data-bs-target="#product-images" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Anterior</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#product-images" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Siguiente</span>
+                            </button>
+                        </div>
+                        
+                        <!-- Miniaturas del carrusel -->
+                        <div class="p-3">
+                            <div class="row g-2" id="carousel-thumbs">
+                                <!-- Miniaturas se cargan dinámicamente -->
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <!-- Descripción del producto -->
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <div id="product-description">
+                            <!-- Descripción se carga dinámicamente -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Comentarios -->
+                <div class="card shadow-sm mb-4">
+                    <div class="card-header bg-light">
+                        <h3 class="card-title mb-0 fw-bold">
+                            <i class="fas fa-comments me-2"></i>Comentarios
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <div id="comentarios-container" class="list-group list-group-flush">
+                            <!-- Comentarios se cargan dinámicamente -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Formulario de calificación -->
+                <div class="card shadow-sm">
+                    <div class="card-header bg-light">
+                        <h3 class="card-title mb-0 fw-bold">
+                            <i class="fas fa-star me-2"></i>Califica este producto
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <form class="rating-form">
+                            <div class="mb-3">
+                                <label class="form-label fw-semibold">Tu calificación:</label>
+                                <div class="rating-stars">
+                                    <input type="radio" id="estrella5" name="rating" value="5" />
+                                    <label for="estrella5" title="5 estrellas"><i class="fa-solid fa-star"></i></label>
+                                    <input type="radio" id="estrella4" name="rating" value="4" />
+                                    <label for="estrella4" title="4 estrellas"><i class="fa-solid fa-star"></i></label>
+                                    <input type="radio" id="estrella3" name="rating" value="3" />
+                                    <label for="estrella3" title="3 estrellas"><i class="fa-solid fa-star"></i></label>
+                                    <input type="radio" id="estrella2" name="rating" value="2" />
+                                    <label for="estrella2" title="2 estrellas"><i class="fa-solid fa-star"></i></label>
+                                    <input type="radio" id="estrella1" name="rating" value="1" />
+                                    <label for="estrella1" title="1 estrella"><i class="fa-solid fa-star"></i></label>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="comentario" class="form-label fw-semibold">Tu comentario:</label>
+                                <textarea id="comentario" name="comentario" class="form-control" rows="4" 
+                                    placeholder="Comparte tu experiencia con este producto..."></textarea>
+                            </div>
+
+                            <button id="send-rating" type="submit" class="btn btn-warning text-white fw-semibold">
+                                <i class="fas fa-paper-plane me-2"></i>Enviar calificación
+                            </button>
+                        </form>
+                    </div>
+                </div>
             </div>
 
-            <!-- Productos relacionados -->
-            <div style="width: 250px;">
-                <h5 class="fw-bold mb-3 text-center">Productos relacionados</h5>
-                <div id="related-products" class="d-flex flex-column align-items-center">
-                    <!-- Tarjetas insertadas desde JS -->
+            <!-- Columna de productos relacionados -->
+            <div class="col-lg-4 col-xl-3">
+                <div class="card shadow-sm sticky-top related-products-card">
+                    <div class="card-header related-products-header">
+                        <h5 class="card-title mb-0 fw-bold">
+                            <i class="fas fa-th-large me-2"></i>Productos relacionados
+                        </h5>
+                    </div>
+                    <div class="card-body p-0">
+                        <div id="related-products" class="list-group list-group-flush">
+                            <!-- Productos relacionados se cargan dinámicamente -->
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
