@@ -271,7 +271,7 @@ function agregarComentario(e) {
         user: usuario,
         description: texto,
         score: score,
-        dateTime: new Date().toLocaleString(),
+        dateTime: new Date().toISOString().slice(0, 19).replace('T', ' '),
     };
 
     comentariosUsuario.push(nuevoComentario);
