@@ -51,7 +51,7 @@ function mostrarProductos(productos) {
                     <h5 class="card-title fw-bold">${producto.name}</h5>
                     <p class="card-text">${producto.description}</p>
                 </div>
-                <div class="card-footer d-flex justify-content-between align-items-center bg-dark text-white">
+                <div class="card-footer d-flex justify-content-between align-items-center product-card-footer">
                     <span class="fw-bold fs-4">${producto.cost}<small> ${producto.currency}</small></span>
                     <small style="opacity: 0.54;">Cant. Vendidos: ${producto.soldCount}</small>
                 </div>
