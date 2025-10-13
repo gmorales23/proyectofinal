@@ -1,18 +1,77 @@
 /* ============================== VARIABLES CSS ============================== */
 :root {
+    /* Colores primarios */
     --primary-color: #ff6b00;
-    --primary-hover: #ff6b00;
-    --secondary-color: #f0f0f0;
-    --header-bg: #ffffff;
-    --hero-bg: #e0e0e0;
-    --hover-bg: #f5f5f5;
-    --text-dark: #212529;
+    --primary-hover: #e55a00;
+    
+    /* Colores de fondo */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8f9fa;
+    --bg-tertiary: #f0f0f0;
+    --bg-hero: #e0e0e0;
+    --bg-hero-light: #222222;
+    --bg-hover: #f5f5f5;
+    --bg-card: #ffffff;
+    --bg-header: #ffffff;
+    --bg-footer: #f8f9fa;
+    
+    /* Colores de texto */
+    --text-primary: #212529;
+    --text-secondary: #6c757d;
     --text-muted: #6c757d;
-    --border-color: #dee2e6;
+    --text-light: #ffffff;
+    --text-inverse: #ffffff;
+    
+    /* Colores de bordes */
+    --border-primary: #dee2e6;
+    
+    /* Sombras */
     --shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
     --shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    
+    /* Colores especiales */
+    --star-color: #dee2e6;
+    --star-active: #ff6b00;
+    --carousel-bg: #f8f9fa;
+    --spinner-bg: rgba(0, 0, 0, 0.5);
+    
+    /* Variables de diseño */
     --border-radius: 0.375rem;
     --transition: all 0.3s ease;
+}
+
+/* ============================== MODO OSCURO ============================== */
+[data-theme="dark"] {
+    /* Colores de fondo - Tonos grises neutros */
+    --bg-primary: #0a0a0a;
+    --bg-secondary: #1a1a1a;
+    --bg-tertiary: #2a2a2a;
+    --bg-hero: #1a1a1a;
+    --bg-hero-light: #222222;
+    --bg-hover: #333333;
+    --bg-card: #2a2a2a;
+    --bg-header: #0a0a0a;
+    --bg-footer: #1a1a1a;
+    
+    /* Colores de texto - Tonos grises neutros */
+    --text-primary: #f5f5f5;
+    --text-secondary: #d0d0d0;
+    --text-muted: #999999;
+    --text-light: #ffffff;
+    --text-inverse: #212529;
+    
+    /* Colores de bordes - Tonos grises neutros */
+    --border-primary: #404040;
+    
+    /* Sombras (más suaves para modo oscuro) */
+    --shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.3);
+    --shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.4);
+    
+    /* Colores especiales para modo oscuro */
+    --star-color: #555555;
+    --star-active: #ff8c42;
+    --carousel-bg: #2d2d2d;
+    --spinner-bg: rgba(255, 255, 255, 0.1);
 }
 
 /* ============================== RESET Y BASE ============================== */
@@ -22,29 +81,59 @@
 
 body {
     font-family: "Raleway", "Verdana", sans-serif;
-    background-color: var(--secondary-color);
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
     line-height: 1.6;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* ============================== NAVEGACIÓN ============================== */
 .navbar {
     box-shadow: var(--shadow-sm);
-    background-color: var(--header-bg) !important;
+    background-color: var(--bg-header) !important;
+    border-bottom: 1px solid var(--border-primary);
+    transition: var(--transition);
+}
+
+/* Header en modo oscuro - solo sombra, sin borde */
+[data-theme="dark"] .navbar {
+    border-bottom: none !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Mejorar la sombra del header general */
+header.shadow-sm {
+    box-shadow: var(--shadow-sm);
+}
+
+[data-theme="dark"] header.shadow-sm {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .navbar-brand {
     font-weight: 700;
-    color: var(--text-dark) !important;
+    color: var(--text-primary) !important;
+    transition: var(--transition);
+}
+
+/* Texto 'e-Mercado' blanco en modo oscuro */
+[data-theme="dark"] .navbar-brand {
+    color: white !important;
 }
 
 .navbar-brand .fw-bold {
     color: var(--primary-color) !important;
 }
 
+/* Asegurar que todo el texto del navbar-brand sea blanco en modo oscuro */
+[data-theme="dark"] .navbar-brand .fw-bold {
+    color: white !important;
+}
+
 .navbar-nav .nav-link {
     font-size: 1.2rem;
     font-weight: 500;
-    color: var(--text-dark) !important;
+    color: var(--text-primary) !important;
     transition: var(--transition);
 }
 
@@ -53,7 +142,8 @@ body {
 }
 
 .navbar-nav .nav-link i {
-    color: var(--text-dark);
+    color: var(--text-primary);
+    transition: var(--transition);
 }
 
 .navbar-nav .nav-link:hover i {
@@ -63,7 +153,8 @@ body {
 .navbar-toggler {
     border: none;
     padding: 0.25rem 0.5rem;
-    color: var(--text-dark);
+    color: var(--text-primary);
+    transition: var(--transition);
 }
 
 .navbar-toggler:focus {
@@ -71,11 +162,12 @@ body {
 }
 
 .navbar-toggler .fas.fa-bars {
-    color: var(--text-dark);
+    color: var(--text-primary);
     font-size: 2rem;
+    transition: var(--transition);
 }
 
-/* ============================== MENÚ COLAPSABLE ============================== */
+/* ============================== LOGO ============================== */
 .navbar-collapse {
     padding-left: 30px;
 }
@@ -84,6 +176,11 @@ body {
     width: 90px;
     height: 90px;
     margin-left: 30px;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.logo-nav:hover {
+    transform: scale(1.05);
 }
 
 /* ============================== BOTONES ============================== */
@@ -134,9 +231,17 @@ body {
 
 /* ============================== CARDS ============================== */
 .card {
-    border: none;
+    border: 1px solid var(--border-primary);
     box-shadow: var(--shadow-sm);
+    background-color: var(--bg-card);
     transition: var(--transition);
+}
+
+/* Mejorar contraste de tarjetas en modo oscuro */
+[data-theme="dark"] .card {
+    border: 1px solid var(--border-primary);
+    background-color: var(--bg-card);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .card:hover {
@@ -145,9 +250,69 @@ body {
 }
 
 .card-header {
-    background-color: var(--secondary-color);
-    border-bottom: 1px solid var(--border-color);
+    background-color: var(--bg-tertiary);
+    border-bottom: 1px solid var(--border-primary);
     font-weight: 600;
+    color: var(--text-primary);
+    transition: var(--transition);
+}
+
+/* ============================== TIPOGRAFÍA ============================== */
+/* Asegurar que todos los títulos usen las variables CSS */
+h1, h2, h3, h4, h5, h6,
+.card-title, .hero-title, .hero-welcome {
+    color: var(--text-primary) !important;
+    transition: var(--transition);
+}
+
+/* Asegurar que el texto de las tarjetas use las variables CSS */
+.card-text, p, .lead {
+    color: var(--text-secondary) !important;
+    transition: var(--transition);
+}
+
+/* Asegurar que elementos pequeños también usen las variables CSS */
+small, .text-muted {
+    color: var(--text-muted) !important;
+    transition: var(--transition);
+}
+
+/* ============================== FORMULARIOS ============================== */
+.form-control, .form-select, textarea {
+    background-color: var(--bg-secondary) !important;
+    border-color: var(--border-primary) !important;
+    color: var(--text-primary) !important;
+    transition: var(--transition);
+}
+
+.form-control:focus, .form-select:focus, textarea:focus {
+    background-color: var(--bg-secondary) !important;
+    border-color: var(--primary-color) !important;
+    color: var(--text-primary) !important;
+    box-shadow: 0 0 0 0.25rem rgba(255, 107, 0, 0.25) !important;
+}
+
+.form-control::placeholder, textarea::placeholder {
+    color: var(--text-muted) !important;
+}
+
+.form-label {
+    font-weight: 600;
+    color: var(--text-primary);
+    transition: var(--transition);
+}
+
+/* ============================== FOOTER DE TARJETAS DE PRODUCTOS ============================== */
+.product-card-footer {
+    background-color: var(--primary-color) !important;
+    color: white !important;
+    transition: var(--transition);
+}
+
+/* Footer de tarjetas en modo oscuro - mismo color que el header */
+[data-theme="dark"] .product-card-footer {
+    background-color: var(--bg-header) !important;
+    color: white !important;
 }
 
 /* ============================== CARRUSEL ============================== */
@@ -160,7 +325,8 @@ body {
     height: 500px;
     object-fit: contain;
     width: 100%;
-    background-color: #f8f9fa;
+    background-color: var(--carousel-bg);
+    transition: var(--transition);
 }
 
 .carousel-control-prev,
@@ -246,7 +412,7 @@ body {
 
 .rating-stars label {
     font-size: 1.5rem;
-    color: #dee2e6;
+    color: var(--star-color);
     cursor: pointer;
     transition: var(--transition);
 }
@@ -254,31 +420,49 @@ body {
 .rating-stars input:checked ~ label,
 .rating-stars label:hover,
 .rating-stars label:hover ~ label {
-    color: var(--primary-color);
+    color: var(--star-active);
 }
 
-/* ============================== COMENTARIOS ============================== */
+/* ============================== LISTAS ============================== */
 .list-group-item {
     border: none;
     padding: 1rem;
 }
 
 .list-group-item:not(:last-child) {
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-primary);
+    background-color: var(--bg-card);
+    color: var(--text-primary);
+    transition: var(--transition);
 }
 
-/* ============================== CATEGORÍAS ============================== */
+/* Mejorar contraste de elementos de lista en modo oscuro */
+[data-theme="dark"] .list-group-item {
+    background-color: var(--bg-card);
+    border-color: var(--border-primary);
+    color: var(--text-primary);
+}
+
 .list-group-item-action {
     cursor: pointer !important;
     transition: var(--transition);
-    border: 1px solid var(--border-color) !important;
+    border: 1px solid var(--border-primary) !important;
     margin-bottom: 0.5rem;
     border-radius: var(--border-radius) !important;
+    background-color: var(--bg-card);
+    color: var(--text-primary);
+}
+
+/* Mejorar contraste de elementos de acción en modo oscuro */
+[data-theme="dark"] .list-group-item-action {
+    background-color: var(--bg-card);
+    border-color: var(--border-primary);
+    color: var(--text-primary);
 }
 
 .list-group-item-action:hover {
-    background-color: var(--hover-bg) !important;
-    color: var(--text-dark) !important;
+    background-color: var(--bg-hover) !important;
+    color: var(--text-primary) !important;
     transform: translateY(-2px);
     box-shadow: var(--shadow);
 }
@@ -286,11 +470,11 @@ body {
 .list-group-item-action:hover h4,
 .list-group-item-action:hover small,
 .list-group-item-action:hover p {
-    color: var(--text-dark) !important;
+    color: var(--text-primary) !important;
 }
 
 .list-group-item-action:hover .img-thumbnail {
-    border-color: var(--text-dark) !important;
+    border-color: var(--text-primary) !important;
 }
 
 /* ============================== PRODUCTOS RELACIONADOS ============================== */
@@ -309,25 +493,14 @@ body {
 }
 
 #related-products .list-group-item:hover {
-    background-color: var(--hover-bg);
-    color: var(--text-dark);
+    background-color: var(--bg-hover);
+    color: var(--text-primary);
     transform: translateX(5px);
 }
 
 #related-products .list-group-item:hover h6,
 #related-products .list-group-item:hover small {
-    color: var(--text-dark);
-}
-
-/* ============================== FORMULARIOS ============================== */
-.form-control:focus {
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 0.25rem rgba(255, 107, 0, 0.25);
-}
-
-.form-label {
-    font-weight: 600;
-    color: var(--text-dark);
+    color: var(--text-primary);
 }
 
 /* ============================== SPINNER ============================== */
@@ -362,7 +535,7 @@ body {
 
 #spinner-wrapper {
     position: fixed;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: var(--spinner-bg);
     width: 100%;
     height: 100%;
     top: 0;
@@ -371,11 +544,18 @@ body {
     display: none;
     justify-content: center;
     align-items: center;
+    transition: var(--transition);
 }
 
 /* ============================== HERO SECTION ============================== */
 .hero-section {
-    background: linear-gradient(to bottom, var(--hero-bg) 0%, var(--hero-bg) 60%, #f8f9fa 100%);
+    background: linear-gradient(to bottom, var(--bg-hero) 0%, var(--bg-hero) 60%, var(--bg-secondary) 100%);
+    transition: var(--transition);
+}
+
+/* Gradiente específico para modo oscuro */
+[data-theme="dark"] .hero-section {
+    background: linear-gradient(to bottom, var(--bg-hero-light) 0%, var(--bg-hero-light) 60%, var(--bg-secondary) 100%);
 }
 
 .hero-title {
@@ -383,7 +563,8 @@ body {
 }
 
 .hero-welcome {
-    color: var(--text-dark);
+    color: var(--text-primary);
+    transition: var(--transition);
 }
 
 .hero-brand {
@@ -391,13 +572,14 @@ body {
 }
 
 .hero-section .lead {
-    color: var(--text-dark) !important;
+    color: var(--text-primary) !important;
+    transition: var(--transition);
 }
 
 /* ============================== BOTONES HERO SECTION ============================== */
 .hero-section .btn-outline-light {
-    color: var(--text-dark) !important;
-    border-color: var(--text-dark) !important;
+    color: var(--text-primary) !important;
+    border-color: var(--text-primary) !important;
     background-color: transparent !important;
     transition: var(--transition);
 }
@@ -468,8 +650,8 @@ body {
 }
 
 .btn-group-toggle .btn:hover {
-    background-color: #212529 !important;
-    color: white !important;
+    background-color: var(--text-primary) !important;
+    color: var(--text-inverse) !important;
     box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.15) !important;
 }
 
@@ -478,13 +660,61 @@ body {
 .btn-group-toggle .btn.active {
     box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.1) !important;
     outline: none !important;
-    background-color: #212529 !important;
-    color: white !important;
+    background-color: var(--text-primary) !important;
+    color: var(--text-inverse) !important;
+}
+
+/* ============================== BOTÓN TOGGLE MODO OSCURO ============================== */
+.theme-toggle {
+    background: none;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 0.5rem;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+}
+
+.theme-toggle:hover {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+}
+
+.theme-toggle:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.25rem rgba(255, 107, 0, 0.25);
+}
+
+.theme-toggle i {
+    font-size: 1.1rem;
+    transition: var(--transition);
+}
+
+.theme-toggle:hover i {
+    transform: rotate(180deg);
+}
+
+.theme-toggle-container {
+    display: flex;
+    align-items: center;
 }
 
 /* ============================== UTILIDADES ============================== */
 .cursor-active {
     cursor: pointer;
+}
+
+/* Clase personalizada para reemplazar bg-light */
+.bg-custom {
+    background-color: var(--bg-secondary) !important;
 }
 
 .text-primary-custom { color: var(--primary-color) !important; }
@@ -495,6 +725,62 @@ body {
 .shadow-sm-custom { box-shadow: var(--shadow-sm) !important; }
 
 .transition-custom { transition: var(--transition) !important; }
+
+/* ============================== FOOTER ============================== */
+footer {
+    background-color: var(--bg-footer);
+    border-top: 1px solid var(--border-primary);
+    padding: 2rem 0;
+    margin-top: 3rem;
+    color: var(--text-primary);
+    transition: var(--transition);
+}
+
+footer a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+footer a:hover {
+    color: var(--primary-hover);
+    text-decoration: underline;
+}
+
+/* ============================== LEGACY SUPPORT ============================== */
+.checked { color: var(--primary-color); }
+.nav-orange { color: var(--primary-color) !important; }
+.nav-orange:hover { color: var(--primary-hover) !important; }
+
+.jumbotron {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
+    color: white;
+    padding: 3rem 0;
+    margin-bottom: 2rem;
+}
+
+.jumbotron .container {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+}
+
+/* ============================== ANIMACIONES ============================== */
+@keyframes fadeIn {
+    from { 
+        opacity: 0; 
+        transform: translateY(20px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+}
 
 /* ============================== RESPONSIVE ============================== */
 @media (max-width: 992px) {
@@ -554,60 +840,4 @@ body {
     .display-6 {
         font-size: 1.5rem;
     }
-}
-
-/* ============================== ANIMACIONES ============================== */
-@keyframes fadeIn {
-    from { 
-        opacity: 0; 
-        transform: translateY(20px); 
-    }
-    to { 
-        opacity: 1; 
-        transform: translateY(0); 
-    }
-}
-
-.fade-in {
-    animation: fadeIn 0.5s ease-in-out;
-}
-
-/* ============================== FOOTER ============================== */
-footer {
-    background-color: var(--secondary-color);
-    border-top: 1px solid var(--border-color);
-    padding: 2rem 0;
-    margin-top: 3rem;
-}
-
-footer a {
-    color: var(--primary-color);
-    text-decoration: none;
-    transition: var(--transition);
-}
-
-footer a:hover {
-    color: var(--primary-hover);
-    text-decoration: underline;
-}
-
-/* ============================== LEGACY SUPPORT ============================== */
-/* Mantener compatibilidad con clases existentes */
-.checked { color: var(--primary-color); }
-.nav-orange { color: var(--primary-color) !important; }
-.nav-orange:hover { color: var(--primary-hover) !important; }
-
-/* Estilos para elementos que podrían no estar actualizados */
-.jumbotron {
-    background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
-    color: white;
-    padding: 3rem 0;
-    margin-bottom: 2rem;
-}
-
-.jumbotron .container {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: var(--border-radius);
-    padding: 2rem;
-    backdrop-filter: blur(10px);
 }

@@ -221,7 +221,7 @@ function mostrarRelacionados(relacionados) {
                 <img src="${prod.image}" alt="${prod.name}" 
                      class="rounded me-3" style="width: 60px; height: 60px; object-fit: cover;">
                 <div class="flex-grow-1">
-                    <h6 class="mb-1 fw-bold text-dark">${prod.name}</h6>
+                    <h6 class="mb-1 fw-bold">${prod.name}</h6>
                     <small class="text-muted">Ver detalles</small>
                 </div>
                 <i class="fas fa-chevron-right text-muted"></i>

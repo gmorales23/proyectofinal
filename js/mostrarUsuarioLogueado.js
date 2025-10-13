@@ -8,7 +8,7 @@ function mostrarUsuarioLogueado(containerSelector, mostrarGoHome = false) {
     // Estructura base
     let html = `
         <div class="d-flex align-items-center h-100">
-            <span class="me-3 ${mostrarGoHome ? "text-dark" : "nav-link"}">Hola, ${usuarioLogueado}</span>
+            <span class="me-3 ${mostrarGoHome ? "" : "nav-link"}">Hola, ${usuarioLogueado}</span>
     `;
 
     // Botón Ir a inicio (si corresponde)
