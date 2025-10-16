@@ -1,77 +1,145 @@
 <!DOCTYPE html>
 <html lang="es">
-
-<head>
+  <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
     <title>eMercado - Todo lo que busques está aquí</title>
-    <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i"
+      rel="stylesheet"
+    />
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/styles.css" rel="stylesheet" />
     <style>
-        .bd-placeholder-img {
-            font-size: 1.125rem;
-            text-anchor: middle;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-        }
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
 
-        @media (min-width: 768px) {
-            .bd-placeholder-img-lg {
-                font-size: 3.5rem;
-            }
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
         }
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
+    <!-- navegación -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
-        <div class="container">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav w-100 justify-content-between">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="categories.html">Categorías</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="sell.html">Vender</a>
-                    </li>
-                    <li class="nav-item"></li>
-                </ul>
-            </div>
+      <div class="container">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav w-100 justify-content-between">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="categories.html">Categorías</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="sell.html">Vender</a>
+            </li>
+            <li class="nav-item"></li>
+          </ul>
         </div>
+      </div>
     </nav>
-    <main>
-        <div class="container">
-            <div class="alert alert-danger text-center" role="alert">
-                <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
-            </div>
-        </div>
-    </main>
+
+    <!-- title -->
+
+    <div
+      class="container d-flex align-items-start justify-content-between mt-5 mb-4"
+    >
+      <h1 class="fw-bold">Mi Cuenta</h1>
+      <div
+        class="rounded-circle overflow-hidden border"
+        style="width: 150px; height: 150px"
+      >
+        <img
+          id="preview"
+          src="img/default-profile.png"
+          alt="Perfil"
+          class="w-100 h-100 object-fit-cover"
+        />
+      </div>
+    </div>
+
+    <!-- perfil usuario -->
+
+    <form id="profileForm">
+      <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre</label>
+        <input type="text" id="nombre" class="form-control" />
+      </div>
+      <div class="mb-3">
+        <label for="apellido" class="form-label">Apellido</label>
+        <input type="text" id="apellido" class="form-control" />
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" id="email" class="form-control" disabled />
+      </div>
+      <div class="mb-3">
+        <label for="telefono" class="form-label">Teléfono</label>
+        <input type="tel" id="telefono" class="form-control" />
+      </div>
+      <div class="mb-3">
+        <label for="imagenPerfil" class="form-label">Imagen de perfil</label>
+        <input
+          type="file"
+          id="imagenPerfil"
+          accept="image/*"
+          class="form-control"
+        />
+        <img
+          id="preview"
+          src=""
+          alt="Vista previa"
+          style="max-width: 150px; margin-top: 10px; display: none"
+        />
+      </div>
+      <button type="submit" class="btn btn-dark">Guardar</button>
+    </form>
+
+    <!--footer-->
+
     <footer class="text-muted">
-        <div class="container">
-            <p class="float-end">
-                <a href="#">Volver arriba</a>
-            </p>
-            <p>
-                Este sitio forma parte de
-                <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a>
-            </p>
-        </div>
+      <div class="container">
+        <p class="float-end">
+          <a href="#">Volver arriba</a>
+        </p>
+        <p>
+          Este sitio forma parte de
+          <a href="https://jovenesaprogramar.edu.uy/" target="_blank"
+            >Jovenes a Programar</a
+          >
+        </p>
+      </div>
     </footer>
+    <!--script-->
+
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/init.js"></script>
     <script src="js/my-profile.js"></script>
     <script src="js/mostrarUsuarioLogueado.js"></script>
     <script src="js/proteccion.js"></script>
-</body>
-
+  </body>
 </html>
