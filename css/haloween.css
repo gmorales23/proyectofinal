@@ -1,0 +1,263 @@
+/* ================= MODO HALLOWEEN ================= */
+
+body.halloween {
+    background: linear-gradient(to bottom, #0d0d0d 35%, #ff6b00 100%) !important;
+    color: #fff !important;
+}
+
+body.halloween .hero-welcome { color: #fff !important; }
+body.halloween .hero-brand { color: #ff6b00 !important; }
+
+body.halloween header,
+body.halloween nav.navbar,
+body.halloween main,
+body.halloween footer,
+body.halloween .hero-section,
+body.halloween .album {
+    background: transparent !important;
+    color: #fff !important;
+}
+
+body.halloween .custom-card.halloween-card {
+    background-color: #1a1a1a;
+    color: #fff;
+    border: 2px solid #ff6b00;
+}
+
+body.halloween .halloween-header,
+body.halloween .halloween-footer {
+    background: transparent !important;
+}
+
+/* Botones Halloween */
+body.halloween .btn,
+body.halloween .btn-warning {
+    background-color: #000 !important;
+    color: #fff !important;
+    border: 2px solid #ff6b00 !important;
+}
+body.halloween .btn:hover,
+body.halloween .btn-warning:hover {
+    background-color: #222 !important;
+    color: #fff !important;
+    border-color: #ff6b00 !important;
+}
+
+
+/* Animación de calabazas */
+body.halloween .calabaza {
+    position:fixed;
+    left: 0;
+    bottom: -100px;
+    pointer-events: none;
+    animation-name: subir;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    z-index: 1000;
+    
+    /* Glow naranja */
+    filter: drop-shadow(0 0 8px #ff6b00) drop-shadow(0 0 16px #ff6b00);
+    transition: filter 0.3s ease;
+}
+
+@keyframes subir {
+    0% { transform: translateY(0); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(-120vh); opacity: 0; }
+}
+
+body.halloween .hero-section .lead { color: #fff !important; }
+
+body.halloween h1,
+body.halloween h2,
+body.halloween h3,
+body.halloween h4,
+body.halloween h5,
+body.halloween p,
+body.halloween nav,
+body.halloween small,
+body.halloween .card-text,
+body.halloween .lead,
+body.halloween .list-group-item {
+    color: #fff !important;
+}
+
+/* Navbar en Halloween */
+body.halloween .navbar {
+    background-color: transparent !important;
+    color: #fff !important;
+}
+body.halloween .navbar .nav-link {
+    color: #fff !important;
+}
+body.halloween .navbar .nav-link:hover {
+    color: #ff6b00 !important;
+}
+body.halloween .navbar-brand img {
+    width: 90px;
+    height: 90px;
+}
+body.halloween .navbar-toggler .fas.fa-bars {
+    color: #ff6b00 !important;
+}
+
+/* Botón Halloween parpadeante */
+body.halloween #halloween-toggle {
+    animation: parpadeo 1.2s infinite alternate;
+    border: 2px solid #ff6b00;
+    background-color: #000;
+    color: #fff;
+}
+/* Botones Halloween parpadeantes */
+body.halloween .btn-halloween {
+    animation: parpadeo 1.2s infinite alternate;
+    background-color: #000 !important;
+    color: #ff6b00 !important;
+    border: 2px solid #ff6b00 !important;
+    font-weight: bold;
+    text-transform: uppercase;
+    box-shadow: 0 0 8px #ff6b00, 0 0 16px #ff6b00 inset;
+    transition: all 0.3s ease;
+}
+
+body.halloween .btn-halloween:hover {
+    background-color: #222 !important;
+    color: #fff !important;
+    border-color: #ff6b00 !important;
+    box-shadow: 0 0 12px #ff6b00, 0 0 20px #ff6b00 inset;
+}
+
+@keyframes parpadeo {
+    0% { opacity: 1; }
+    50% { opacity: 0.4; }
+    100% { opacity: 1; }
+}
+
+/* Quitar bordes en header/footer */
+header, footer {
+    border: none !important;
+    box-shadow: none !important;
+    background: var(--header-bg, transparent);
+}
+
+/* Quitar bordes residuales */
+.navbar, footer .container {
+    border: none !important;
+}
+
+/* Footer oscuro */
+footer.text-muted.halloween {
+    background-color: rgba(0, 0, 0, 0.8) !important;
+    color: white !important;
+}
+
+/* Link de Jóvenes a Programar en negro */
+.halloween-footer a[href*="jovenesaprogramar"] {
+    color: black !important;
+    font-weight: bold;
+}
+
+.halloween-footer [href*="#"]{
+        color: black !important;
+    font-weight: bold;
+}
+
+/* Tarjetas de producto */
+body.halloween #catalogo .card{
+    background-color: #1a1a1a;
+    color: #fff;
+    border: 2px solid #ff6b00;
+    border-radius: 10px;
+}
+/* Estilo Halloween para las tarjetas de categorías */
+body.halloween .list-group-item {
+    background-color: #1a1a1a !important;
+    color: #fff !important;
+    border: 2px solid #ff6b00 !important;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s;
+}
+
+/* Hover con efecto espeluznante */
+body.halloween .list-group-item:hover {
+    background-color: #ff6b00 !important;
+    color: #ff6b00 !important;
+    transform: scale(1.03);
+    box-shadow: 0 0 10px #ff6b00;
+}
+
+/* Si hay imagen dentro de las categorías */
+body.halloween .list-group-item img {
+    border-radius: 10px;
+    border: 2px solid #ff6b00;
+}
+/* === LIMPIAR FONDOS DE TODAS LAS TARJETAS (default) === */
+body.halloween .card {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* === ESTILO ESPECIAL PARA EL CARRUSEL === */
+body.halloween .card:has(#product-images) {
+    background-color: #1a1a1a !important;
+    border: 3px solid #ff6b00 !important;
+    border-radius: 15px;
+    box-shadow: 0 0 15px #ff6b00;
+}
+
+/* Miniaturas del carrusel */
+body.halloween #carousel-thumbs img {
+    border: 2px solid #ff6b00;
+    border-radius: 8px;
+    transition: transform 0.2s;
+}
+body.halloween #carousel-thumbs img:hover {
+    transform: scale(1.05);
+}
+
+/* === ESTILO TARJETA HALLOWEEN PARA DESCRIPCIÓN, COMENTARIOS Y FORMULARIO === */
+body.halloween .card:has(.card-body):not(:has(#product-images)) {
+    background-color: #121212 !important;
+    border: 2px solid #ff6b00 !important;
+    border-radius: 12px;
+    padding: 10px;
+}
+
+/* ===== ESTILO PARA COMENTARIOS INDIVIDUALES ===== */
+body.halloween .list-group-item {
+    background-color: #1a1a1a !important;
+    color: #fff !important;
+    border: 1px solid #ff6b00 !important;
+}
+
+/* ===== ESTRELLAS Y BOTONES ===== */
+body.halloween .rating-stars i {
+    color: #ff6b00 !important;
+}
+
+body.halloween button.btn-warning {
+    background-color: #ff6b00 !important;
+    border: none !important;
+    color: #000 !important;
+}
+body.halloween .card.shadow-sm {
+    background-color: #121212 !important;
+    border: 2px solid #ff6b00 !important;
+    border-radius: 12px;
+}
+
+/* Estilo para los headers (Comentarios / Calificación) */
+body.halloween .card-header {
+    background-color: #1a1a1a !important;
+    border-bottom: 2px solid #ff6b00 !important;
+    color: #ff6b00 !important;
+}
+
+/* Si tenés la clase bg-custom, que no interfiera */
+body.halloween .card-header.bg-custom {
+    background-color: #1a1a1a !important;
+    color: #ff6b00 !important;
+}

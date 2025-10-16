@@ -10,6 +10,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/styles.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet" />
+    <link href="css/haloween.css" rel="stylesheet" />
     
     <!-- Aplicar tema inmediatamente para evitar flash blanco -->
     <script>
@@ -38,7 +39,16 @@
                 <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fas fa-bars"></i>
                 </button>
-                
+
+<div>
+    <!-- 🔥 NUEVO BOTÓN HALLOWEEN -->
+    <button id="halloween-toggle" class="ms-2 btn btn-sm btn-outline-warning fw-bold" onclick="toggleHalloween(event)">
+        👻 Enjalowinarse
+    </button>
+</div>
+<!-- Audio oculto -->
+<audio id="ghost-sound" src="sound/ghost.mp3" preload="auto"></audio>
+
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item">
@@ -74,8 +84,8 @@
             </h1>
             <p class="lead text-white mb-4">Encuentra los mejores productos, ofertas y categorías pensadas para vos.</p>
             <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                <a href="categories.html" class="btn btn-outline-light btn-lg px-4">Ver categorías</a>
-                <a href="sell.html" class="btn btn-outline-light btn-lg px-4">Vender ahora</a>
+                <a href="categories.html" class="btn btn-outline-light btn-lg px-4 btn btn-halloween">Ver categorías</a>
+                <a href="sell.html" class="btn btn-outline-light btn-lg px-4 btn btn-halloween">Vender ahora</a>
             </div>
         </div>
     </header>
@@ -152,7 +162,7 @@
     <script src="js/mostrarUsuarioLogueado.js"></script>
     <script src="js/proteccion.js"></script>
     <script src="js/theme-toggle.js"></script>
+    <script src="js/halloween.js"></script>
 
 </body>
-
 </html>
