@@ -9,32 +9,64 @@
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/dropzone.css" rel="stylesheet" />
     <link href="css/styles.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet" />
+    <link href="css/haloween.css" rel="stylesheet" />
+    
+    <!-- Aplicar tema inmediatamente para evitar flash blanco -->
+    <script>
+        const tema = localStorage.getItem('tema') || 'light';
+        document.documentElement.setAttribute('data-theme', tema);
+    </script>
 </head>
 
 <body>
     <!-- Header -->
-    <header class="bg-light">
+    <header class="shadow-sm">
         <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#f8f9fa;">
-            <div class="container">
-                <a class="navbar-brand d-flex align-items-center" href="index.html">
-                    <img src="/img/japLogo.png " href="index.html" alt="Logo JAP" width="80" class="me-2">
-                    <span class="fw-bold text-dark">e-Mercado</span>
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                    <ul class="navbar-nav mb-2 mb-lg-0 align-items-lg-center">
-                        <li>
-                            <a href="index.html" class="nav-item ms-lg-3 nav-orange">Inicio</a>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container-fluid">
+                <div class="d-flex align-items-center">
+                    <a class="navbar-brand d-flex align-items-center" href="index.html">
+                        <img src="img/japLogo.png" alt="Logo JAP" class="me-2 logo-nav">
+                        <span class="fw-bold text-white fs-4">e-Mercado</span>
+                    </a>
+                    <button id="theme-toggle" class="theme-toggle ms-3" onclick="cambiarTema(event)">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+                
+                <div class="d-flex align-items-center">
+                    <button id="halloween-toggle" class="ms-2 btn btn-sm btn-outline-warning" onclick="toggleHalloween(event)">
+                        👻 Enjalowinarse
+                    </button>
+                    <button class="navbar-toggler border-0 ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link fw-semibold text-white" href="index.html">
+                                <i class="fas fa-home me-1"></i>Inicio
+                            </a>
                         </li>
-                        <li>
-                            <a href="categories.html" class="nav-item ms-lg-3 nav-orange">Ver Categorías</a>
+                        <li class="nav-item">
+                            <a class="nav-link fw-semibold text-white" href="categories.html">
+                                <i class="fas fa-th-large me-1"></i>Categorías
+                            </a>
                         </li>
-                        <li class="nav-item ms-lg-3" id="userNav">
-                            <a id="btnLogin" class="btn" href="login.html"
-                                style="background-color:#ff6b00; color:white;">Iniciar sesión</a>
+                        <li class="nav-item">
+                            <a class="nav-link fw-semibold text-white" href="sell.html">
+                                <i class="fas fa-plus-circle me-1"></i>Vender
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link fw-semibold text-white" href="my-profile.html">
+                                <i class="fas fa-user me-1"></i>Mi Perfil
+                            </a>
+                        </li>
+                        <li class="nav-item" id="userNav">
                         </li>
                     </ul>
                 </div>
@@ -283,6 +315,8 @@
         <script src="js/sell.js"></script>
         <script src="js/mostrarUsuarioLogueado.js"></script>
         <script src="js/proteccion.js"></script>
+        <script src="js/theme-toggle.js"></script>
+        <script src="js/halloween.js"></script>
 </body>
 
 </html>

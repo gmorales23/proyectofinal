@@ -1,145 +1,234 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <title>eMercado - Todo lo que busques está aquí</title>
-    <link
-      href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i"
-      rel="stylesheet"
-    />
-    <link href="css/bootstrap.min.css" rel="stylesheet" />
-    <link href="css/styles.css" rel="stylesheet" />
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
-  </head>
-
-  <body>
-    <!-- navegación -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
-      <div class="container">
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav w-100 justify-content-between">
-            <li class="nav-item">
-              <a class="nav-link" href="index.html">Inicio</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="categories.html">Categorías</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="sell.html">Vender</a>
-            </li>
-            <li class="nav-item"></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-
-    <!-- title -->
-
-    <div
-      class="container d-flex align-items-start justify-content-between mt-5 mb-4"
-    >
-      <h1 class="fw-bold">Mi Cuenta</h1>
-      <div
-        class="rounded-circle overflow-hidden border"
-        style="width: 150px; height: 150px"
-      >
-        <img
-          id="preview"
-          src="img/default-profile.png"
-          alt="Perfil"
-          class="w-100 h-100 object-fit-cover"
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
-      </div>
-    </div>
-
-    <!-- perfil usuario -->
-
-    <form id="profileForm">
-      <div class="mb-3">
-        <label for="nombre" class="form-label">Nombre</label>
-        <input type="text" id="nombre" class="form-control" />
-      </div>
-      <div class="mb-3">
-        <label for="apellido" class="form-label">Apellido</label>
-        <input type="text" id="apellido" class="form-control" />
-      </div>
-      <div class="mb-3">
-        <label for="email" class="form-label">Email</label>
-        <input type="email" id="email" class="form-control" disabled />
-      </div>
-      <div class="mb-3">
-        <label for="telefono" class="form-label">Teléfono</label>
-        <input type="tel" id="telefono" class="form-control" />
-      </div>
-      <div class="mb-3">
-        <label for="imagenPerfil" class="form-label">Imagen de perfil</label>
-        <input
-          type="file"
-          id="imagenPerfil"
-          accept="image/*"
-          class="form-control"
+        <title>eMercado - Todo lo que busques está aquí</title>
+        <link
+            href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i"
+            rel="stylesheet"
         />
-        <img
-          id="preview"
-          src=""
-          alt="Vista previa"
-          style="max-width: 150px; margin-top: 10px; display: none"
+        <link href="css/bootstrap.min.css" rel="stylesheet" />
+        <link href="css/styles.css" rel="stylesheet" />
+        <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+            rel="stylesheet"
         />
-      </div>
-      <button type="submit" class="btn btn-dark">Guardar</button>
-    </form>
+        <link href="css/haloween.css" rel="stylesheet" />
+        <style>
+            .bd-placeholder-img {
+                font-size: 1.125rem;
+                text-anchor: middle;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+            }
 
-    <!--footer-->
+            @media (min-width: 768px) {
+                .bd-placeholder-img-lg {
+                    font-size: 3.5rem;
+                }
+            }
+        </style>
 
-    <footer class="text-muted">
-      <div class="container">
-        <p class="float-end">
-          <a href="#">Volver arriba</a>
-        </p>
-        <p>
-          Este sitio forma parte de
-          <a href="https://jovenesaprogramar.edu.uy/" target="_blank"
-            >Jovenes a Programar</a
-          >
-        </p>
-      </div>
-    </footer>
-    <!--script-->
+        <!-- Aplicar tema inmediatamente para evitar flash blanco -->
+        <script>
+            const tema = localStorage.getItem("tema") || "light";
+            document.documentElement.setAttribute("data-theme", tema);
+        </script>
+    </head>
 
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/init.js"></script>
-    <script src="js/my-profile.js"></script>
-    <script src="js/mostrarUsuarioLogueado.js"></script>
-    <script src="js/proteccion.js"></script>
-  </body>
+    <body>
+        <header class="shadow-sm">
+            <nav class="navbar navbar-expand-lg navbar-dark">
+                <div class="container-fluid">
+                    <div class="d-flex align-items-center">
+                        <a
+                            class="navbar-brand d-flex align-items-center"
+                            href="index.html"
+                        >
+                            <img
+                                src="img/japLogo.png"
+                                alt="Logo JAP"
+                                class="me-2 logo-nav"
+                            />
+                            <span class="fw-bold text-white fs-4"
+                                >e-Mercado</span
+                            >
+                        </a>
+                        <button
+                            id="theme-toggle"
+                            class="theme-toggle ms-3"
+                            onclick="cambiarTema(event)"
+                        >
+                            <i class="fas fa-moon"></i>
+                        </button>
+                    </div>
+
+                    <div class="d-flex align-items-center">
+                        <button
+                            id="halloween-toggle"
+                            class="ms-2 btn btn-sm btn-outline-warning fw-bold"
+                            onclick="toggleHalloween(event)"
+                        >
+                            👻 Enjalowinarse
+                        </button>
+                        <button
+                            class="navbar-toggler border-0 ms-2"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#navbarNav"
+                            aria-controls="navbarNav"
+                            aria-expanded="false"
+                            aria-label="Toggle navigation"
+                        >
+                            <i class="fas fa-bars"></i>
+                        </button>
+                    </div>
+
+                    <!-- Audio oculto -->
+                    <audio
+                        id="ghost-sound"
+                        src="sound/ghost.mp3"
+                        preload="auto"
+                    ></audio>
+
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a
+                                    class="nav-link fw-semibold text-white"
+                                    href="index.html"
+                                >
+                                    <i class="fas fa-home me-1"></i>Inicio
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a
+                                    class="nav-link fw-semibold text-white"
+                                    href="categories.html"
+                                >
+                                    <i class="fas fa-th-large me-1"></i
+                                    >Categorías
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a
+                                    class="nav-link fw-semibold text-white"
+                                    href="sell.html"
+                                >
+                                    <i class="fas fa-plus-circle me-1"></i
+                                    >Vender
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a
+                                    class="nav-link fw-semibold text-white active"
+                                    href="my-profile.html"
+                                >
+                                    <i class="fas fa-user me-1"></i>Mi Perfil
+                                </a>
+                            </li>
+                            <li class="nav-item" id="userNav">
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <main>
+            <div class="container">
+                <!-- Title -->
+                <div
+                    class="d-flex flex-column flex-md-row align-items-center align-items-md-start justify-content-between mt-5 mb-4"
+                >
+                    <h1 class="fw-bold mb-3 mb-md-0">Mi Cuenta</h1>
+                    <div
+                        class="rounded-circle overflow-hidden border d-flex align-items-center justify-content-center bg-light"
+                        style="width: 150px; height: 150px; flex-shrink: 0"
+                    >
+                        <img
+                            id="preview"
+                            src="img/default-profile.png"
+                            alt=" "
+                            class="w-100 h-100"
+                            style="object-fit: cover"
+                        />
+                    </div>
+                </div>
+
+                <!-- Perfil usuario -->
+                <form id="profileForm">
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <input type="text" id="nombre" class="form-control" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="apellido" class="form-label"
+                            >Apellido</label
+                        >
+                        <input type="text" id="apellido" class="form-control" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input
+                            type="email"
+                            id="email"
+                            class="form-control"
+                            disabled
+                        />
+                    </div>
+                    <div class="mb-3">
+                        <label for="telefono" class="form-label"
+                            >Teléfono</label
+                        >
+                        <input type="tel" id="telefono" class="form-control" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="imagenPerfil" class="form-label"
+                            >Imagen de perfil</label
+                        >
+                        <input
+                            type="file"
+                            id="imagenPerfil"
+                            accept="image/*"
+                            class="form-control"
+                        />
+                    </div>
+                    <button type="submit" class="btn btn-dark btn-halloween">
+                        Guardar
+                    </button>
+                </form>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="text-muted">
+            <div class="container">
+                <p class="float-end">
+                    <a href="#">Volver arriba</a>
+                </p>
+                <p>
+                    Este sitio forma parte de
+                    <a href="https://jovenesaprogramar.edu.uy/" target="_blank"
+                        >Jóvenes a Programar</a
+                    >
+                </p>
+            </div>
+        </footer>
+
+        <!-- Scripts -->
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script src="js/init.js"></script>
+        <script src="js/my-profile.js"></script>
+        <script src="js/mostrarUsuarioLogueado.js"></script>
+        <script src="js/proteccion.js"></script>
+        <script src="js/theme-toggle.js"></script>
+        <script src="js/halloween.js"></script>
+    </body>
 </html>

@@ -1,111 +1,516 @@
-/* ==============================TIPOGRAFÍA GENERAL ============================== */
-/*Aplica Verdana a varias secciones importantes */
-.jumbotron,
-.card-body,
-.container,
-.site-header {
-    font-family: "Verdana", serif !important;
+/* ============================== VARIABLES CSS ============================== */
+:root {
+    /* Colores primarios */
+    --primary-color: #ff6b00;
+    --primary-hover: #e55a00;
+    
+    /* Colores de fondo */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8f9fa;
+    --bg-tertiary: #f0f0f0;
+    --bg-hero: #e0e0e0;
+    --bg-hero-light: #222222;
+    --bg-hover: #f5f5f5;
+    --bg-card: #ffffff;
+    --bg-header: #ffffff;
+    --bg-footer: #f8f9fa;
+    --bg-auth: #e8e9ea;
+    
+    /* Colores de texto */
+    --text-primary: #000000;
+    --text-secondary: #000000;
+    --text-muted: #6c757d;
+    --text-light: #ffffff;
+    --text-inverse: #ffffff;
+    
+    /* Colores de bordes */
+    --border-primary: #dee2e6;
+    
+    /* Sombras */
+    --shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    --shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    
+    /* Colores especiales */
+    --star-color: #dee2e6;
+    --star-active: #e06913;
+    --carousel-bg: #f8f9fa;
+    --spinner-bg: rgba(0, 0, 0, 0.5);
+    
+    /* Variables de diseño */
+    --border-radius: 0.375rem;
+    --transition: all 0.3s ease;
+}
+
+/* ============================== MODO OSCURO ============================== */
+[data-theme="dark"] {
+    /* Colores de fondo - Tonos grises neutros */
+    --bg-primary: #0a0a0a;
+    --bg-secondary: #1a1a1a;
+    --bg-tertiary: #2a2a2a;
+    --bg-hero: #1a1a1a;
+    --bg-hero-light: #222222;
+    --bg-hover: #333333;
+    --bg-card: #2a2a2a;
+    --bg-header: #0a0a0a;
+    --bg-footer: #2a2a2a;
+    --bg-auth: #1f1f1f;
+    
+    /* Colores de texto - Tonos grises neutros */
+    --text-primary: #f5f5f5;
+    --text-secondary: #f5f5f5;
+    --text-muted: #f5f5f5;
+    --text-light: #ffffff;
+    --text-inverse: #212529;
+    
+    /* Colores de bordes - Tonos grises neutros */
+    --border-primary: #404040;
+    
+    /* Sombras (más suaves para modo oscuro) */
+    --shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.3);
+    --shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.4);
+    
+    /* Colores especiales para modo oscuro */
+    --star-color: #555555;
+    --star-active: #110f0e;
+    --carousel-bg: #2d2d2d;
+    --spinner-bg: rgba(255, 255, 255, 0.1);
+}
+
+/* ============================== RESET Y BASE ============================== */
+* {
+    box-sizing: border-box;
 }
 
 body {
-    background-color: #f8f9fa;
-}
-/* ==============================ESTILOS DE NAVEGACIÓN============================== */
-nav a {
-    text-decoration: none;
-    /* quita subrayado de links */
+    font-family: "Raleway", "Verdana", sans-serif;
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.site-header a {
+/* ============================== NAVEGACIÓN ============================== */
+.navbar {
+    box-shadow: var(--shadow-sm);
+    background-color: var(--bg-header) !important;
+    border-bottom: 1px solid var(--border-primary);
+    transition: var(--transition);
+}
+
+/* Header en modo oscuro - solo sombra, sin borde */
+[data-theme="dark"] .navbar {
+    border-bottom: none !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Mejorar la sombra del header general */
+header.shadow-sm {
+    box-shadow: var(--shadow-sm);
+}
+
+[data-theme="dark"] header.shadow-sm {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.navbar-brand {
+    font-weight: 700;
+    color: var(--text-primary) !important;
+    transition: var(--transition);
+}
+
+/* Texto 'e-Mercado' blanco en modo oscuro */
+[data-theme="dark"] .navbar-brand {
+    color: white !important;
+}
+
+.navbar-brand .fw-bold {
+    color: var(--primary-color) !important;
+}
+
+/* Asegurar que todo el texto del navbar-brand sea blanco en modo oscuro */
+[data-theme="dark"] .navbar-brand .fw-bold {
+    color: white !important;
+}
+
+.navbar-nav .nav-link {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--text-primary) !important;
+    transition: var(--transition);
+}
+
+.navbar-nav .nav-link:hover {
+    color: var(--primary-color) !important;
+}
+
+.navbar-nav .nav-link i {
+    color: var(--text-primary);
+    transition: var(--transition);
+}
+
+.navbar-nav .nav-link:hover i {
+    color: var(--primary-color);
+}
+
+.navbar-toggler {
+    border: none;
+    padding: 0.25rem 0.5rem;
+    color: var(--text-primary);
+    transition: var(--transition);
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+
+.navbar-toggler .fas.fa-bars {
+    color: var(--text-primary);
+    font-size: 2rem;
+    transition: var(--transition);
+}
+
+/* ============================== LOGO ============================== */
+.navbar-collapse {
+    padding-left: 30px;
+}
+
+.logo-nav {
+    width: 90px;
+    height: 90px;
+    margin-left: 30px;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.logo-nav:hover {
+    transform: scale(1.05);
+}
+
+/* ============================== BOTONES ============================== */
+.btn-warning {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
     color: white;
-    transition: ease-in-out color 0.15s;
+    font-weight: 600;
+    transition: var(--transition);
 }
 
-.site-header .dropdown-menu a {
-    color: black;
+.btn-warning:hover {
+    background-color: var(--primary-hover);
+    border-color: var(--primary-hover);
+    color: white;
 }
 
-/* ==============================PLACEHOLDER Y RESPONSIVE IMÁGENES============================== */
-.bd-placeholder-img {
-    font-size: 1.125rem;
-    text-anchor: middle;
-    user-select: none;
+.btn-warning:focus {
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+    color: white !important;
+    box-shadow: 0 0 0 0.25rem rgba(255, 107, 0, 0.25) !important;
 }
 
-@media (min-width: 768px) {
-    .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-    }
+.btn-warning:active,
+.btn-warning:focus:active {
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+    color: white !important;
+    box-shadow: 0 0 0 0.25rem rgba(255, 107, 0, 0.25) !important;
 }
 
-/* ==============================JUMBOTRON (SECCIÓN DESTACADA)============================== */
-@media (min-width: 768px) {
-    .jumbotron {
-        padding-top: 6rem;
-        padding-bottom: 6rem;
-    }
+.btn-warning:focus:not(:active) {
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+    color: white !important;
 }
 
-.jumbotron p:last-child {
-    margin-bottom: 0;
+/* Estilos específicos para el botón de enviar calificación */
+#send-rating:focus,
+#send-rating:active,
+#send-rating:focus:active {
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+    color: white !important;
+    box-shadow: 0 0 0 0.25rem rgba(255, 107, 0, 0.25) !important;
 }
 
-.jumbotron-heading {
-    font-weight: 300;
+/* ============================== CARDS ============================== */
+.card {
+    border: 1px solid var(--border-primary);
+    box-shadow: var(--shadow-sm);
+    background-color: var(--bg-card);
+    transition: var(--transition);
 }
 
-.jumbotron .container {
-    max-width: 40rem;
-    background-color: rgba(255, 255, 255, 0.5);
-    border-radius: 10px;
-    text-shadow: 1px 1px 2px grey;
+/* Mejorar contraste de tarjetas en modo oscuro */
+[data-theme="dark"] .card {
+    border: 1px solid var(--border-primary);
+    background-color: var(--bg-card);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
-.jumbotron .lead {
-    font-size: 38px;
+.card:hover {
+    box-shadow: var(--shadow);
+    transform: translateY(-2px);
 }
 
-/* ==============================FOOTER============================== */
-footer {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-    background-color: #f8f9fa;
+.card-header {
+    background-color: var(--bg-tertiary);
+    border-bottom: 1px solid var(--border-primary);
+    font-weight: 600;
+    color: var(--text-primary);
+    transition: var(--transition);
 }
 
-footer p {
-    margin-bottom: 0.25rem;
+/* ============================== TIPOGRAFÍA ============================== */
+/* Asegurar que todos los títulos usen las variables CSS */
+h1, h2, h3, h4, h5, h6,
+.card-title, .hero-title, .hero-welcome {
+    color: var(--text-primary) !important;
+    transition: var(--transition);
 }
 
-/* ==============================DROPZONE (CARGA DE ARCHIVOS)============================== */
-.dropzone {
-    border: 2px dashed #0087f7;
-    border-radius: 5px;
-    background: white;
+/* Asegurar que el texto de las tarjetas use las variables CSS */
+.card-text, p, .lead {
+    color: var(--text-secondary) !important;
+    transition: var(--transition);
 }
 
-/* ==============================UTILIDADES GENERALES============================== */
-.img-fit {
-    max-height: 100%;
+/* Asegurar que elementos pequeños también usen las variables CSS */
+small, .text-muted {
+    color: var(--text-muted) !important;
+    transition: var(--transition);
 }
 
-.cursor-active {
+/* ============================== FORMULARIOS ============================== */
+.form-control, .form-select, textarea {
+    background-color: var(--bg-secondary) !important;
+    border-color: var(--border-primary) !important;
+    color: var(--text-primary) !important;
+    transition: var(--transition);
+}
+
+.form-control:focus, .form-select:focus, textarea:focus {
+    background-color: var(--bg-secondary) !important;
+    border-color: var(--primary-color) !important;
+    color: var(--text-primary) !important;
+    box-shadow: 0 0 0 0.25rem rgba(255, 107, 0, 0.25) !important;
+}
+
+.form-control::placeholder, textarea::placeholder {
+    color: var(--text-muted) !important;
+}
+
+.form-label {
+    font-weight: 600;
+    color: var(--text-primary);
+    transition: var(--transition);
+}
+
+/* ============================== FOOTER DE TARJETAS DE PRODUCTOS ============================== */
+.product-card-footer {
+    background-color: #0a0a0a;
+    color: white !important;
+    transition: var(--transition);
+}
+
+/* Footer de tarjetas en modo oscuro - mismo color que el header */
+[data-theme="dark"] .product-card-footer {
+    background-color: var(--bg-header) !important;
+    color: white !important;
+}
+
+/* ============================== CARRUSEL ============================== */
+#product-images {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.carousel-item img {
+    height: 500px;
+    object-fit: contain;
+    width: 100%;
+    background-color: var(--carousel-bg);
+    transition: var(--transition);
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: 8%;
+    background: none;
+    border: none;
+    margin: 0;
+}
+
+.carousel-control-prev {
+    left: 0;
+}
+
+.carousel-control-next {
+    right: 0;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    width: 4rem;
+    height: 4rem;
+    background-size: 100% 100%;
+    filter: brightness(0) invert(1);
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    background: none;
+}
+
+.carousel-control-prev:hover .carousel-control-prev-icon,
+.carousel-control-next:hover .carousel-control-next-icon {
+    background-color: transparent;
+    border: none;
+    filter: brightness(0) invert(1);
+}
+
+/* Miniaturas del carrusel */
+#carousel-thumbs {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+#carousel-thumbs img {
+    height: 60px;
+    width: 60px;
+    object-fit: cover;
+    cursor: pointer;
+    transition: var(--transition);
+    border: 2px solid transparent;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+#carousel-thumbs img:hover {
+    transform: scale(1.05);
+    border-color: var(--primary-color);
+}
+
+#carousel-thumbs img.border-warning {
+    border-color: var(--primary-color) !important;
+    transform: scale(1.05);
+}
+
+/* ============================== RATING/ESTRELLAS ============================== */
+.rating-stars {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    gap: 0.25rem;
+    margin-top: 0.5rem;
+}
+
+.rating-stars input {
+    display: none;
+}
+
+.rating-stars label {
+    font-size: 1.5rem;
+    color: var(--star-color);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.rating-stars input:checked ~ label,
+.rating-stars label:hover,
+.rating-stars label:hover ~ label {
+    color: var(--star-active);
+}
+
+/* ============================== LISTAS ============================== */
+.list-group-item {
+    border: none;
+    padding: 1rem;
+}
+
+.list-group-item:not(:last-child) {
+    border-bottom: 1px solid var(--border-primary);
+    background-color: var(--bg-card);
+    color: var(--text-primary);
+    transition: var(--transition);
+}
+
+/* Mejorar contraste de elementos de lista en modo oscuro */
+[data-theme="dark"] .list-group-item {
+    background-color: var(--bg-card);
+    border-color: var(--border-primary);
+    color: var(--text-primary);
+}
+
+.list-group-item-action {
+    cursor: pointer !important;
+    transition: var(--transition);
+    border: 1px solid var(--border-primary) !important;
+    margin-bottom: 0.5rem;
+    border-radius: var(--border-radius) !important;
+    background-color: var(--bg-card);
+    color: var(--text-primary);
+}
+
+/* Mejorar contraste de elementos de acción en modo oscuro */
+[data-theme="dark"] .list-group-item-action {
+    background-color: var(--bg-card);
+    border-color: var(--border-primary);
+    color: var(--text-primary);
+}
+
+.list-group-item-action:hover {
+    background-color: var(--bg-hover) !important;
+    color: var(--text-primary) !important;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+.list-group-item-action:hover h4,
+.list-group-item-action:hover small,
+.list-group-item-action:hover p {
+    color: var(--text-primary) !important;
+}
+
+.list-group-item-action:hover .img-thumbnail {
+    border-color: var(--text-primary) !important;
+}
+
+/* ============================== PRODUCTOS RELACIONADOS ============================== */
+.related-products-card {
+    top: 2rem;
+}
+
+.related-products-header {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+#related-products .list-group-item {
+    transition: var(--transition);
     cursor: pointer;
 }
 
-.left {
-    float: left;
-    padding: 4px;
-    background-color: rgba(255, 255, 255, 0.5);
+#related-products .list-group-item:hover {
+    background-color: var(--bg-hover);
+    color: var(--text-primary);
+    transform: translateX(5px);
 }
 
-/* ==============================ANIMACIÓN SPINNER============================== */
+#related-products .list-group-item:hover h6,
+#related-products .list-group-item:hover small {
+    color: var(--text-primary);
+}
+
+/* ============================== SPINNER ============================== */
 .lds-ring {
     display: inline-block;
     position: relative;
     width: 64px;
     height: 64px;
-    top: 50%;
-    left: 50%;
 }
 
 .lds-ring div {
@@ -115,494 +520,641 @@ footer p {
     width: 51px;
     height: 51px;
     margin: 6px;
-    border: 6px solid #fff;
+    border: 6px solid var(--primary-color);
     border-radius: 50%;
     animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-    border-color: #fff transparent transparent transparent;
+    border-color: var(--primary-color) transparent transparent transparent;
 }
 
-.lds-ring div:nth-child(1) {
-    animation-delay: -0.45s;
-}
-
-.lds-ring div:nth-child(2) {
-    animation-delay: -0.3s;
-}
-
-.lds-ring div:nth-child(3) {
-    animation-delay: -0.15s;
-}
+.lds-ring div:nth-child(1) { animation-delay: -0.45s; }
+.lds-ring div:nth-child(2) { animation-delay: -0.3s; }
+.lds-ring div:nth-child(3) { animation-delay: -0.15s; }
 
 @keyframes lds-ring {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(360deg);
-    }
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 #spinner-wrapper {
     position: fixed;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: var(--spinner-bg);
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
     z-index: 1021;
     display: none;
+    justify-content: center;
+    align-items: center;
+    transition: var(--transition);
 }
 
-/* ==============================LOGIN / FORMULARIOS============================== */
-/* Contenedor del formulario (centrado y con ancho máximo) */
-form {
-    width: 100%;
-    max-width: 500px;
-    margin: auto;
+/* ============================== HERO SECTION ============================== */
+.hero-section {
+    background: linear-gradient(to bottom, var(--bg-hero) 0%, var(--bg-hero) 60%, var(--bg-secondary) 100%);
+    transition: var(--transition);
 }
 
-/* Cada bloque dentro del form (inputs y botón) */
-form > div {
-    margin-bottom: 7px;
+/* Gradiente específico para modo oscuro */
+[data-theme="dark"] .hero-section {
+    background: linear-gradient(to bottom, var(--bg-hero-light) 0%, var(--bg-hero-light) 60%, var(--bg-secondary) 100%);
 }
 
-/* Último div (botón + enlace) */
-form > div:last-child {
-    text-align: center;
-    margin-top: 10px;
+.hero-title {
+    margin-bottom: 1rem;
 }
 
-/* Enlaces dentro del último div */
-form > div:last-child a {
+.hero-welcome {
+    color: var(--text-primary);
+    transition: var(--transition);
+}
+
+.hero-brand {
+    color: var(--primary-color);
+}
+
+.hero-section .lead {
+    color: var(--text-primary) !important;
+    transition: var(--transition);
+}
+
+/* ============================== BOTONES HERO SECTION ============================== */
+.hero-section .btn-outline-light {
+    color: var(--text-primary) !important;
+    border-color: var(--text-primary) !important;
+    background-color: transparent !important;
+    transition: var(--transition);
+}
+
+.hero-section .btn-outline-light:hover {
+    color: white !important;
+    border-color: var(--primary-color) !important;
+    background-color: var(--primary-color) !important;
+}
+
+/* ============================== BOTÓN VOLVER ============================== */
+.back-button {
+    color: var(--primary-color) !important;
+    transition: var(--transition);
+}
+
+.back-button:hover {
+    color: var(--primary-hover) !important;
+    transform: translateX(-2px);
+}
+
+/* ============================== BOTONES FILTROS ============================== */
+#clearRangeFilter {
+    color: var(--primary-color) !important;
+    border: none !important;
+    background-color: transparent !important;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+    transition: var(--transition);
+}
+
+#clearRangeFilter:hover {
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.15) !important;
+}
+
+#clearRangeFilter:focus,
+#clearRangeFilter:active {
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+    outline: none !important;
+}
+
+#filtrarPrecio {
+    background-color: var(--primary-color) !important;
+    color: white !important;
+    border: none !important;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+    transition: var(--transition);
+}
+
+#filtrarPrecio:hover {
+    background-color: var(--primary-hover) !important;
+    color: white !important;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.15) !important;
+}
+
+#filtrarPrecio:focus,
+#filtrarPrecio:active {
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+    outline: none !important;
+}
+
+/* ============================== BOTONES ORDENAR ============================== */
+.btn-group-toggle .btn {
+    color: var(--primary-color) !important;
+    border: none !important;
+    background-color: transparent !important;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+    transition: var(--transition);
+}
+
+.btn-group-toggle .btn:hover {
+    background-color: var(--text-primary) !important;
+    color: var(--text-inverse) !important;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.15) !important;
+}
+
+.btn-group-toggle .btn:focus,
+.btn-group-toggle .btn:active,
+.btn-group-toggle .btn.active {
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+    outline: none !important;
+    background-color: var(--text-primary) !important;
+    color: var(--text-inverse) !important;
+}
+
+/* ============================== BOTÓN TOGGLE MODO OSCURO ============================== */
+.theme-toggle {
+    background: none;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 0.5rem;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+}
+
+.theme-toggle:hover {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+}
+
+.theme-toggle:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.25rem rgba(255, 107, 0, 0.25);
+}
+
+.theme-toggle i {
+    font-size: 1.1rem !important;
+    line-height: 1 !important;
+    transition: var(--transition);
+    display: inline-block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Forzar el tamaño del icono en el navbar */
+.navbar .theme-toggle i {
+    font-size: 1.1rem !important;
+    line-height: 1 !important;
+    display: inline-block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Asegurar que el icono del tema no se vea afectado por las reglas del navbar-toggler */
+.navbar .theme-toggle i.fas {
+    font-size: 1.1rem !important;
+    line-height: 1 !important;
+    display: inline-block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Asegurar que el icono del tema no se vea afectado por las reglas del navbar-toggler */
+.navbar .theme-toggle i.fa-moon,
+.navbar .theme-toggle i.fa-sun {
+    font-size: 1.1rem !important;
+    line-height: 1 !important;
+    display: inline-block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.theme-toggle:hover i {
+    transform: rotate(180deg);
+}
+
+.theme-toggle-container {
+    display: flex;
+    align-items: center;
+}
+
+/* ============================== UTILIDADES ============================== */
+.cursor-active {
+    cursor: pointer;
+}
+
+/* Clase personalizada para reemplazar bg-light */
+.bg-custom {
+    background-color: var(--bg-secondary) !important;
+}
+
+.text-primary-custom { color: var(--primary-color) !important; }
+.bg-primary-custom { background-color: var(--primary-color) !important; }
+.border-primary-custom { border-color: var(--primary-color) !important; }
+
+.shadow-custom { box-shadow: var(--shadow) !important; }
+.shadow-sm-custom { box-shadow: var(--shadow-sm) !important; }
+
+.transition-custom { transition: var(--transition) !important; }
+
+/* ============================== FOOTER ============================== */
+footer {
+    background-color: var(--bg-footer);
+    border-top: 1px solid var(--border-primary);
+    padding: 2rem 0;
+    margin-top: 3rem;
+    color: var(--text-primary);
+    transition: var(--transition);
+}
+
+footer a {
+    color: var(--primary-color);
     text-decoration: none;
-    color: #007bff;
+    transition: var(--transition);
 }
 
-form > div:last-child a:hover {
+footer a:hover {
+    color: var(--primary-hover);
     text-decoration: underline;
 }
 
-/* Labels de los inputs */
-label {
-    font-size: clamp(14px, 3vw, 24px);
-    margin-bottom: 6px;
-    color: #000000;
-    display: block;
-}
+/* ============================== LEGACY SUPPORT ============================== */
+.checked { color: var(--primary-color); }
+.nav-orange { color: var(--primary-color) !important; }
+.nav-orange:hover { color: var(--primary-hover) !important; }
 
-/* Inputs de texto y contraseña */
-input[type="text"],
-input[type="password"] {
-    border: none;
-    width: 100%;
-    padding: 10px;
-    font-size: clamp(14px, 3vw, 24px);
-    outline: none;
-    border-radius: 8px;
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.4);
-}
-
-/* Placeholder de los inputs */
-input::placeholder {
-    color: #000000;
-    opacity: 1;
-}
-
-/* Botón de enviar */
-button[type="submit"] {
-    border-radius: 12px;
-    text-align: center;
-    margin-top: 18px;
-    width: 100%;
-    font-size: clamp(14px, 3vw, 24px);
+.jumbotron {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
     color: white;
+    padding: 3rem 0;
+    margin-bottom: 2rem;
+}
+
+.jumbotron .container {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+}
+
+/* ============================== ANIMACIONES ============================== */
+@keyframes fadeIn {
+    from { 
+        opacity: 0; 
+        transform: translateY(20px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* ============================== RESPONSIVE ============================== */
+@media (max-width: 992px) {
+    #product-images {
+        max-width: 100%;
+    }
+    
+    .carousel-item img {
+        height: 400px;
+    }
+}
+
+@media (max-width: 768px) {
+    .carousel-item img {
+        height: 300px;
+    }
+    
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        width: 3rem;
+        height: 3rem;
+    }
+    
+    .rating-stars {
+        justify-content: center;
+    }
+    
+    .rating-stars label {
+        font-size: 1.25rem;
+    }
+    
+    .card-body {
+        padding: 1rem;
+    }
+    
+    .navbar-brand img {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 576px) {
+    .carousel-item img {
+        height: 250px;
+    }
+    
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+    
+    .rating-stars label {
+        font-size: 1rem;
+    }
+    
+    .display-6 {
+        font-size: 1.5rem;
+    }
+}
+body #halloween-toggle{
+    background: none;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 0.5rem;
+    border-radius: var(--border-radius);
     cursor: pointer;
-    background-color: #d97f00;
-    padding: 14px;
+}
+/* Estilo base animado */
+#halloween-toggle {
+    font-weight: 700;
+    animation: glow 1.5s infinite alternate;
+    border-color: #ff8800;
 }
 
-/* ==============================
-   PASSWORD (OJO PARA MOSTRAR/OCULTAR)
-============================== */
-.password-container {
-    position: relative;
-    width: 100%;
+/* Animación de brillo pulsante */
+@keyframes glow {
+    0% { 
+        box-shadow: 0 0 5px rgba(255, 136, 0, 0.5);
+    }
+    100% { 
+        box-shadow: 0 0 15px rgba(255, 136, 0, 1);
+    }
 }
 
-/* Input dentro del contenedor de contraseña */
-.password-container input {
-    width: 100%;
-    padding-right: 40px;
-    /* espacio para el icono */
+/* Hover con temblor */
+#halloween-toggle:hover {
+    background-color: #ff8800;
+    color: #000;
+    animation: tremor 0.2s infinite alternate;
 }
 
-/* Icono del ojo */
-.eye-icon {
-    position: absolute;
-    right: 10px;
-    /* distancia desde el borde derecho */
-    top: 50%;
-    transform: translateY(-50%);
-    width: 24px;
-    height: 24px;
-    cursor: pointer;
+@keyframes tremor {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(2px); }
 }
 
-/* ==============================OVERLAY Y VENTANA MODAL============================== */
-
-/* Fondo semitransparente que cubre toda la página */
+/* ============================== ESTILOS DE LOGIN ============================== */
 .login-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
-    /* fondo oscuro */
+    background-color: var(--bg-auth);
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1050;
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
+    z-index: 1000;
 }
 
-/* Ventana del login */
 .login-modal {
-    background: #fff;
-    border-radius: 12px;
-    padding: 30px;
+    background-color: var(--bg-card);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    width: 100%;
     max-width: 400px;
-    width: 90%;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-    animation: fadeIn 0.3s ease-in-out;
+    position: relative;
+    border: 1px solid var(--border-primary);
 }
 
-/* Animación de entrada */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: scale(0.9);
-    }
-
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-/* Botón de cerrar arriba a la derecha */
 .login-close {
     position: absolute;
-    top: 15px;
-    right: 20px;
-    font-size: 20px;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.5rem;
     cursor: pointer;
-    color: #555;
+    color: var(--text-primary);
+    transition: var(--transition);
 }
 
 .login-close:hover {
-    color: #000;
+    color: var(--primary-color);
 }
 
-/*===========================BOTONES PERSONALIZADOS============================== */
-.btn-dark-custom {
-    background-color: #212529;
-    border-color: #212529;
-    color: white;
+.login-modal form {
+    margin-top: 1rem;
 }
 
-.btn-dark-custom:hover {
-    background-color: #343a40;
-    border-color: #343a40;
-    color: white;
-}
-
-.btn-login {
-    background-color: #ff6b00;
-    color: white;
-    border-radius: 12px;
-    padding: 10px 25px;
-    font-weight: bold;
-    transition: all 0.3s ease;
-    text-decoration: none;
-}
-
-.btn-login:hover {
-    background-color: #e55b00;
-    color: #fff;
-}
-
-.btn-light {
-    color: #000;
-    background-color: #e4e4e4;
-    border-color: #000;
-}
-
-.btn-light:hover {
-    background-color: #000;
-    /* fondo negro al pasar el mouse */
-    color: #fff;
-    /* texto blanco para contraste */
-    border-color: #000;
-    /* borde también negro */
-}
-
-.nav-orange {
-    color: #ff6b00 !important;
-}
-
-.nav-orange:hover {
-    color: #ff6b00;
-    /* opcional: mantener color al pasar el mouse */
-}
-
-/* ==============================ESTILOS VARIOS============================== */
-.custom-shadow {
-    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.4);
-    border: none;
-}
-
-#regMessage {
-    text-align: center;
-    padding-top: 16px;
-}
-
-.card {
-    transition: transform 0.2s;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-}
-
-.navbar .btn:focus,
-.navbar .btn:focus-visible,
-.navbar .btn:active,
-.loginContenedor .btn:focus,
-.loginContenedor .btn:focus-visible,
-.loginContenedor .btn:active {
-    outline: none !important;
-    box-shadow: none !important;
-}
-
-/* ==============================LINKS PERSONALIZADOS============================== */
-a.custom-card,
-a.custom-card:hover {
-    color: inherit;
-    text-decoration: inherit;
-}
-
-a.naranja,
-a.naranja:link,
-a.naranja:visited {
-    color: #f09100;
-    text-decoration: none;
-    font-size: clamp(14px, 3vw, 24px);
-}
-
-a.naranja:hover,
-a.naranja:active {
-    color: #d97f00;
-    text-decoration: none !important;
-}
-
-/* ==============================UTILIDADES DE DISEÑO============================== */
-.checked {
-    color: orange;
-}
-
-.contenedor {
-    padding-left: 54px;
-    padding-right: 54px;
-}
-
-.filtros {
-    padding-bottom: 16px !important;
-}
-
-.producto {
-    cursor: pointer;
-}
-
-.carousel-container {
-    max-width: 500px;
-}
-
-main {
-    min-height: calc(100vh - 210px);
-}
-
-.filtros {
-    padding-bottom: 16px !important;
-}
-
-.producto {
-    cursor: pointer;
-}
-
-/* Estilo de las páginas creadas en product-info.html */
-
-/*Tamaño de las imágenes */
-.carousel-item img {
-    max-height: 600px;
-    object-fit: contain;
-    width: 100%;
-}
-
-/*Estilo de los botones de imagen previa y posterior*/
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-    background-color: rgba(0, 0, 0, 0.35);
-    border-radius: 10%;
-    padding: 10px;
-    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5));
-}
-
-/*Miniaturas de las imágenes*/
-#carousel-thumbs img {
-    max-height: 80px;
-    object-fit: cover;
-    border: 0.1px solid rgba(0, 0, 0, 0.3);
-    border-radius: 3px;
-    cursor: pointer;
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-}
-
-#carousel-thumbs img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
-}
-
-.carousel-container {
-    max-width: 900px;
-    margin: 0 auto 2rem;
-    margin-bottom: 2rem;
-    background-color: #d2d5d8ad;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-/* Esto es para centrar el contenido de la página por ahora, seguramente se modifique luego */
-.product-info-container {
-    margin: 0 auto;
-    max-width: 900px;
-}
-
-#product-category {
-    color: #ff6b00;
-    align-items: center;
-}
-
-#product-sold {
-    color: #ff6b00;
-    align-items: center;
-}
-
-/*Botón de regreso de categoría*/
-#back-to-category {
-    padding: 8px 16px;
-    background-color: #ff6b00;
-    color: white;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-}
-
-.category-header {
-    display: flex;
-    align-items: center;
-    /* centra verticalmente */
-    gap: 10px;
-    /* espacio entre texto y botón */
+.login-modal form div {
     margin-bottom: 1rem;
-    /* separa del contenido */
-    margin-left: 20px;
+}
+
+.login-modal label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.login-modal input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border-primary);
+    border-radius: var(--border-radius);
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    transition: var(--transition);
+}
+
+.login-modal input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.25rem rgba(255, 107, 0, 0.25);
+}
+
+.password-container {
+    position: relative;
+}
+
+.eye-icon {
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.eye-icon:hover {
+    opacity: 0.7;
+}
+
+.login-modal button {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.login-modal button:hover {
+    background-color: var(--primary-hover);
+}
+
+.naranja {
+    color: var(--primary-color) !important;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.naranja:hover {
+    color: var(--primary-hover) !important;
+    text-decoration: underline;
+}
+
+/* ============================== ESTILOS DE REGISTRO ============================== */
+.register-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    min-height: 100vh;
+}
+
+.register-form {
+    background-color: var(--bg-card);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    width: 100%;
+    max-width: 400px;
+    border: 1px solid var(--border-primary);
+}
+
+.register-form h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+}
+
+.register-form div {
+    margin-bottom: 1rem;
+}
+
+.register-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.register-form input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border-primary);
+    border-radius: var(--border-radius);
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    transition: var(--transition);
+}
+
+.register-form input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.25rem rgba(255, 107, 0, 0.25);
+}
+
+.register-form button {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-bottom: 1rem;
+}
+
+.register-form button:hover {
+    background-color: var(--primary-hover);
+}
+
+.register-form p {
+    text-align: center;
+    margin: 0;
+    font-weight: 500;
+}
+
+.back-link {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.back-link a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.back-link a:hover {
+    color: var(--primary-hover);
+    text-decoration: underline;
+}
+
+/* ============================== NAVEGACIÓN DE PÁGINAS DE AUTENTICACIÓN ============================== */
+.auth-nav {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 1001;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.auth-nav .theme-toggle {
+    margin: 0;
 }
 
 @media (max-width: 768px) {
-    #back-to-category .back-text {
-        /* Solo mostrar la flecha */
-        font-size: 1.2rem;
-        /* opcional: tamaño de la flecha */
-    }
-
-    #back-to-category .back-text::after {
-        content: "";
-        /* eliminamos “Volver” para móvil */
+    .auth-nav {
+        top: 0.5rem;
+        left: 0.5rem;
     }
 }
 
-/* Estilo de seccion de rating */
-
-.p-3.bg-light.border {
-    text-align: center;
-}
-
-.estrellas {
+/* ============================== PÁGINAS DE AUTENTICACIÓN ============================== */
+.auth-page {
+    min-height: 100vh;
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: column;
+    background-color: var(--bg-auth);
+}
+
+.register-container {
+    flex: 1;
+    display: flex;
     justify-content: center;
-}
-
-.estrellas input {
-    display: none;
-}
-
-.estrellas label {
-    font-size: 2rem;
-    color: #ccc;
-    cursor: pointer;
-    margin: 0 5px;
-}
-
-.estrellas input:checked ~ label {
-    color: rgb(255, 191, 0);
-}
-
-.estrellas label:hover,
-.estrellas label:hover ~ label {
-    color: rgb(255, 191, 0);
-}
-
-.p-3.bg-light.border {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
-.btn-light {
-    outline: 3px solid black;
-}
-
-.btn-light,
-.btn-light:focus,
-.btn-light:active,
-.btn-light:focus:active,
-.btn-light:visited,
-.btn-light.active,
-.show > .btn-light.dropdown-toggle,
-.btn-check:checked + .btn-light,
-.btn-check:active + .btn-light {
-    border: none !important; /* elimina el borde */
-    outline: 1px solid black;
-    box-shadow: none !important; /* elimina la sombra */
-}
-
-#rangeFilterCount,
-#filtrarPrecio {
-    border-radius: 3px !important;
-}
-
-#clearRangeFilter {
-    color: black;
-}
-
-#product-name {
-    text-align: center;
-    padding-bottom: 32px;
-}
-
-#product-description {
-    text-align: center;
+    align-items: center;
+    padding: 2rem;
+    min-height: 100vh;
 }
