@@ -694,8 +694,40 @@ small, .text-muted {
 }
 
 .theme-toggle i {
-    font-size: 1.1rem;
+    font-size: 1.1rem !important;
+    line-height: 1 !important;
     transition: var(--transition);
+    display: inline-block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Forzar el tamaño del icono en el navbar */
+.navbar .theme-toggle i {
+    font-size: 1.1rem !important;
+    line-height: 1 !important;
+    display: inline-block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Asegurar que el icono del tema no se vea afectado por las reglas del navbar-toggler */
+.navbar .theme-toggle i.fas {
+    font-size: 1.1rem !important;
+    line-height: 1 !important;
+    display: inline-block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Asegurar que el icono del tema no se vea afectado por las reglas del navbar-toggler */
+.navbar .theme-toggle i.fa-moon,
+.navbar .theme-toggle i.fa-sun {
+    font-size: 1.1rem !important;
+    line-height: 1 !important;
+    display: inline-block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
 .theme-toggle:hover i {
