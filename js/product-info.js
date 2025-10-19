@@ -265,7 +265,17 @@ function agregarComentario(e) {
         return;
     }
 
-    const usuario = localStorage.getItem("usuarioLogueado") || "Usuario";
+    const usuarioLogueado = localStorage.getItem("usuarioLogueado");
+    let usuario = "Usuario";
+    
+    if (usuarioLogueado) {
+        try {
+            const usuarioObj = JSON.parse(usuarioLogueado);
+            usuario = usuarioObj.email || "Usuario";
+        } catch (e) {
+            usuario = "Usuario";
+        }
+    }
 
     const nuevoComentario = {
         user: usuario,

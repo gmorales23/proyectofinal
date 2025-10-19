@@ -30,13 +30,14 @@
                 <h2>Registro</h2>
                 <form id="registerForm">
                     <div>
-                        <label for="newUsername">Usuario</label>
+                        <label for="newEmail">Email</label>
                         <input
-                            type="text"
-                            id="newUsername"
-                            placeholder="Ingresa tu usuario"
+                            type="email"
+                            id="newEmail"
+                            placeholder="Ingresa tu email"
                             required
                         />
+                        <div id="emailError" class="text-danger small mt-1 d-none"></div>
                     </div>
                     <div>
                         <label for="newPassword">Contraseña</label>
