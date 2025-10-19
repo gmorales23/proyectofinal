@@ -1,4 +1,7 @@
 /* ================= MODO HALLOWEEN ================= */
+:root {
+    --transition: all 0.3s ease;
+}
 
 body.halloween {
     background: linear-gradient(to bottom, #0d0d0d 35%, #ff6b00 100%) !important;
@@ -260,4 +263,13 @@ body.halloween .card-header {
 body.halloween .card-header.bg-custom {
     background-color: #1a1a1a !important;
     color: #ff6b00 !important;
+}
+
+body.halloween .navbar-nav .nav-link i {
+    color: #f5f5f5;
+    transition: var(--transition);
+}
+
+body.halloween #userDropdown {
+    color: #f5f5f5 !important;
 }

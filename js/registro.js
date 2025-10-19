@@ -1,19 +1,48 @@
 const formRegistro = document.getElementById("registerForm");
 const regMessage = document.getElementById("regMessage");
+const emailError = document.getElementById("emailError");
+
+// Función para validar formato de email
+function validarEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
+
+// Validación en tiempo real del email
+document.getElementById("newEmail").addEventListener("input", function() {
+    const email = this.value;
+        if (email && !validarEmail(email)) {
+            emailError.textContent = "Por favor, ingresa un email válido";
+            emailError.classList.remove("d-none");
+            this.classList.add("is-invalid");
+        } else {
+            emailError.classList.add("d-none");
+            this.classList.remove("is-invalid");
+        }
+});
 
 formRegistro.addEventListener("submit", function (e) {
     e.preventDefault();
 
-    const usuario = document.getElementById("newUsername").value;
+    const email = document.getElementById("newEmail").value;
     const contrasena = document.getElementById("newPassword").value;
     const repetirContrasena = document.getElementById("repeatPassword").value;
 
     // Validar campos vacíos
-    if (!usuario || !contrasena) {
+    if (!email || !contrasena) {
         regMessage.textContent = "Por favor, completa todos los campos";
         regMessage.style.color = "red";
         return;
     }
+
+    // Validar formato de email
+        if (!validarEmail(email)) {
+            regMessage.textContent = "Por favor, ingresa un email válido";
+            regMessage.style.color = "red";
+            emailError.textContent = "Por favor, ingresa un email válido";
+            emailError.classList.remove("d-none");
+            return;
+        }
 
     // Validar contraseñas iguales
     if (contrasena !== repetirContrasena) {
@@ -25,22 +54,22 @@ formRegistro.addEventListener("submit", function (e) {
     // Obtener lista de usuarios existente o array vacío si no hay
     let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
 
-    // Verificar si ya existe el usuario
-    const usuarioExistente = usuarios.find(u => u.usuario === usuario);
-    if (usuarioExistente) {
-        regMessage.textContent = "El usuario ya existe, elige otro nombre";
+    // Verificar si ya existe el email
+    const emailExistente = usuarios.find(u => u.email === email);
+    if (emailExistente) {
+        regMessage.textContent = "El email ya está registrado, usa otro email";
         regMessage.style.color = "red";
         return;
     }
 
-    // Agregar nuevo usuario al array
-    usuarios.push({ usuario, contrasena });
+    // Agregar nuevo usuario al array (solo email y contraseña)
+    usuarios.push({ email, contrasena });
 
     // Guardar de nuevo en localStorage
     localStorage.setItem("usuarios", JSON.stringify(usuarios));
 
-    // Marcar al usuario como logueado
-    localStorage.setItem("usuarioLogueado", usuario);
+    // Marcar al usuario como logueado (guardar solo email)
+    localStorage.setItem("usuarioLogueado", JSON.stringify({ email }));
 
     regMessage.textContent = "Registro exitoso. Redirigiendo a la página principal...";
     regMessage.style.color = "green";

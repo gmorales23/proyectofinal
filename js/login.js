@@ -3,22 +3,25 @@ const formLogin = document.querySelector("form");
 formLogin.addEventListener("submit", function (e) {
     e.preventDefault();
 
-    const usuario = document.getElementById("usuario").value;
+    const email = document.getElementById("email").value;
     const contrasena = document.getElementById("contrasena").value;
 
     // Obtener lista de usuarios del localStorage
     let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
 
-    // Buscar si existe el usuario con esa contraseña
+    // Buscar si existe el usuario con ese email y contraseña
     const usuarioValido = usuarios.find(
-        (user) => user.usuario === usuario && user.contrasena === contrasena
+        (user) => user.email === email && user.contrasena === contrasena
     );
 
     if (usuarioValido) {
-        localStorage.setItem("usuarioLogueado", usuario);
+        // Guardar solo el email (ya no hay nombre de usuario)
+        localStorage.setItem("usuarioLogueado", JSON.stringify({ 
+            email: usuarioValido.email 
+        }));
         window.location.href = "index.html";
     } else {
-        alert("Usuario o contraseña incorrectos");
+        alert("Email o contraseña incorrectos");
     }
 });
 
