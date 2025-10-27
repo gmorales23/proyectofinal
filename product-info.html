@@ -198,17 +198,36 @@
                 </div>
             </div>
 
-            <!-- Columna de productos relacionados -->
-            <div class="col-lg-4 col-xl-3">
-                <div class="card shadow-sm sticky-top related-products-card">
-                    <div class="card-header related-products-header">
-                        <h5 class="card-title mb-0 fw-bold">
-                            <i class="fas fa-th-large me-2"></i>Productos relacionados
-                        </h5>
-                    </div>
-                    <div class="card-body p-0">
-                        <div id="related-products" class="list-group list-group-flush">
+            <!-- Columna de productos relacionados/comprar ahora/carrito -->
+           <div class="col-lg-4 col-xl-3">
+    <div class="row">
+        <div class="d-grid gap-3">
+            <a id="btn-buyNow" href="buy-now.html"
+               class="btn btn-lg py-3 w-100 mt-4">
+                Comprar ahora
+            </a>
+            <a id="btn-cart" href="cart.html"
+               class="btn btn-outline-dark btn-lg py-3 w-100">
+                Añadir al carrito
+            </a>
+        </div>
+    </div>
+
+    <div class="card shadow-sm sticky-top related-products-card mt-4">
+        <div class="card-header related-products-header">
+            <h5 class="card-title mb-0 fw-bold">
+                <i class="fas fa-th-large me-2"></i>
+                Productos relacionados
+            </h5>
+        </div>
+        <div class="card-body p-0">
+            <div id="related-products" class="list-group list-group-flush"></div>
+        </div>
+    </div>
+</div>
+
                             <!-- Productos relacionados se cargan dinámicamente -->
+                            
                         </div>
                     </div>
                 </div>
