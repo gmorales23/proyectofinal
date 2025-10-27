@@ -720,6 +720,13 @@ small, .text-muted {
     color: var(--text-primary);
 }
 
+.related-products-header h5 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
 /* ============================== SPINNER ============================== */
 .lds-ring {
     display: inline-block;
@@ -1394,4 +1401,14 @@ body #halloween-toggle{
     .display-6 {
         font-size: 1.5rem;
     }
+}
+
+/* BOTONES COMPRAR Y CARRITO */
+
+#btn-buyNow {
+    background-color: var(--primary-color) !important;
+    color: white !important;
+    border: none !important;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+    transition: var(--transition);
 }
