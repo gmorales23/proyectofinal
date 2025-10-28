@@ -61,14 +61,28 @@
                 </div>
             </div>
         </nav>
+    </header>
 
         <main>
-            <div class="container">
-                <div class="alert alert-danger text-center" role="alert">
-                    <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
-                </div>
-            </div>
+            <div>
+ <h1>Carrito de Compras</h1>
+           </div>
+    <!-- Contenedor del carrito -->
+    <section id="carrito-container">
+      <!-- Lista de productos -->
+      <div id="lista-carrito"></div>
+      <!-- Resumen del total -->
+      <aside class="resumen">
+        <h2>Resumen de compra</h2>
+        <p id="total">Total: $0.00</p>
+        <button id="btn-comprar" class="btn-comprar">Finalizar compra</button>
+        <button id="btn-vaciar" class="btn-vaciar">Vaciar carrito</button>
+      </aside>
+    </section>
         </main>
+
+    <!-- Footer -->
+ <!-- Footer -->
         <footer class="text-muted">
             <div class="container">
                 <p class="float-end">
@@ -76,11 +90,14 @@
                 </p>
                 <p>
                     Este sitio forma parte de
-                    <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a>
+                    <a href="https://jovenesaprogramar.edu.uy/" target="_blank"
+                        >Jóvenes a Programar</a
+                    >
                 </p>
             </div>
         </footer>
-        <div id="spinner-wrapper">
+
+         <div id="spinner-wrapper">
             <div class="lds-ring">
                 <div></div>
                 <div></div>
@@ -88,6 +105,7 @@
                 <div></div>
             </div>
         </div>
+
         <script src="js/bootstrap.bundle.min.js"></script>
         <script src="js/init.js"></script>
         <script src="js/cart.js"></script>
@@ -96,5 +114,4 @@
         <script src="js/theme-toggle.js"></script>
         <script src="js/halloween.js"></script>
 </body>
-
 </html>
