@@ -26,20 +26,26 @@ window.addEventListener("DOMContentLoaded", () => {
 // DATA LOADING FUNCTIONS
 // ===============================
 function cargarProducto() {
-	fetch(url)
-		.then(res => res.json())
-		.then(producto => {
-			precioUnitario = producto.cost;
+    fetch(url)
+        .then(res => res.json())
+        .then(producto => {
+            precioUnitario = producto.cost;
 			moneda = producto.currency;
 
-			mostrarProducto(producto);
-			mostrarRelacionados(producto.relatedProducts);
+            mostrarProducto(producto);
+            mostrarRelacionados(producto.relatedProducts);
 
-			// Inicializar subtotal después de cargar el producto
+            // Inicializar subtotal después de cargar el producto
 			actualizarSubtotal();
-		})
-		.catch(err => {
-			document.querySelector(".container").innerHTML = `
+
+            const botonBuyNow = document.getElementById("btn-buyNow");
+            botonBuyNow.addEventListener("click", () => {
+                localStorage.setItem("productoSeleccionado", JSON.stringify(producto));
+                window.location.href="buy-now.html"; 
+            });
+        })
+        .catch(err => {
+            document.querySelector(".container").innerHTML = `
                 <div class="alert alert-danger text-center" role="alert">
                     Error al cargar el producto: ${err}
                 </div>`;
