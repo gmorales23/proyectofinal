@@ -42,7 +42,6 @@
                 </button>
 
                 <div>
-                    <!-- 🔥 NUEVO BOTÓN HALLOWEEN -->
                     <button id="halloween-toggle" class="ms-2 btn btn-sm btn-outline-warning" onclick="toggleHalloween(event)">
                         👻 Enjalowinarse
                     </button>
@@ -66,8 +65,10 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link fw-semibold text-white" href="cart.html">
-                                <i class="fa fa-shopping-cart"></i> Carrito
+                            <a class="nav-link fw-semibold text-white position-relative" href="cart.html">
+                                <i class="fa fa-shopping-cart"></i>
+                                <span class="ms-1">Carrito</span>
+                                <span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size:0.65rem;">0</span>
                             </a>
                         </li>
                         <li class="nav-item" id="userNav">
@@ -79,7 +80,6 @@
     </header>
 
     <main class="container-fluid py-4">
-        <!-- Breadcrumb y navegación -->
         <div class="row mb-4">
             <div class="col-12">
                 <nav aria-label="breadcrumb">
@@ -97,7 +97,6 @@
             </div>
         </div>
 
-        <!-- Título del producto -->
         <div class="row mb-4">
             <div class="col-12">
                 <div class="card shadow-sm">
@@ -118,7 +117,6 @@
                     <div class="card-body p-0">
                         <div id="product-images" class="carousel slide" data-bs-ride="carousel">
                             <div class="carousel-inner" id="carousel-inner">
-                                <!-- Imágenes se cargan dinámicamente -->
                             </div>
                             
                             <!-- Controles del carrusel -->
@@ -132,25 +130,19 @@
                             </button>
                         </div>
                         
-                        <!-- Miniaturas del carrusel -->
                         <div class="p-3">
                             <div class="row g-2" id="carousel-thumbs">
-                                <!-- Miniaturas se cargan dinámicamente -->
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Descripción del producto -->
                 <div class="card shadow-sm mb-4">
                     <div class="card-body">
-                        <div id="product-description">
-                            <!-- Descripción se carga dinámicamente -->
-                        </div>
+                        <div id="product-description"></div>
                     </div>
                 </div>
 
-                <!-- Comentarios -->
                 <div class="card shadow-sm mb-4">
                     <div class="card-header bg-custom">
                         <h3 class="card-title mb-0 fw-bold">
@@ -158,13 +150,10 @@
                         </h3>
                     </div>
                     <div class="card-body">
-                        <div id="comentarios-container" class="list-group list-group-flush">
-                            <!-- Comentarios se cargan dinámicamente -->
-                        </div>
+                        <div id="comentarios-container" class="list-group list-group-flush"></div>
                     </div>
                 </div>
 
-                <!-- Formulario de calificación -->
                 <div class="card shadow-sm">
                     <div class="card-header bg-custom">
                         <h3 class="card-title mb-0 fw-bold">
@@ -203,24 +192,20 @@
                 </div>
             </div>
 
-            <!-- Columna de productos relacionados/comprar ahora/carrito -->
             <div class="col-lg-4 col-xl-3">
                 <div class="row">
                     <div class="d-grid gap-3">
-                        <!-- Sección de cantidad y subtotal -->
                         <div class="card shadow-sm border-0 mt-4">
                             <div class="card-body p-4">
                                 <h6 class="fw-bold text-dark mb-3">Selecciona la cantidad</h6>
 
                                 <div class="row g-3 align-items-center">
-                                    <!-- Cantidad -->
                                     <div class="col-auto">
                                         <label for="cantidad" class="form-label mb-1 text-muted small">Cantidad</label>
                                         <input type="number" id="cantidad" value="1" min="1" 
                                             class="form-control form-control-sm text-center" style="width: 80px" />
                                     </div>
 
-                                    <!-- Subtotal -->
                                     <div class="col">
                                         <div class="text-end">
                                             <div class="small text-muted">Subtotal</div>
@@ -231,7 +216,6 @@
                                     </div>
                                 </div>
 
-                                <!-- Precio unitario -->
                                 <div class="text-end mt-2">
                                     <small class="text-muted">
                                         Precio unitario: <strong id="precio-unitario">UYU 0</strong>
@@ -286,6 +270,7 @@
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/init.js"></script>
     <script src="js/product-info.js"></script>
+    <script src="js/cart-badge.js"></script>
     <script src="js/mostrarUsuarioLogueado.js"></script>
     <script src="js/proteccion.js"></script>
     <script src="js/theme-toggle.js"></script>

@@ -3,7 +3,7 @@
     /* Colores primarios */
     --primary-color: #ff6b00;
     --primary-hover: #e55a00;
-    
+
     /* Colores de fondo */
     --bg-primary: #ffffff;
     --bg-secondary: #f8f9fa;
@@ -15,31 +15,31 @@
     --bg-header: #ffffff;
     --bg-footer: #f8f9fa;
     --bg-auth: #e8e9ea;
-    
+
     /* Colores de texto */
     --text-primary: #000000;
     --text-secondary: #000000;
     --text-muted: #6c757d;
     --text-light: #ffffff;
     --text-inverse: #ffffff;
-    
+
     /* Colores de bordes */
     --border-primary: #dee2e6;
-    
+
     /* Sombras */
     --shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
     --shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-    
+
     /* Colores especiales */
     --star-color: #dee2e6;
     --star-active: #e06913;
     --carousel-bg: #f8f9fa;
     --spinner-bg: rgba(0, 0, 0, 0.5);
-    
+
     /* Variables de diseño */
     --border-radius: 0.375rem;
     --transition: all 0.3s ease;
-    
+
     /* Colores específicos para elementos */
     --profile-image-size: 150px;
     --profile-border-width: 3px;
@@ -47,7 +47,7 @@
     --overlay-opacity-hover: 1;
     --overlay-bg-light: rgba(0, 0, 0, 0.2);
     --overlay-bg-dark: rgba(0, 0, 0, 0.3);
-    
+
     /* Colores adicionales */
     --black: #000000;
     --white: #ffffff;
@@ -69,21 +69,21 @@
     --bg-header: #0a0a0a;
     --bg-footer: #2a2a2a;
     --bg-auth: #1f1f1f;
-    
+
     /* Colores de texto - Tonos grises neutros */
     --text-primary: #f5f5f5;
     --text-secondary: #f5f5f5;
     --text-muted: #f5f5f5;
     --text-light: #ffffff;
     --text-inverse: #212529;
-    
+
     /* Colores de bordes - Tonos grises neutros */
     --border-primary: #404040;
-    
+
     /* Sombras (más suaves para modo oscuro) */
     --shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.3);
     --shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.4);
-    
+
     /* Colores especiales para modo oscuro */
     --star-color: #555555;
     --star-active: #110f0e;
@@ -112,28 +112,28 @@ body {
     background-color: var(--bg-secondary) !important;
 }
 
-.text-primary-custom { 
-    color: var(--primary-color) !important; 
+.text-primary-custom {
+    color: var(--primary-color) !important;
 }
 
-.bg-primary-custom { 
-    background-color: var(--primary-color) !important; 
+.bg-primary-custom {
+    background-color: var(--primary-color) !important;
 }
 
-.border-primary-custom { 
-    border-color: var(--primary-color) !important; 
+.border-primary-custom {
+    border-color: var(--primary-color) !important;
 }
 
-.shadow-custom { 
-    box-shadow: var(--shadow) !important; 
+.shadow-custom {
+    box-shadow: var(--shadow) !important;
 }
 
-.shadow-sm-custom { 
-    box-shadow: var(--shadow-sm) !important; 
+.shadow-sm-custom {
+    box-shadow: var(--shadow-sm) !important;
 }
 
-.transition-custom { 
-    transition: var(--transition) !important; 
+.transition-custom {
+    transition: var(--transition) !important;
 }
 
 /* ============================== NAVEGACIÓN ============================== */
@@ -157,6 +157,19 @@ header.shadow-sm {
 
 [data-theme="dark"] header.shadow-sm {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Badge del carrito */
+#cart-count {
+    font-family: "Verdana", sans-serif !important;
+    background-color: var(--primary-color) !important;
+    color: var(--text-light) !important;
+    font-weight: 700;
+    font-size: 0.65rem;
+    line-height: 1;
+    padding: 0.25rem 0.4rem;
+    border: 2px solid var(--bg-header);
+    box-shadow: var(--shadow-sm);
 }
 
 .navbar-brand {
@@ -475,40 +488,55 @@ header.shadow-sm {
 
 /* ============================== TIPOGRAFÍA ============================== */
 /* Asegurar que todos los títulos usen las variables CSS */
-h1, h2, h3, h4, h5, h6,
-.card-title, .hero-title, .hero-welcome {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.card-title,
+.hero-title,
+.hero-welcome {
     color: var(--text-primary) !important;
     transition: var(--transition);
 }
 
 /* Asegurar que el texto de las tarjetas use las variables CSS */
-.card-text, p, .lead {
+.card-text,
+p,
+.lead {
     color: var(--text-secondary) !important;
     transition: var(--transition);
 }
 
 /* Asegurar que elementos pequeños también usen las variables CSS */
-small, .text-muted {
+small,
+.text-muted {
     color: var(--text-muted) !important;
     transition: var(--transition);
 }
 
 /* ============================== FORMULARIOS ============================== */
-.form-control, .form-select, textarea {
+.form-control,
+.form-select,
+textarea {
     background-color: var(--bg-secondary) !important;
     border-color: var(--border-primary) !important;
     color: var(--text-primary) !important;
     transition: var(--transition);
 }
 
-.form-control:focus, .form-select:focus, textarea:focus {
+.form-control:focus,
+.form-select:focus,
+textarea:focus {
     background-color: var(--bg-secondary) !important;
     border-color: var(--primary-color) !important;
     color: var(--text-primary) !important;
     box-shadow: 0 0 0 0.25rem rgba(255, 107, 0, 0.25) !important;
 }
 
-.form-control::placeholder, textarea::placeholder {
+.form-control::placeholder,
+textarea::placeholder {
     color: var(--text-muted) !important;
 }
 
@@ -725,7 +753,6 @@ small, .text-muted {
     text-overflow: ellipsis;
 }
 
-
 /* ============================== SPINNER ============================== */
 .lds-ring {
     display: inline-block;
@@ -747,13 +774,23 @@ small, .text-muted {
     border-color: var(--primary-color) transparent transparent transparent;
 }
 
-.lds-ring div:nth-child(1) { animation-delay: -0.45s; }
-.lds-ring div:nth-child(2) { animation-delay: -0.3s; }
-.lds-ring div:nth-child(3) { animation-delay: -0.15s; }
+.lds-ring div:nth-child(1) {
+    animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+    animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+    animation-delay: -0.15s;
+}
 
 @keyframes lds-ring {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 #spinner-wrapper {
@@ -772,13 +809,23 @@ small, .text-muted {
 
 /* ============================== HERO SECTION ============================== */
 .hero-section {
-    background: linear-gradient(to bottom, var(--bg-hero) 0%, var(--bg-hero) 60%, var(--bg-secondary) 100%);
+    background: linear-gradient(
+        to bottom,
+        var(--bg-hero) 0%,
+        var(--bg-hero) 60%,
+        var(--bg-secondary) 100%
+    );
     transition: var(--transition);
 }
 
 /* Gradiente específico para modo oscuro */
 [data-theme="dark"] .hero-section {
-    background: linear-gradient(to bottom, var(--bg-hero-light) 0%, var(--bg-hero-light) 60%, var(--bg-secondary) 100%);
+    background: linear-gradient(
+        to bottom,
+        var(--bg-hero-light) 0%,
+        var(--bg-hero-light) 60%,
+        var(--bg-secondary) 100%
+    );
 }
 
 .hero-title {
@@ -909,20 +956,24 @@ footer a:hover {
 }
 
 /* ============================== LEGACY SUPPORT ============================== */
-.checked { 
-    color: var(--primary-color); 
+.checked {
+    color: var(--primary-color);
 }
 
-.nav-orange { 
-    color: var(--primary-color) !important; 
+.nav-orange {
+    color: var(--primary-color) !important;
 }
 
-.nav-orange:hover { 
-    color: var(--primary-hover) !important; 
+.nav-orange:hover {
+    color: var(--primary-hover) !important;
 }
 
 .jumbotron {
-    background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
+    background: linear-gradient(
+        135deg,
+        var(--primary-color),
+        var(--primary-hover)
+    );
     color: white;
     padding: 3rem 0;
     margin-bottom: 2rem;
@@ -937,13 +988,13 @@ footer a:hover {
 
 /* ============================== ANIMACIONES ============================== */
 @keyframes fadeIn {
-    from { 
-        opacity: 0; 
-        transform: translateY(20px); 
+    from {
+        opacity: 0;
+        transform: translateY(20px);
     }
-    to { 
-        opacity: 1; 
-        transform: translateY(0); 
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
@@ -1299,7 +1350,7 @@ footer a:hover {
 }
 
 /* ============================== HALLOWEEN TOGGLE ============================== */
-body #halloween-toggle{
+body #halloween-toggle {
     background: none;
     border: 2px solid var(--primary-color);
     color: var(--primary-color);
@@ -1317,10 +1368,10 @@ body #halloween-toggle{
 
 /* Animación de brillo pulsante */
 @keyframes glow {
-    0% { 
+    0% {
         box-shadow: 0 0 5px rgba(255, 136, 0, 0.5);
     }
-    100% { 
+    100% {
         box-shadow: 0 0 15px rgba(255, 136, 0, 1);
     }
 }
@@ -1333,8 +1384,12 @@ body #halloween-toggle{
 }
 
 @keyframes tremor {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(2px); }
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(2px);
+    }
 }
 
 /* ============================== RESPONSIVE ============================== */
@@ -1342,7 +1397,7 @@ body #halloween-toggle{
     #product-images {
         max-width: 100%;
     }
-    
+
     .carousel-item img {
         height: 400px;
     }
@@ -1352,30 +1407,30 @@ body #halloween-toggle{
     .carousel-item img {
         height: 300px;
     }
-    
+
     .carousel-control-prev-icon,
     .carousel-control-next-icon {
         width: 3rem;
         height: 3rem;
     }
-    
+
     .rating-stars {
         justify-content: center;
     }
-    
+
     .rating-stars label {
         font-size: 1.25rem;
     }
-    
+
     .card-body {
         padding: 1rem;
     }
-    
+
     .navbar-brand img {
         width: 40px;
         height: 40px;
     }
-    
+
     .auth-nav {
         top: 0.5rem;
         left: 0.5rem;
@@ -1386,17 +1441,17 @@ body #halloween-toggle{
     .carousel-item img {
         height: 250px;
     }
-    
+
     .carousel-control-prev-icon,
     .carousel-control-next-icon {
         width: 2.5rem;
         height: 2.5rem;
     }
-    
+
     .rating-stars label {
         font-size: 1rem;
     }
-    
+
     .display-6 {
         font-size: 1.5rem;
     }
@@ -1412,191 +1467,214 @@ body #halloween-toggle{
     transition: var(--transition);
 }
 /*==================== CARRITO DE COMPRAS ==================== */
- 
+
 h1 {
-  font-size: 1.8rem;
-  margin: 0;
-  color: var(--primary-color);
-  text-align: center;
-  margin:2rem ;
+    font-size: 1.8rem;
+    margin: 0;
+    color: var(--primary-color);
+    text-align: center;
+    margin: 2rem;
 }
 
 .main {
-  padding: 2rem;
-  background-color: var(--bg-secondary);
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow);
-  max-width: 1000px;
-  margin: auto;
+    padding: 2rem;
+    background-color: var(--bg-secondary);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    max-width: 1000px;
+    margin: auto;
 }
-
 
 /* Contenedor del carrito */
 #carrito-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 2rem;
-  margin-right: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-right: 20px;
 }
 
 #lista-carrito {
-  flex: 2;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  margin: 10px;
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 10px;
 }
 
 /* Item del carrito */
 .cart-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: var(--bg-card);
-  border: 1px solid var(--border-primary);
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow-sm);
-  padding: 1rem;
-  transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-primary);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+    padding: 1rem;
+    transition: var(--transition);
 }
 
 .cart-item:hover {
-  background-color: var(--bg-hover);
+    background-color: var(--bg-hover);
 }
 
 .cart-item img {
-  width: 80px;
-  height: 80px;
-  object-fit: cover;
-  border-radius: var(--border-radius);
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: var(--border-radius);
 }
 
 .cart-info {
-  flex: 1;
-  margin-left: 1rem;
+    flex: 1;
+    margin-left: 1rem;
 }
 
 .cart-info h3 {
-  margin: 0 0 0.5rem;
-  font-size: 1.1rem;
+    margin: 0 0 0.5rem;
+    font-size: 1.1rem;
 }
 
 .cart-controls {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
-.cart-controls input {
-  width: 50px;
-  text-align: center;
-  border: 1px solid var(--border-primary);
-  border-radius: var(--border-radius);
-  padding: 0.25rem;
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
+.cart-controls input,
+.cantidad-input {
+    width: 50px;
+    text-align: center;
+    border: 1px solid var(--border-primary);
+    border-radius: var(--border-radius);
+    padding: 0.25rem;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    transition: var(--transition);
+}
+
+.cart-controls input:focus,
+.cantidad-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.25rem rgba(255, 107, 0, 0.25);
 }
 
 /* Botones */
 button {
-  cursor: pointer;
-  border: none;
-  border-radius: var(--border-radius);
-  transition: var(--transition);
+    cursor: pointer;
+    border: none;
+    border-radius: var(--border-radius);
+    transition: var(--transition);
 }
 
 .btn-sumar,
 .btn-restar {
-  background-color: var(--primary-color);
-  color: var(--text-light);
-  width: 30px;
-  height: 30px;
-  font-size: 1rem;
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    width: 30px;
+    height: 30px;
+    font-size: 1rem;
 }
 
 .btn-sumar:hover,
 .btn-restar:hover {
-  background-color: var(--primary-hover);
+    background-color: var(--primary-hover);
 }
 
 .btn-eliminar {
-  background-color: transparent;
-  color: var(--text-muted);
-  font-size: 1.2rem;
+    background-color: transparent;
+    color: var(--text-muted);
+    font-size: 1.2rem;
 }
 
 .btn-eliminar:hover {
-  color: var(--primary-color);
+    color: var(--primary-color);
 }
 
 /* Resumen del carrito */
 .resumen {
-  flex: 1;
-  background-color: var(--bg-card);
-  border: 1px solid var(--border-primary);
-  border-radius: var(--border-radius);
-  padding: 1.5rem;
-  box-shadow: var(--shadow-sm);
-  height: fit-content;
+    flex: 1;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-primary);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+    height: fit-content;
 }
 
 .resumen h2 {
-  font-size: 1.3rem;
-  margin-bottom: 1rem;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
 }
 
 #total {
-  font-weight: bold;
-  margin-bottom: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
 }
 
 /* Botones del resumen */
 .btn-comprar,
 .btn-vaciar {
-  display: block;
-  width: 100%;
-  padding: 0.75rem;
-  margin-bottom: 0.75rem;
-  font-weight: bold;
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 0.75rem;
+    font-weight: bold;
 }
 
 .btn-comprar {
-  background-color: var(--primary-color);
-  color: var(--text-light);
+    background-color: var(--primary-color);
+    color: var(--text-light);
 }
 
 .btn-comprar:hover {
-  background-color: var(--primary-hover);
+    background-color: var(--primary-hover);
 }
 
 .btn-vaciar {
-  background-color: var(--bg-tertiary);
-  color: var(--text-primary);
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
 }
 
 .btn-vaciar:hover {
-  background-color: var(--bg-hover);
+    background-color: var(--bg-hover);
+}
+
+/* Modo oscuro: mejorar contraste de Vaciar carrito */
+[data-theme="dark"] .btn-vaciar {
+    background-color: var(--bg-hover) !important;
+    color: var(--text-light) !important;
+    border: 1px solid var(--border-primary) !important;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.04),
+        0 2px 6px rgba(0, 0, 0, 0.5) !important;
+}
+
+[data-theme="dark"] .btn-vaciar:hover {
+    background-color: var(--bg-tertiary) !important;
+    border-color: var(--border-primary) !important;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-  #carrito-container {
-    flex-direction: column;
-  }
+    #carrito-container {
+        flex-direction: column;
+    }
 
-  .cart-item {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+    .cart-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 
-  .cart-controls {
-    margin-top: 0.5rem;
-  }
+    .cart-controls {
+        margin-top: 0.5rem;
+    }
 }
 /* ============================== FOOTER FIJO AL FINAL DE LA PÁGINA ============================== */
 /* Hacer que body y html ocupen toda la altura */
-html, body {
+html,
+body {
     height: 100%;
     margin: 0;
 }
