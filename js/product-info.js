@@ -27,6 +27,12 @@ function cargarProducto() {
         .then(producto => {
             mostrarProducto(producto);
             mostrarRelacionados(producto.relatedProducts);
+
+            const botonBuyNow = document.getElementById("btn-buyNow");
+            botonBuyNow.addEventListener("click", () => {
+                localStorage.setItem("productoSeleccionado", JSON.stringify(producto));
+                window.location.href="buy-now.html"; 
+            });
         })
         .catch(err => {
             document.querySelector(".container").innerHTML = `
