@@ -1656,6 +1656,36 @@ button {
     border-color: var(--border-primary) !important;
 }
 
+/* Botón de añadir al carrito en modo oscuro: gris oscuro legible */
+[data-theme="dark"] #btn-cart {
+    background-color: var(--bg-tertiary) !important;
+    border-color: var(--border-primary) !important;
+    color: var(--text-light) !important;
+    transition: var(--transition);
+}
+
+[data-theme="dark"] #btn-cart:hover {
+    background-color: var(--bg-hover) !important;
+    border-color: var(--border-primary) !important;
+    color: var(--text-light) !important;
+}
+
+/* Título de sección cantidad en modo oscuro */
+[data-theme="dark"] h6.fw-bold.mb-3 {
+    color: var(--text-light) !important;
+}
+
+/* Label y controles de cantidad en modo oscuro */
+[data-theme="dark"] label[for="cantidad"],
+[data-theme="dark"] #cantidad {
+    color: var(--text-light) !important;
+}
+
+[data-theme="dark"] #cantidad {
+    background-color: var(--bg-card) !important;
+    border-color: var(--border-primary) !important;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     #carrito-container {
