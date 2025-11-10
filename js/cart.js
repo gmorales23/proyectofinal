@@ -8,6 +8,12 @@ window.addEventListener("DOMContentLoaded", function() {
     actualizarBadgeCarrito();
 });
 
+function continuarCompra() {
+    document.getElementById("btn-continuar").addEventListener("click", function() {
+        window.location.href = "buy-now.html";
+    });
+}
+
 function cargarCarrito() {
     const guardado = localStorage.getItem(clave);
     cartItems = guardado ? JSON.parse(guardado) : [];
@@ -22,7 +28,7 @@ function guardarCarrito() {
 
 function configurarEventos() {
     document.getElementById("btn-vaciar").addEventListener("click", vaciarCarrito);
-    document.getElementById("btn-comprar").addEventListener("click", finalizarCompra);
+    document.getElementById("btn-continuar").addEventListener("click", finalizarCompra);
 }
 
 function renderizarCarrito() {

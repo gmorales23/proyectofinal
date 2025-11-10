@@ -31,90 +31,47 @@
         <header class="shadow-sm">
                <!-- Navbar -->
             <nav class="navbar navbar-expand-lg navbar-dark">
-                <div class="container-fluid">
-                    <div class="d-flex align-items-center">
-                        <a
-                            class="navbar-brand d-flex align-items-center"
-                            href="index.html"
-                        >
-                            <img
-                                src="img/japLogo.png"
-                                alt="Logo JAP"
-                                class="me-2 logo-nav"
-                            />
-                            <span class="fw-bold text-white fs-4"
-                                >e-Mercado</span
-                            >
-                        </a>
-                        <button
-                            id="theme-toggle"
-                            class="theme-toggle ms-3"
-                            onclick="cambiarTema(event)"
-                        >
-                            <i class="fas fa-moon"></i>
-                        </button>
-                    </div>
-
-                    <div class="d-flex align-items-center">
-                        
-                        <button
-                            class="navbar-toggler border-0 ms-2"
-                            type="button"
-                            data-bs-toggle="collapse"
-                            data-bs-target="#navbarNav"
-                            aria-controls="navbarNav"
-                            aria-expanded="false"
-                            aria-label="Toggle navigation"
-                        >
-                            <i class="fas fa-bars"></i>
-                        </button>
-                    </div>
-
-                
-
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a
-                                    class="nav-link fw-semibold text-white"
-                                    href="index.html"
-                                >
-                                    <i class="fas fa-home me-1"></i>Inicio
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a
-                                    class="nav-link fw-semibold text-white"
-                                    href="categories.html"
-                                >
-                                    <i class="fas fa-th-large me-1"></i
-                                    >Categorías
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a
-                                    class="nav-link fw-semibold text-white"
-                                    href="sell.html"
-                                >
-                                    <i class="fas fa-plus-circle me-1"></i
-                                    >Vender
-                                </a>
-                            </li>
-                            <li class="nav-item" id="userNav"></li>
-                            <li class="nav-item">
-                                <a class="nav-link fw-semibold text-white position-relative" href="cart.html">
-                                    <i class="fa fa-shopping-cart"></i>
-                                    <span class="ms-1">Carrito</span>
-                                    <span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size:0.65rem;">
-                                        0
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="nav-item" id="userNav"></li>
-                        </ul>
-                    </div>
+            <div class="container-fluid">
+                <div class="d-flex align-items-center">
+                    <a class="navbar-brand d-flex align-items-center" href="index.html">
+                        <img src="img/japLogo.png" alt="Logo JAP" class="me-2 logo-nav">
+                        <span class="fw-bold text-white fs-4">e-Mercado</span>
+                    </a>
+                    <button id="theme-toggle" class="theme-toggle ms-3" onclick="cambiarTema(event)">
+                        <i class="fas fa-moon"></i>
+                    </button>
                 </div>
-            </nav>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link fw-semibold text-white" href="index.html">
+                                <i class="fas fa-home me-1"></i>Inicio
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link fw-semibold text-white" href="categories.html">
+                                <i class="fas fa-th-large me-1"></i>Categorías
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link fw-semibold text-white" href="sell.html">
+                                <i class="fas fa-plus-circle me-1"></i>Vender
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link fw-semibold text-white position-relative" href="cart.html">
+                                <i class="fa fa-shopping-cart"></i>
+                                <span class="ms-1">Carrito</span>
+                                <span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size:0.65rem;">0</span>
+                            </a>
+                        </li>
+                        <li class="nav-item" id="userNav">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
 
             <div class="container-fluid text-center py-5 hero-section">
                 <h1 class="display-4 fw-bold hero-title">
@@ -227,9 +184,9 @@
         <script src="js/index.js"></script>
         <script src="js/init.js"></script>
         <script src="js/cart-badge.js"></script>
-        <script src="js/mostrarUsuarioLogueado.js"></script>
+        
         <script src="js/proteccion.js"></script>
         <script src="js/theme-toggle.js"></script>
-
+        <script src="js/mostrarUsuarioLogueado.js"></script>
     </body>
 </html>

@@ -1615,7 +1615,7 @@ button {
 }
 
 /* Botones del resumen */
-.btn-comprar,
+.btn-continuar,
 .btn-vaciar {
     display: block;
     width: 100%;
@@ -1624,12 +1624,12 @@ button {
     font-weight: bold;
 }
 
-.btn-comprar {
+.btn-continuar {
     background-color: var(--primary-color);
     color: var(--text-light);
 }
 
-.btn-comprar:hover {
+.btn-continuar:hover {
     background-color: var(--primary-hover);
 }
 
