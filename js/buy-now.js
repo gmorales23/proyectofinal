@@ -4,11 +4,24 @@ document.addEventListener("DOMContentLoaded", () => {
   const envioCostoElem = document.getElementById("envio-costo");
   const totalElem = document.getElementById("total");
   
-  const carritoJSON = localStorage.getItem("cartItems");
-  const carrito = JSON.parse(carritoJSON) || [];
+  // Verificar si viene de "comprar ahora" o del carrito
+  const compraDirectJSON = localStorage.getItem("compraDirect");
+  let carrito = [];
+  let esCompraDirecta = false;
+  
+  if (compraDirectJSON) {
+    // Viene de "comprar ahora" - usar solo ese producto
+    carrito = JSON.parse(compraDirectJSON);
+    esCompraDirecta = true;
+    localStorage.removeItem("compraDirect");
+  } else {
+    // Viene del carrito normal
+    const carritoJSON = localStorage.getItem("cartItems");
+    carrito = JSON.parse(carritoJSON) || [];
+  }
 
   if (carrito.length === 0) {
-    alert("Tu carrito está vacío. Redirigiendo...");
+    alert("No hay productos para comprar. Redirigiendo...");
     window.location.href = "cart.html";
     return;
   }
@@ -224,7 +237,12 @@ document.addEventListener("DOMContentLoaded", () => {
       };
 
       localStorage.setItem("datosEnvio", JSON.stringify(datosEnvio));
-      localStorage.removeItem("cartItems");
+      
+      // Solo vaciar carrito si vino del carrito (no de compra directa)
+      if (!esCompraDirecta) {
+        localStorage.removeItem("cartItems");
+      }
+      
       window.location.href = "compra-exitosa.html";
     });
   }

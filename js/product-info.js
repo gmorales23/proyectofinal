@@ -27,7 +27,17 @@ function cargarProducto() {
 
       const botonBuyNow = document.getElementById("btn-buyNow");
       botonBuyNow.addEventListener("click", () => {
-        localStorage.setItem("productoSeleccionado", JSON.stringify(producto));
+        const cantidad = parseInt(document.getElementById("cantidad").value) || 1;
+        const productoCompra = {
+          id: producto.id,
+          name: producto.name,
+          unitCost: producto.cost,
+          currency: producto.currency,
+          image: Array.isArray(producto.images) && producto.images.length ? producto.images[0] : "",
+          count: cantidad
+        };
+        // Guardar producto para compra directa
+        localStorage.setItem("compraDirect", JSON.stringify([productoCompra]));
         window.location.href = "buy-now.html";
       });
 
