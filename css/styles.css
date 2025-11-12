@@ -1725,3 +1725,152 @@ footer {
     background-color: #f8f9fa;
     padding: 1rem 0;
 }
+
+/* ============================== BUY-NOW FORM SECTIONS ============================== */
+.buy-form-section {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-primary);
+    transition: var(--transition);
+}
+
+[data-theme="dark"] .buy-form-section {
+    background-color: var(--bg-card);
+    border-color: var(--border-primary);
+}
+
+/* Labels de form-check en modo oscuro */
+[data-theme="dark"] .form-check-label {
+    color: var(--text-primary) !important;
+}
+
+/* Botón primario en buy-now */
+.btn-primary {
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+    color: white !important;
+    transition: var(--transition);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover) !important;
+    border-color: var(--primary-hover) !important;
+}
+
+.btn-primary:focus {
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 0 0 0.25rem rgba(255, 107, 0, 0.25) !important;
+}
+
+/* Divisor hr en modo oscuro */
+[data-theme="dark"] hr {
+    border-color: var(--border-primary) !important;
+    opacity: 0.5;
+}
+
+/* Mensajes de error de validación */
+.invalid-feedback {
+    color: #dc3545;
+}
+
+[data-theme="dark"] .invalid-feedback {
+    color: #ff6b6b;
+}
+
+/* Mensajes de error personalizados */
+.error-message {
+    display: none;
+    color: #dc3545 !important;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+[data-theme="dark"] .error-message {
+    color: #ff6b6b !important;
+}
+
+/* ============================== COMPRA EXITOSA ============================== */
+.compra-exitosa-card {
+    background-color: var(--bg-card);
+    transition: var(--transition);
+}
+
+.success-icon {
+    font-size: 5rem;
+    color: #28a745;
+    animation: scaleIn 0.5s ease-in-out;
+}
+
+@keyframes scaleIn {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.compra-detalles {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-primary);
+    transition: var(--transition);
+}
+
+.producto-item {
+    background-color: var(--bg-secondary);
+    border-color: var(--border-primary) !important;
+    transition: var(--transition);
+}
+
+.producto-item:hover {
+    background-color: var(--bg-hover);
+}
+
+.productos-comprados {
+    text-align: left;
+}
+
+/* Modo oscuro para página de compra exitosa */
+[data-theme="dark"] .compra-exitosa-card {
+    background-color: var(--bg-card);
+}
+
+[data-theme="dark"] .compra-detalles {
+    background-color: var(--bg-secondary);
+    border-color: var(--border-primary);
+}
+
+[data-theme="dark"] .producto-item {
+    background-color: var(--bg-secondary);
+    border-color: var(--border-primary) !important;
+}
+
+/* Botón outline secondary personalizado */
+.btn-outline-secondary {
+    border-color: var(--border-primary);
+    color: var(--text-primary);
+    background-color: transparent;
+    transition: var(--transition);
+}
+
+.btn-outline-secondary:hover {
+    background-color: var(--bg-hover);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+[data-theme="dark"] .btn-outline-secondary {
+    border-color: var(--border-primary);
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .btn-outline-secondary:hover {
+    background-color: var(--bg-hover);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}

@@ -3,56 +3,56 @@ let cartItems = [];
 
 // Cambié function por arrow
 window.addEventListener("DOMContentLoaded", () => {
-    mostrarUsuarioLogueado("#userNav", false);
-    cargarCarrito();
-    configurarEventos();
-    actualizarBadgeCarrito();
+  mostrarUsuarioLogueado("#userNav", false);
+  cargarCarrito();
+  configurarEventos();
+  actualizarBadgeCarrito();
 });
 
 function cargarCarrito() {
-    const guardado = localStorage.getItem(clave);
-    cartItems = guardado ? JSON.parse(guardado) : [];
-    renderizarCarrito();
+  const guardado = localStorage.getItem(clave);
+  cartItems = guardado ? JSON.parse(guardado) : [];
+  renderizarCarrito();
 }
 
 function guardarCarrito() {
-    localStorage.setItem(clave, JSON.stringify(cartItems));
-    renderizarCarrito();
-    actualizarBadgeCarrito();
+  localStorage.setItem(clave, JSON.stringify(cartItems));
+  renderizarCarrito();
+  actualizarBadgeCarrito();
 }
 
-//Borré la función continuarCompra() para añadir el evento acá. 
+//Borré la función continuarCompra() para añadir el evento acá.
 // Además, agregué validaciones if para verificar que los elementos existan antes de agregar listeners y vefirifaciones de que el carrito no esté vacío
 function configurarEventos() {
-    const btnVaciar = document.getElementById("btn-vaciar");
-    const btnContinuar = document.getElementById("btn-continuar");
+  const btnVaciar = document.getElementById("btn-vaciar");
+  const btnContinuar = document.getElementById("btn-continuar");
 
-    if (btnVaciar) {
-        btnVaciar.addEventListener("click", vaciarCarrito);
-    }
+  if (btnVaciar) {
+    btnVaciar.addEventListener("click", vaciarCarrito);
+  }
 
-if (btnContinuar) {
-  btnContinuar.addEventListener("click", function() {
-    const carritoGuardado = JSON.parse(localStorage.getItem("cartItems")) || [];
-    if (carritoGuardado.length === 0) {
-      alert("Tu carrito está vacío.");
-      return;
-    }
-    window.location.href = "buy-now.html";
-  });
-}
-
+  if (btnContinuar) {
+    btnContinuar.addEventListener("click", function () {
+      const carritoGuardado =
+        JSON.parse(localStorage.getItem("cartItems")) || [];
+      if (carritoGuardado.length === 0) {
+        alert("Tu carrito está vacío.");
+        return;
+      }
+      window.location.href = "buy-now.html";
+    });
+  }
 }
 
 //Cambié la concatenación de strings por template literals y el for por forEach
 function renderizarCarrito() {
-    const listaCarrito = document.getElementById("lista-carrito");
-    const totalElement = document.getElementById("total");
+  const listaCarrito = document.getElementById("lista-carrito");
+  const totalElement = document.getElementById("total");
 
-    if (!listaCarrito || !totalElement) return;
+  if (!listaCarrito || !totalElement) return;
 
-    if (cartItems.length === 0) {
-        listaCarrito.innerHTML = `
+  if (cartItems.length === 0) {
+    listaCarrito.innerHTML = `
             <div class="text-center py-5">
                 <i class="fas fa-shopping-cart fa-4x text-muted mb-3"></i>
                 <h3 class="text-muted mb-2">Tu carrito está vacío</h3>
@@ -62,30 +62,30 @@ function renderizarCarrito() {
                 </a>
             </div>
         `;
-        totalElement.textContent = "Total: $0.00";
-        return;
-    }
+    totalElement.textContent = "Total: $0.00";
+    return;
+  }
 
-    listaCarrito.innerHTML = "";
+  listaCarrito.innerHTML = "";
 
-    cartItems.forEach((item, index) => {
-        const itemDiv = crearItemCarrito(item, index);
-        listaCarrito.appendChild(itemDiv);
-    });
+  cartItems.forEach((item, index) => {
+    const itemDiv = crearItemCarrito(item, index);
+    listaCarrito.appendChild(itemDiv);
+  });
 
-    actualizarTotal();
+  actualizarTotal();
 }
 
 //También cambié la concatenación por backstick y metí bootstrap, además de meter arrow en los listeners
 function crearItemCarrito(item, index) {
-    const div = document.createElement("div");
-    div.className = "cart-item d-flex align-items-center p-3 border-bottom";
+  const div = document.createElement("div");
+  div.className = "cart-item d-flex align-items-center p-3 border-bottom";
 
-    const subtotal = item.unitCost * item.count;
-    const precioFormateado = `${item.currency} ${item.unitCost.toLocaleString()}`;
-    const subtotalFormateado = `${item.currency} ${subtotal.toLocaleString()}`;
+  const subtotal = item.unitCost * item.count;
+  const precioFormateado = `${item.currency} ${item.unitCost.toLocaleString()}`;
+  const subtotalFormateado = `${item.currency} ${subtotal.toLocaleString()}`;
 
-    div.innerHTML = `
+  div.innerHTML = `
         <img src="${item.image}" alt="${item.name}" class="me-3" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px;">
         <div class="flex-grow-1">
             <h3 class="h5 mb-1">${item.name}</h3>
@@ -100,97 +100,101 @@ function crearItemCarrito(item, index) {
             <button class="btn btn-sm btn-outline-secondary btn-sumar" aria-label="Sumar">
                 <i class="fas fa-plus"></i>
             </button>
-            <button class="btn btn-sm btn-outline-danger btn-eliminar" aria-label="Eliminar">
+            <button class="btn btn-sm btn-outline-secondary btn-eliminar" aria-label="Eliminar">
                 <i class="fas fa-trash"></i>
             </button>
         </div>
     `;
 
-    const btnRestar = div.querySelector(".btn-restar");
-    const btnSumar = div.querySelector(".btn-sumar");
-    const btnEliminar = div.querySelector(".btn-eliminar");
-    const inputCantidad = div.querySelector(".cantidad-input");
+  const btnRestar = div.querySelector(".btn-restar");
+  const btnSumar = div.querySelector(".btn-sumar");
+  const btnEliminar = div.querySelector(".btn-eliminar");
+  const inputCantidad = div.querySelector(".cantidad-input");
 
-    btnRestar.addEventListener("click", () => decrementarCantidad(index));
-    btnSumar.addEventListener("click", () => incrementarCantidad(index));
-    btnEliminar.addEventListener("click", () => eliminarItem(index));
-    inputCantidad.addEventListener("change", () => actualizarCantidad(index, inputCantidad.value));
+  btnRestar.addEventListener("click", () => decrementarCantidad(index));
+  btnSumar.addEventListener("click", () => incrementarCantidad(index));
+  btnEliminar.addEventListener("click", () => eliminarItem(index));
+  inputCantidad.addEventListener("change", () =>
+    actualizarCantidad(index, inputCantidad.value)
+  );
 
-    return div;
+  return div;
 }
 
 function actualizarTotal() {
-    const totalElement = document.getElementById("total");
-    if (!totalElement) return;
+  const totalElement = document.getElementById("total");
+  if (!totalElement) return;
 
-    if (cartItems.length === 0) {
-        totalElement.textContent = "Total: $0.00";
-        return;
-    }
+  if (cartItems.length === 0) {
+    totalElement.textContent = "Total: $0.00";
+    return;
+  }
 
-    const totalesPorMoneda = {};
+  const totalEnPesos = cartItems.reduce((total, item) => {
+    const subtotal = item.unitCost * item.count;
+    const subtotalEnPesos = convertirAPesos(subtotal, item.currency);
+    return total + subtotalEnPesos;
+  }, 0);
 
-    cartItems.forEach(item => {
-        const subtotal = item.unitCost * item.count;
-        const moneda = item.currency;
-        totalesPorMoneda[moneda] = (totalesPorMoneda[moneda] || 0) + subtotal;
-    });
-
-    const textos = Object.keys(totalesPorMoneda).map(moneda => 
-        `${moneda} ${totalesPorMoneda[moneda].toLocaleString()}`
-    );
-
-    totalElement.textContent = "Total: " + textos.join(" + ");
+  totalElement.textContent = `Total: $${totalEnPesos.toLocaleString()}`;
 }
 
 // Simplifiqué el código con el operador de incremento
 function incrementarCantidad(index) {
-    cartItems[index].count++;
-    guardarCarrito();
+  cartItems[index].count++;
+  guardarCarrito();
 }
 
 // Simplifiqué el código con el operador de decremento
 
 function decrementarCantidad(index) {
-    if (cartItems[index].count > 1) {
-        cartItems[index].count--;
-        guardarCarrito();
-    }
+  if (cartItems[index].count > 1) {
+    cartItems[index].count--;
+    guardarCarrito();
+  }
 }
 
-// Mofiqué para que, si el usuario ingresa un valor inválido (NaN) o menor a 1, se establece automáticamente en 1. 
+// Mofiqué para que, si el usuario ingresa un valor inválido (NaN) o menor a 1, se establece automáticamente en 1.
 // Previene errores y comportamientos inesperados.
 
 function actualizarCantidad(index, nuevaCantidad) {
-    const cant = parseInt(nuevaCantidad);
-    cartItems[index].count = isNaN(cant) || cant < 1 ? 1 : cant;
-    guardarCarrito();
+  const cant = parseInt(nuevaCantidad);
+  cartItems[index].count = isNaN(cant) || cant < 1 ? 1 : cant;
+  guardarCarrito();
 }
 
 function eliminarItem(index) {
-    if (confirm("¿Quieres eliminar este producto del carrito?")) {
-        cartItems.splice(index, 1);
-        guardarCarrito();
-    }
+  if (confirm("¿Quieres eliminar este producto del carrito?")) {
+    cartItems.splice(index, 1);
+    guardarCarrito();
+  }
 }
 
 function vaciarCarrito() {
-    if (confirm("¿Quieres vaciar todo el carrito?")) {
-        cartItems = [];
-        guardarCarrito();
-    }
+  if (confirm("¿Quieres vaciar todo el carrito?")) {
+    cartItems = [];
+    guardarCarrito();
+  }
 }
 
-//Eliminé la variable guardado redundante, usé directamente en el parsing: JSON.parse(localStorage.getItem(clave)) || [] 
+//Eliminé la variable guardado redundante, usé directamente en el parsing: JSON.parse(localStorage.getItem(clave)) || []
 // y cambié el bucle for con var por reduce() con arrow function. Código más conciso, moderno y eficiente usando programación funcional.
 
 function actualizarBadgeCarrito() {
-    const badge = document.getElementById("cart-count");
-    if (!badge) return;
+  const badge = document.getElementById("cart-count");
+  if (!badge) return;
 
-    const items = JSON.parse(localStorage.getItem(clave)) || [];
-    const total = items.reduce((sum, item) => sum + (parseInt(item.count) || 0), 0);
+  const items = JSON.parse(localStorage.getItem(clave)) || [];
+  const total = items.reduce(
+    (sum, item) => sum + (parseInt(item.count) || 0),
+    0
+  );
 
-    badge.textContent = total;
-    badge.style.display = total > 0 ? "inline-block" : "none";
+  badge.textContent = total;
+  badge.style.display = total > 0 ? "inline-block" : "none";
+}
+
+function convertirAPesos(precio, moneda) {
+  if (!precio) return 0;
+  return moneda === "USD" ? Number(precio) * 40 : Number(precio);
 }

@@ -106,9 +106,6 @@ document.addEventListener("DOMContentLoaded", function() {
       e.preventDefault();
       e.stopPropagation();
 
-      // Agregar clase de validación de Bootstrap
-      form.classList.add("was-validated");
-
       // Verificar si el formulario es válido
       const departamento = document.getElementById("departamento").value.trim();
       const calle = document.getElementById("calle").value.trim();
@@ -117,36 +114,44 @@ document.addEventListener("DOMContentLoaded", function() {
       const tipoEnvio = document.querySelector('input[name="envio"]:checked');
       const formaPago = document.querySelector('input[name="pago"]:checked');
 
-      // Mostrar/ocultar mensajes de error para radio buttons
-      const envioError = document.getElementById("envio-error");
-      const pagoError = document.getElementById("pago-error");
+      // Ocultar todos los mensajes de error
+      document.querySelectorAll('.error-message').forEach(msg => msg.style.display = 'none');
 
-      if (!tipoEnvio && envioError) {
-        envioError.style.display = "block";
-      } else if (envioError) {
-        envioError.style.display = "none";
+      // Validar cada campo y mostrar errores si es necesario
+      let hayErrores = false;
+
+      if (!departamento) {
+        document.getElementById("error-departamento").style.display = "block";
+        hayErrores = true;
       }
 
-      if (!formaPago && pagoError) {
-        pagoError.style.display = "block";
-      } else if (pagoError) {
-        pagoError.style.display = "none";
+      if (!calle) {
+        document.getElementById("error-calle").style.display = "block";
+        hayErrores = true;
       }
 
-      // Si hay campos inválidos, hacer scroll al primero
-      if (!departamento || !calle || !numerodepuerta || !esquina || !tipoEnvio || !formaPago) {
-        console.log("Formulario incompleto");
-        
-        // Encontrar el primer campo inválido y hacer scroll hacia él
-        const primerInvalido = form.querySelector(":invalid") || 
-                              (!tipoEnvio ? document.getElementById("envio-premium") : null) ||
-                              (!formaPago ? document.getElementById("pago-tarjeta") : null);
-        
-        if (primerInvalido) {
-          primerInvalido.scrollIntoView({ behavior: "smooth", block: "center" });
-          primerInvalido.focus();
-        }
-        
+      if (!numerodepuerta) {
+        document.getElementById("error-numerodepuerta").style.display = "block";
+        hayErrores = true;
+      }
+
+      if (!esquina) {
+        document.getElementById("error-esquina").style.display = "block";
+        hayErrores = true;
+      }
+
+      if (!tipoEnvio) {
+        document.getElementById("error-envio").style.display = "block";
+        hayErrores = true;
+      }
+
+      if (!formaPago) {
+        document.getElementById("error-pago").style.display = "block";
+        hayErrores = true;
+      }
+
+      // Si hay errores, detener el envío
+      if (hayErrores) {
         return;
       }
 
@@ -175,13 +180,11 @@ document.addEventListener("DOMContentLoaded", function() {
       localStorage.setItem("datosEnvio", JSON.stringify(datosEnvio));
       console.log("Datos guardados:", datosEnvio);
 
-      if (successMsg) {
-        successMsg.classList.remove("d-none");
-      }
+      // Vaciar el carrito después de confirmar la compra
+      localStorage.removeItem("cartItems");
 
-      setTimeout(function() {
-        window.location.href = "payment.html";
-      }, 1200);
+      // Redirigir a página de compra exitosa
+      window.location.href = "compra-exitosa.html";
     });
   }
 });

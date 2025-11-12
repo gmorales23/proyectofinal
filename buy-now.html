@@ -2,11 +2,20 @@
 <html lang="es">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
     <title>eMercado - Finalizar compra</title>
-    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,700,900" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Raleway:300,400,700,900"
+      rel="stylesheet"
+    />
     <link href="css/bootstrap.min.css" rel="stylesheet" />
-    <link href="css/font-awesome.min.css" rel="stylesheet" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      rel="stylesheet"
+    />
     <link href="css/styles.css" rel="stylesheet" />
     <link href="css/haloween.css" rel="stylesheet" />
     <script>
@@ -25,21 +34,26 @@
               <img src="img/japLogo.png" alt="Logo JAP" class="me-2 logo-nav" />
               <span class="fw-bold text-white fs-4">e-Mercado</span>
             </a>
-            <button id="theme-toggle" class="theme-toggle ms-3" onclick="cambiarTema(event)">
+            <button
+              id="theme-toggle"
+              class="theme-toggle ms-3"
+              onclick="cambiarTema(event)"
+            >
               <i class="fas fa-moon"></i>
             </button>
           </div>
 
-          <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <button
+            class="navbar-toggler border-0"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+          >
             <i class="fas fa-bars"></i>
           </button>
 
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-              <li class="nav-item"><a class="nav-link text-white" href="index.html"><i class="fas fa-home me-1"></i>Inicio</a></li>
-              <li class="nav-item"><a class="nav-link text-white" href="categories.html"><i class="fas fa-th-large me-1"></i>Categorías</a></li>
-              <li class="nav-item"><a class="nav-link text-white" href="sell.html"><i class="fas fa-plus-circle me-1"></i>Vender</a></li>
-              <li class="nav-item"><a class="nav-link text-white" href="cart.html"><i class="fa fa-shopping-cart"></i> Carrito</a></li>
               <li class="nav-item" id="userNav"></li>
             </ul>
           </div>
@@ -53,70 +67,137 @@
       <div class="row">
         <!-- Formulario -->
         <div class="col-lg-8 mb-4">
-                    <form id="buy-form" novalidate>
+          <form id="buy-form" novalidate>
             <!-- Datos de envío -->
-            <div class="p-4 bg-white rounded shadow-sm">
+            <div class="p-4 rounded shadow-sm buy-form-section">
               <h4 class="mb-3">Datos de envío</h4>
               <div class="mb-3">
-                <label for="departamento" class="form-label">Departamento</label>
-                <input type="text" class="form-control" id="departamento" required />
-                <div class="invalid-feedback">Ingrese el departamento.</div>
+                <label for="departamento" class="form-label"
+                  >Departamento</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="departamento"
+                  required
+                />
+                <div class="error-message" id="error-departamento">
+                  Ingrese el departamento.
+                </div>
               </div>
 
               <div class="mb-3">
                 <label for="calle" class="form-label">Calle</label>
                 <input type="text" class="form-control" id="calle" required />
-                <div class="invalid-feedback">Ingrese la calle.</div>
+                <div class="error-message" id="error-calle">
+                  Ingrese la calle.
+                </div>
               </div>
 
               <div class="mb-3">
-                <label for="numerodepuerta" class="form-label">Número de puerta</label>
-                <input type="text" class="form-control" id="numerodepuerta" required />
-                <div class="invalid-feedback">Ingrese el número de puerta.</div>
+                <label for="numerodepuerta" class="form-label"
+                  >Número de puerta</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="numerodepuerta"
+                  required
+                />
+                <div class="error-message" id="error-numerodepuerta">
+                  Ingrese el número de puerta.
+                </div>
               </div>
 
               <div class="mb-3">
                 <label for="esquina" class="form-label">Esquina</label>
                 <input type="text" class="form-control" id="esquina" required />
-                <div class="invalid-feedback">Ingrese la esquina.</div>
+                <div class="error-message" id="error-esquina">
+                  Ingrese la esquina.
+                </div>
               </div>
             </div>
 
             <!-- Tipo de envío -->
-            <div class="p-4 bg-white rounded shadow-sm mt-4">
+            <div class="p-4 rounded shadow-sm mt-4 buy-form-section">
               <h4 class="mb-3">Tipo de envío</h4>
               <div>
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="envio" id="envio-premium" value="premium" required />
-                  <label class="form-check-label" for="envio-premium">Premium 2 a 5 días (15%)</label>
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="envio"
+                    id="envio-premium"
+                    value="premium"
+                    required
+                  />
+                  <label class="form-check-label" for="envio-premium"
+                    >Premium 2 a 5 días (15%)</label
+                  >
                 </div>
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="envio" id="envio-express" value="express" required />
-                  <label class="form-check-label" for="envio-express">Express 5 a 8 días (7%)</label>
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="envio"
+                    id="envio-express"
+                    value="express"
+                    required
+                  />
+                  <label class="form-check-label" for="envio-express"
+                    >Express 5 a 8 días (7%)</label
+                  >
                 </div>
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="envio" id="envio-standard" value="standard" required />
-                  <label class="form-check-label" for="envio-standard">Standard 12 a 15 días (5%)</label>
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="envio"
+                    id="envio-standard"
+                    value="standard"
+                    required
+                  />
+                  <label class="form-check-label" for="envio-standard"
+                    >Standard 12 a 15 días (5%)</label
+                  >
                 </div>
-                <div class="invalid-feedback d-block" id="envio-error" style="display: none !important;">
+                <div class="error-message" id="error-envio">
                   Seleccione un tipo de envío.
                 </div>
               </div>
             </div>
 
             <!-- Forma de pago -->
-            <div class="p-4 bg-white rounded shadow-sm mt-4">
+            <div class="p-4 rounded shadow-sm mt-4 buy-form-section">
               <h4 class="mb-3">Forma de pago</h4>
               <div>
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="pago" id="pago-tarjeta" value="tarjeta" required />
-                  <label class="form-check-label" for="pago-tarjeta">Tarjeta de crédito o débito</label>
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="pago"
+                    id="pago-tarjeta"
+                    value="tarjeta"
+                    required
+                  />
+                  <label class="form-check-label" for="pago-tarjeta"
+                    >Tarjeta de crédito o débito</label
+                  >
                 </div>
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="pago" id="pago-transferencia" value="transferencia" required />
-                  <label class="form-check-label" for="pago-transferencia">Transferencia bancaria</label>
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="pago"
+                    id="pago-transferencia"
+                    value="transferencia"
+                    required
+                  />
+                  <label class="form-check-label" for="pago-transferencia"
+                    >Transferencia bancaria</label
+                  >
                 </div>
-                <div class="invalid-feedback d-block" id="pago-error" style="display: none !important;">
+                <div class="error-message" id="error-pago">
                   Seleccione una forma de pago.
                 </div>
               </div>
@@ -126,16 +207,22 @@
 
         <!-- Costos -->
         <div class="col-lg-4">
-          <div class="p-4 bg-white rounded shadow-sm sticky-top" style="top: 100px;">
+          <div
+            class="p-4 rounded shadow-sm sticky-top buy-form-section"
+            style="top: 100px"
+          >
             <h4 class="mb-3">Costos</h4>
             <p id="subtotal">Subtotal: $0</p>
             <p id="envio-costo">Costo de envío: $0</p>
             <hr />
             <h5 id="total">Total: $0</h5>
-            <button type="submit" form="buy-form" class="btn btn-primary w-100 mt-3">Confirmar compra</button>
-            <div id="successMsg" class="alert alert-success mt-3 d-none">
-              ¡Datos guardados correctamente! Redirigiendo al pago...
-            </div>
+            <button
+              type="submit"
+              form="buy-form"
+              class="btn btn-primary w-100 mt-3"
+            >
+              Confirmar compra
+            </button>
           </div>
         </div>
       </div>
@@ -147,18 +234,24 @@
         <p class="float-end"><a href="#">Volver arriba</a></p>
         <p>
           Este sitio forma parte de
-          <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jóvenes a Programar</a>
+          <a href="https://jovenesaprogramar.edu.uy/" target="_blank"
+            >Jóvenes a Programar</a
+          >
         </p>
       </div>
     </footer>
 
     <div id="spinner-wrapper">
-      <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+      <div class="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
     </div>
 
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/init.js"></script>
-    <script src="js/cart.js"></script>
     <script src="js/mostrarUsuarioLogueado.js"></script>
     <script src="js/proteccion.js"></script>
     <script src="js/theme-toggle.js"></script>
