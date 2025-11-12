@@ -1,4 +1,4 @@
-/* ============================== VARIABLES CSS ============================== */
+/* Variables CSS */
 :root {
     /* Colores primarios */
     --primary-color: #ff6b00;
@@ -52,13 +52,10 @@
     --black: #000000;
     --white: #ffffff;
     --dark-bg: #0a0a0a;
-    --halloween-orange: #ff8800;
-    --halloween-black: #000;
 }
 
-/* ============================== MODO OSCURO ============================== */
+/* Modo oscuro */
 [data-theme="dark"] {
-    /* Colores de fondo - Tonos grises neutros */
     --bg-primary: #0a0a0a;
     --bg-secondary: #1a1a1a;
     --bg-tertiary: #2a2a2a;
@@ -69,29 +66,21 @@
     --bg-header: #0a0a0a;
     --bg-footer: #2a2a2a;
     --bg-auth: #1f1f1f;
-
-    /* Colores de texto - Tonos grises neutros */
     --text-primary: #f5f5f5;
     --text-secondary: #f5f5f5;
     --text-muted: #f5f5f5;
     --text-light: #ffffff;
     --text-inverse: #212529;
-
-    /* Colores de bordes - Tonos grises neutros */
     --border-primary: #404040;
-
-    /* Sombras (más suaves para modo oscuro) */
     --shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.3);
     --shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.4);
-
-    /* Colores especiales para modo oscuro */
     --star-color: #555555;
     --star-active: #110f0e;
     --carousel-bg: #2d2d2d;
     --spinner-bg: rgba(255, 255, 255, 0.1);
 }
 
-/* ============================== RESET Y BASE ============================== */
+/* Reset y base */
 * {
     box-sizing: border-box;
 }
@@ -102,8 +91,23 @@ body {
     color: var(--text-primary);
     line-height: 1.6;
     transition: background-color 0.3s ease, color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin: 0;
 }
-/* ============================== UTILIDADES ============================== */
+
+html {
+    height: 100%;
+    margin: 0;
+}
+
+/* Main ocupa todo el espacio disponible */
+main {
+    flex: 1;
+}
+
+/* Utilidades */
 .cursor-active {
     cursor: pointer;
 }
@@ -136,7 +140,7 @@ body {
     transition: var(--transition) !important;
 }
 
-/* ============================== NAVEGACIÓN ============================== */
+/* Navegación */
 .navbar {
     box-shadow: var(--shadow-sm);
     background-color: var(--bg-header) !important;
@@ -144,13 +148,12 @@ body {
     transition: var(--transition);
 }
 
-/* Header en modo oscuro - solo sombra, sin borde */
+/* Header en modo oscuro */
 [data-theme="dark"] .navbar {
     border-bottom: none !important;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
 }
 
-/* Mejorar la sombra del header general */
 header.shadow-sm {
     box-shadow: var(--shadow-sm);
 }
@@ -178,7 +181,6 @@ header.shadow-sm {
     transition: var(--transition);
 }
 
-/* Texto 'e-Mercado' blanco en modo oscuro */
 [data-theme="dark"] .navbar-brand {
     color: white !important;
 }
@@ -187,7 +189,6 @@ header.shadow-sm {
     color: var(--primary-color) !important;
 }
 
-/* Asegurar que todo el texto del navbar-brand sea blanco en modo oscuro */
 [data-theme="dark"] .navbar-brand .fw-bold {
     color: white !important;
 }
@@ -229,7 +230,7 @@ header.shadow-sm {
     transition: var(--transition);
 }
 
-/* ============================== LOGO ============================== */
+/* Logo */
 .navbar-collapse {
     padding-left: 30px;
 }
@@ -245,7 +246,7 @@ header.shadow-sm {
     transform: scale(1.05);
 }
 
-/* ============================== MENÚ DESPLEGABLE DE USUARIO ============================== */
+/* Menú desplegable de usuario */
 .dropdown-menu {
     background-color: var(--bg-card);
     border: 1px solid var(--border-primary);
@@ -274,11 +275,7 @@ header.shadow-sm {
     border-color: var(--border-primary);
 }
 
-/* Texto "Logueado como" en modo oscuro */
-[data-theme="dark"] .dropdown-menu .text-muted {
-    color: white !important;
-}
-
+[data-theme="dark"] .dropdown-menu .text-muted,
 [data-theme="dark"] .dropdown-menu strong {
     color: white !important;
 }
@@ -297,13 +294,13 @@ header.shadow-sm {
     height: 100% !important;
 }
 
-#userDropdown:hover {
+#userDropdown:hover,
+#userDropdown:focus {
     color: var(--primary-color) !important;
 }
 
 #userDropdown:focus {
     box-shadow: none !important;
-    color: var(--primary-color) !important;
 }
 
 #userDropdown i {
@@ -311,7 +308,7 @@ header.shadow-sm {
     margin-right: 0.5rem !important;
 }
 
-/* Botón de cerrar sesión - estilos como dropdown items */
+/* Botón de cerrar sesión */
 #logout {
     color: var(--text-primary) !important;
     background-color: transparent !important;
@@ -324,12 +321,7 @@ header.shadow-sm {
     text-align: left !important;
 }
 
-#logout:hover {
-    background-color: var(--bg-hover) !important;
-    color: var(--text-primary) !important;
-    text-decoration: none !important;
-}
-
+#logout:hover,
 #logout:focus {
     background-color: var(--bg-hover) !important;
     color: var(--text-primary) !important;
@@ -337,7 +329,7 @@ header.shadow-sm {
     box-shadow: none !important;
 }
 
-/* ============================== BOTONES ============================== */
+/* Botones */
 .btn-warning {
     background-color: var(--primary-color);
     border-color: var(--primary-color);
@@ -352,28 +344,17 @@ header.shadow-sm {
     color: white;
 }
 
-.btn-warning:focus {
-    background-color: var(--primary-color) !important;
-    border-color: var(--primary-color) !important;
-    color: white !important;
-    box-shadow: 0 0 0 0.25rem rgba(255, 107, 0, 0.25) !important;
-}
-
+.btn-warning:focus,
 .btn-warning:active,
-.btn-warning:focus:active {
-    background-color: var(--primary-color) !important;
-    border-color: var(--primary-color) !important;
-    color: white !important;
-    box-shadow: 0 0 0 0.25rem rgba(255, 107, 0, 0.25) !important;
-}
-
+.btn-warning:focus:active,
 .btn-warning:focus:not(:active) {
     background-color: var(--primary-color) !important;
     border-color: var(--primary-color) !important;
     color: white !important;
+    box-shadow: 0 0 0 0.25rem rgba(255, 107, 0, 0.25) !important;
 }
 
-/* Estilos específicos para el botón de enviar calificación */
+/* Botón de enviar calificación */
 #send-rating:focus,
 #send-rating:active,
 #send-rating:focus:active {
@@ -383,7 +364,7 @@ header.shadow-sm {
     box-shadow: 0 0 0 0.25rem rgba(255, 107, 0, 0.25) !important;
 }
 
-/* ============================== BOTÓN TOGGLE MODO OSCURO ============================== */
+/* Botón toggle modo oscuro */
 .theme-toggle {
     background: none;
     border: 2px solid var(--primary-color);
@@ -412,38 +393,14 @@ header.shadow-sm {
     box-shadow: 0 0 0 0.25rem rgba(255, 107, 0, 0.25);
 }
 
-.theme-toggle i {
-    font-size: 1.1rem !important;
-    line-height: 1 !important;
-    transition: var(--transition);
-    display: inline-block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-}
-
-/* Forzar el tamaño del icono en el navbar */
-.navbar .theme-toggle i {
-    font-size: 1.1rem !important;
-    line-height: 1 !important;
-    display: inline-block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-}
-
-/* Asegurar que el icono del tema no se vea afectado por las reglas del navbar-toggler */
-.navbar .theme-toggle i.fas {
-    font-size: 1.1rem !important;
-    line-height: 1 !important;
-    display: inline-block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-}
-
-/* Asegurar que el icono del tema no se vea afectado por las reglas del navbar-toggler */
+.theme-toggle i,
+.navbar .theme-toggle i,
+.navbar .theme-toggle i.fas,
 .navbar .theme-toggle i.fa-moon,
 .navbar .theme-toggle i.fa-sun {
     font-size: 1.1rem !important;
     line-height: 1 !important;
+    transition: var(--transition);
     display: inline-block !important;
     visibility: visible !important;
     opacity: 1 !important;
@@ -458,7 +415,7 @@ header.shadow-sm {
     align-items: center;
 }
 
-/* ============================== CARDS ============================== */
+/* Cards */
 .card {
     border: 1px solid var(--border-primary);
     box-shadow: var(--shadow-sm);
@@ -466,7 +423,6 @@ header.shadow-sm {
     transition: var(--transition);
 }
 
-/* Mejorar contraste de tarjetas en modo oscuro */
 [data-theme="dark"] .card {
     border: 1px solid var(--border-primary);
     background-color: var(--bg-card);
@@ -486,14 +442,8 @@ header.shadow-sm {
     transition: var(--transition);
 }
 
-/* ============================== TIPOGRAFÍA ============================== */
-/* Asegurar que todos los títulos usen las variables CSS */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
+/* Tipografía */
+h1, h2, h3, h4, h5, h6,
 .card-title,
 .hero-title,
 .hero-welcome {
@@ -501,7 +451,6 @@ h6,
     transition: var(--transition);
 }
 
-/* Asegurar que el texto de las tarjetas use las variables CSS */
 .card-text,
 p,
 .lead {
@@ -509,14 +458,13 @@ p,
     transition: var(--transition);
 }
 
-/* Asegurar que elementos pequeños también usen las variables CSS */
 small,
 .text-muted {
     color: var(--text-muted) !important;
     transition: var(--transition);
 }
 
-/* ============================== FORMULARIOS ============================== */
+/* Formularios */
 .form-control,
 .form-select,
 textarea {
@@ -546,20 +494,23 @@ textarea::placeholder {
     transition: var(--transition);
 }
 
-/* ============================== FOOTER DE TARJETAS DE PRODUCTOS ============================== */
+[data-theme="dark"] .form-check-label {
+    color: var(--text-primary) !important;
+}
+
+/* Footer de tarjetas de productos */
 .product-card-footer {
     background-color: var(--dark-bg);
     color: var(--white) !important;
     transition: var(--transition);
 }
 
-/* Footer de tarjetas en modo oscuro - mismo color que el header */
 [data-theme="dark"] .product-card-footer {
     background-color: var(--bg-header) !important;
     color: var(--white) !important;
 }
 
-/* ============================== CARRUSEL ============================== */
+/* Carrusel */
 #product-images {
     max-width: 800px;
     margin: 0 auto;
@@ -641,7 +592,7 @@ textarea::placeholder {
     transform: scale(1.05);
 }
 
-/* ============================== RATING/ESTRELLAS ============================== */
+/* Rating/Estrellas */
 .rating-stars {
     display: flex;
     flex-direction: row-reverse;
@@ -667,7 +618,7 @@ textarea::placeholder {
     color: var(--star-active);
 }
 
-/* ============================== LISTAS ============================== */
+/* Listas */
 .list-group-item {
     border: none;
     padding: 1rem;
@@ -680,7 +631,6 @@ textarea::placeholder {
     transition: var(--transition);
 }
 
-/* Mejorar contraste de elementos de lista en modo oscuro */
 [data-theme="dark"] .list-group-item {
     background-color: var(--bg-card);
     border-color: var(--border-primary);
@@ -697,7 +647,6 @@ textarea::placeholder {
     color: var(--text-primary);
 }
 
-/* Mejorar contraste de elementos de acción en modo oscuro */
 [data-theme="dark"] .list-group-item-action {
     background-color: var(--bg-card);
     border-color: var(--border-primary);
@@ -721,7 +670,7 @@ textarea::placeholder {
     border-color: var(--text-primary) !important;
 }
 
-/* ============================== PRODUCTOS RELACIONADOS ============================== */
+/* Productos relacionados */
 .related-products-card {
     top: 2rem;
 }
@@ -753,7 +702,7 @@ textarea::placeholder {
     text-overflow: ellipsis;
 }
 
-/* ============================== SPINNER ============================== */
+/* Spinner */
 .lds-ring {
     display: inline-block;
     position: relative;
@@ -777,9 +726,11 @@ textarea::placeholder {
 .lds-ring div:nth-child(1) {
     animation-delay: -0.45s;
 }
+
 .lds-ring div:nth-child(2) {
     animation-delay: -0.3s;
 }
+
 .lds-ring div:nth-child(3) {
     animation-delay: -0.15s;
 }
@@ -807,7 +758,7 @@ textarea::placeholder {
     transition: var(--transition);
 }
 
-/* ============================== HERO SECTION ============================== */
+/* Hero section */
 .hero-section {
     background: linear-gradient(
         to bottom,
@@ -818,7 +769,6 @@ textarea::placeholder {
     transition: var(--transition);
 }
 
-/* Gradiente específico para modo oscuro */
 [data-theme="dark"] .hero-section {
     background: linear-gradient(
         to bottom,
@@ -846,7 +796,7 @@ textarea::placeholder {
     transition: var(--transition);
 }
 
-/* ============================== BOTONES HERO SECTION ============================== */
+/* Botones hero section */
 .hero-section .btn-outline-light {
     color: var(--text-primary) !important;
     border-color: var(--text-primary) !important;
@@ -860,7 +810,7 @@ textarea::placeholder {
     background-color: var(--primary-color) !important;
 }
 
-/* ============================== BOTÓN VOLVER ============================== */
+/* Botón volver */
 .back-button {
     color: var(--primary-color) !important;
     transition: var(--transition);
@@ -871,7 +821,7 @@ textarea::placeholder {
     transform: translateX(-2px);
 }
 
-/* ============================== BOTONES FILTROS ============================== */
+/* Botones filtros */
 #clearRangeFilter {
     color: var(--primary-color) !important;
     border: none !important;
@@ -910,7 +860,7 @@ textarea::placeholder {
     outline: none !important;
 }
 
-/* ============================== BOTONES ORDENAR ============================== */
+/* Botones ordenar */
 .btn-group-toggle .btn {
     color: var(--primary-color) !important;
     border: none !important;
@@ -934,7 +884,7 @@ textarea::placeholder {
     color: var(--text-inverse) !important;
 }
 
-/* ============================== FOOTER ============================== */
+/* Footer */
 footer {
     background-color: var(--bg-footer);
     border-top: 1px solid var(--border-primary);
@@ -955,7 +905,7 @@ footer a:hover {
     text-decoration: underline;
 }
 
-/* ============================== LEGACY SUPPORT ============================== */
+/* Legacy support */
 .checked {
     color: var(--primary-color);
 }
@@ -969,11 +919,7 @@ footer a:hover {
 }
 
 .jumbotron {
-    background: linear-gradient(
-        135deg,
-        var(--primary-color),
-        var(--primary-hover)
-    );
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
     color: white;
     padding: 3rem 0;
     margin-bottom: 2rem;
@@ -986,7 +932,7 @@ footer a:hover {
     backdrop-filter: blur(10px);
 }
 
-/* ============================== ANIMACIONES ============================== */
+/* Animaciones */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -1002,7 +948,7 @@ footer a:hover {
     animation: fadeIn 0.5s ease-in-out;
 }
 
-/* ============================== PLACEHOLDER IMAGES ============================== */
+/* Placeholder images */
 .bd-placeholder-img {
     font-size: 1.125rem;
     text-anchor: middle;
@@ -1018,10 +964,11 @@ footer a:hover {
     }
 }
 
-/* ============================== PERFIL DE USUARIO ============================== */
+/* Perfil de usuario */
 .profile-image {
     object-fit: cover;
 }
+
 .profile-image-container {
     transition: var(--transition);
     border: var(--profile-border-width) solid var(--primary-color) !important;
@@ -1032,7 +979,6 @@ footer a:hover {
     cursor: pointer;
 }
 
-/* Fondo del perfil en tema oscuro */
 [data-theme="dark"] .profile-image-container {
     background-color: var(--bg-header);
 }
@@ -1050,7 +996,6 @@ footer a:hover {
     border-radius: 50%;
 }
 
-/* Overlay más claro en tema claro */
 .profile-image-container:not([data-theme="dark"]) .profile-overlay {
     background-color: var(--overlay-bg-light);
 }
@@ -1059,13 +1004,12 @@ footer a:hover {
     opacity: var(--overlay-opacity-hover);
 }
 
-/* Icono de cámara - tema claro (negro) */
+/* Icono de cámara */
 .profile-image-container i {
     color: var(--black) !important;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-/* Icono de cámara - tema oscuro (blanco) */
 [data-theme="dark"] .profile-image-container i {
     color: var(--white) !important;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
@@ -1098,7 +1042,6 @@ footer a:hover {
     box-shadow: 0 0 0 0.25rem rgba(255, 107, 0, 0.25) !important;
 }
 
-/* Botón de guardar perfil en modo oscuro */
 [data-theme="dark"] .btn-guardar-perfil {
     background-color: var(--primary-color) !important;
     border-color: var(--primary-color) !important;
@@ -1118,7 +1061,7 @@ footer a:hover {
     box-shadow: 0 0 0 0.25rem rgba(255, 107, 0, 0.25) !important;
 }
 
-/* ============================== ESTILOS DE LOGIN ============================== */
+/* Estilos de login */
 .login-overlay {
     position: fixed;
     top: 0;
@@ -1234,7 +1177,7 @@ footer a:hover {
     text-decoration: underline;
 }
 
-/* ============================== ESTILOS DE REGISTRO ============================== */
+/* Estilos de registro */
 .register-container {
     flex: 1;
     display: flex;
@@ -1326,7 +1269,7 @@ footer a:hover {
     text-decoration: underline;
 }
 
-/* ============================== NAVEGACIÓN DE PÁGINAS DE AUTENTICACIÓN ============================== */
+/* Navegación de páginas de autenticación */
 .auth-nav {
     position: fixed;
     top: 1rem;
@@ -1341,7 +1284,7 @@ footer a:hover {
     margin: 0;
 }
 
-/* ============================== PÁGINAS DE AUTENTICACIÓN ============================== */
+/* Páginas de autenticación */
 .auth-page {
     min-height: 100vh;
     display: flex;
@@ -1349,116 +1292,7 @@ footer a:hover {
     background-color: var(--bg-auth);
 }
 
-/* ============================== HALLOWEEN TOGGLE ============================== */
-body #halloween-toggle {
-    background: none;
-    border: 2px solid var(--primary-color);
-    color: var(--primary-color);
-    padding: 0.5rem;
-    border-radius: var(--border-radius);
-    cursor: pointer;
-}
-
-/* Estilo base animado */
-#halloween-toggle {
-    font-weight: 700;
-    animation: glow 1.5s infinite alternate;
-    border-color: var(--halloween-orange);
-}
-
-/* Animación de brillo pulsante */
-@keyframes glow {
-    0% {
-        box-shadow: 0 0 5px rgba(255, 136, 0, 0.5);
-    }
-    100% {
-        box-shadow: 0 0 15px rgba(255, 136, 0, 1);
-    }
-}
-
-/* Hover con temblor */
-#halloween-toggle:hover {
-    background-color: var(--halloween-orange);
-    color: var(--halloween-black);
-    animation: tremor 0.2s infinite alternate;
-}
-
-@keyframes tremor {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(2px);
-    }
-}
-
-/* ============================== RESPONSIVE ============================== */
-@media (max-width: 992px) {
-    #product-images {
-        max-width: 100%;
-    }
-
-    .carousel-item img {
-        height: 400px;
-    }
-}
-
-@media (max-width: 768px) {
-    .carousel-item img {
-        height: 300px;
-    }
-
-    .carousel-control-prev-icon,
-    .carousel-control-next-icon {
-        width: 3rem;
-        height: 3rem;
-    }
-
-    .rating-stars {
-        justify-content: center;
-    }
-
-    .rating-stars label {
-        font-size: 1.25rem;
-    }
-
-    .card-body {
-        padding: 1rem;
-    }
-
-    .navbar-brand img {
-        width: 40px;
-        height: 40px;
-    }
-
-    .auth-nav {
-        top: 0.5rem;
-        left: 0.5rem;
-    }
-}
-
-@media (max-width: 576px) {
-    .carousel-item img {
-        height: 250px;
-    }
-
-    .carousel-control-prev-icon,
-    .carousel-control-next-icon {
-        width: 2.5rem;
-        height: 2.5rem;
-    }
-
-    .rating-stars label {
-        font-size: 1rem;
-    }
-
-    .display-6 {
-        font-size: 1.5rem;
-    }
-}
-
-/* BOTONES COMPRAR Y CARRITO */
-
+/* Botones comprar y carrito */
 #btn-buyNow {
     background-color: var(--primary-color) !important;
     color: white !important;
@@ -1466,8 +1300,8 @@ body #halloween-toggle {
     box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.1) !important;
     transition: var(--transition);
 }
-/*==================== CARRITO DE COMPRAS ==================== */
 
+/* Carrito de compras */
 h1 {
     font-size: 1.8rem;
     margin: 0;
@@ -1561,7 +1395,7 @@ h1 {
     box-shadow: 0 0 0 0.25rem rgba(255, 107, 0, 0.25);
 }
 
-/* Botones */
+/* Botones del carrito */
 button {
     cursor: pointer;
     border: none;
@@ -1642,13 +1476,11 @@ button {
     background-color: var(--bg-hover);
 }
 
-/* Modo oscuro: mejorar contraste de Vaciar carrito */
 [data-theme="dark"] .btn-vaciar {
     background-color: var(--bg-hover) !important;
     color: var(--text-light) !important;
     border: 1px solid var(--border-primary) !important;
-    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.04),
-        0 2px 6px rgba(0, 0, 0, 0.5) !important;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.04), 0 2px 6px rgba(0, 0, 0, 0.5) !important;
 }
 
 [data-theme="dark"] .btn-vaciar:hover {
@@ -1656,7 +1488,6 @@ button {
     border-color: var(--border-primary) !important;
 }
 
-/* Botón de añadir al carrito en modo oscuro: gris oscuro legible */
 [data-theme="dark"] #btn-cart {
     background-color: var(--bg-tertiary) !important;
     border-color: var(--border-primary) !important;
@@ -1670,12 +1501,10 @@ button {
     color: var(--text-light) !important;
 }
 
-/* Título de sección cantidad en modo oscuro */
 [data-theme="dark"] h6.fw-bold.mb-3 {
     color: var(--text-light) !important;
 }
 
-/* Label y controles de cantidad en modo oscuro */
 [data-theme="dark"] label[for="cantidad"],
 [data-theme="dark"] #cantidad {
     color: var(--text-light) !important;
@@ -1686,47 +1515,7 @@ button {
     border-color: var(--border-primary) !important;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-    #carrito-container {
-        flex-direction: column;
-    }
-
-    .cart-item {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .cart-controls {
-        margin-top: 0.5rem;
-    }
-}
-/* ============================== FOOTER FIJO AL FINAL DE LA PÁGINA ============================== */
-/* Hacer que body y html ocupen toda la altura */
-html,
-body {
-    height: 100%;
-    margin: 0;
-}
-
-/* Flex container principal */
-body {
-    display: flex;
-    flex-direction: column;
-}
-
-/* Main ocupa todo el espacio disponible */
-main {
-    flex: 1;
-}
-
-/* Footer estilo opcional */
-footer {
-    background-color: #f8f9fa;
-    padding: 1rem 0;
-}
-
-/* ============================== BUY-NOW FORM SECTIONS ============================== */
+/* Buy-now form sections */
 .buy-form-section {
     background-color: var(--bg-card);
     border: 1px solid var(--border-primary);
@@ -1738,12 +1527,7 @@ footer {
     border-color: var(--border-primary);
 }
 
-/* Labels de form-check en modo oscuro */
-[data-theme="dark"] .form-check-label {
-    color: var(--text-primary) !important;
-}
-
-/* Botón primario en buy-now */
+/* Botón primario */
 .btn-primary {
     background-color: var(--primary-color) !important;
     border-color: var(--primary-color) !important;
@@ -1777,7 +1561,6 @@ footer {
     color: #ff6b6b;
 }
 
-/* Mensajes de error personalizados */
 .error-message {
     display: none;
     color: #dc3545 !important;
@@ -1789,7 +1572,7 @@ footer {
     color: #ff6b6b !important;
 }
 
-/* ============================== COMPRA EXITOSA ============================== */
+/* Compra exitosa */
 .compra-exitosa-card {
     background-color: var(--bg-card);
     transition: var(--transition);
@@ -1835,7 +1618,6 @@ footer {
     text-align: left;
 }
 
-/* Modo oscuro para página de compra exitosa */
 [data-theme="dark"] .compra-exitosa-card {
     background-color: var(--bg-card);
 }
@@ -1850,7 +1632,22 @@ footer {
     border-color: var(--border-primary) !important;
 }
 
-/* Botón outline secondary personalizado */
+/* Alert transferencia bancaria */
+.alert-transferencia {
+    background-color: rgba(255, 107, 0, 0.1);
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 1rem;
+    border-radius: var(--border-radius);
+}
+
+[data-theme="dark"] .alert-transferencia {
+    background-color: rgba(255, 107, 0, 0.15);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+/* Botón outline secondary */
 .btn-outline-secondary {
     border-color: var(--border-primary);
     color: var(--text-primary);
@@ -1873,4 +1670,82 @@ footer {
     background-color: var(--bg-hover);
     border-color: var(--primary-color);
     color: var(--primary-color);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    #product-images {
+        max-width: 100%;
+    }
+
+    .carousel-item img {
+        height: 400px;
+    }
+}
+
+@media (max-width: 768px) {
+    .carousel-item img {
+        height: 300px;
+    }
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        width: 3rem;
+        height: 3rem;
+    }
+
+    .rating-stars {
+        justify-content: center;
+    }
+
+    .rating-stars label {
+        font-size: 1.25rem;
+    }
+
+    .card-body {
+        padding: 1rem;
+    }
+
+    .navbar-brand img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .auth-nav {
+        top: 0.5rem;
+        left: 0.5rem;
+    }
+
+    #carrito-container {
+        flex-direction: column;
+    }
+
+    .cart-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .cart-controls {
+        margin-top: 0.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .carousel-item img {
+        height: 250px;
+    }
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+
+    .rating-stars label {
+        font-size: 1rem;
+    }
+
+    .display-6 {
+        font-size: 1.5rem;
+    }
 }

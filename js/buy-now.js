@@ -1,28 +1,11 @@
-// js/buy-now.js
-console.log("buy-now.js se está cargando...");
-
-document.addEventListener("DOMContentLoaded", function() {
-  console.log("DOMContentLoaded ejecutado");
-  
+document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("buy-form");
-  const successMsg = document.getElementById("successMsg");
   const subtotalElem = document.getElementById("subtotal");
   const envioCostoElem = document.getElementById("envio-costo");
   const totalElem = document.getElementById("total");
-
-  console.log("Elementos obtenidos:", {
-    form: form ? "OK" : "ERROR",
-    subtotal: subtotalElem ? "OK" : "ERROR",
-    envio: envioCostoElem ? "OK" : "ERROR",
-    total: totalElem ? "OK" : "ERROR"
-  });
-
-  // Leer carrito
-  const carritoJSON = localStorage.getItem("cartItems");
-  console.log("Carrito JSON:", carritoJSON);
   
+  const carritoJSON = localStorage.getItem("cartItems");
   const carrito = JSON.parse(carritoJSON) || [];
-  console.log("Carrito parseado:", carrito);
 
   if (carrito.length === 0) {
     alert("Tu carrito está vacío. Redirigiendo...");
@@ -30,33 +13,29 @@ document.addEventListener("DOMContentLoaded", function() {
     return;
   }
 
-  // Función: convertir a pesos
-  function convertirAPesos(precio, moneda) {
+  // Convertir a pesos
+  const convertirAPesos = (precio, moneda) => {
     if (!precio) return 0;
     return moneda === "USD" ? Number(precio) * 40 : Number(precio);
-  }
+  };
 
   // Calcular subtotal
-  function calcularSubtotal() {
+  const calcularSubtotal = () => {
     let subtotal = 0;
     carrito.forEach(item => {
       const precioEnPesos = convertirAPesos(item.unitCost, item.currency);
       const cantidad = Number(item.count) || 1;
       subtotal += precioEnPesos * cantidad;
     });
-    console.log("Subtotal calculado:", subtotal);
     return subtotal;
-  }
+  };
 
   // Actualizar costos
-  function actualizarCostos() {
-    console.log("Actualizando costos...");
-    
+  const actualizarCostos = () => {
     const subtotal = calcularSubtotal();
     
     if (subtotalElem) {
       subtotalElem.textContent = `Subtotal: $${subtotal.toFixed(2)}`;
-      console.log("Subtotal actualizado en UI");
     }
 
     const tipoEnvioSeleccionado = document.querySelector('input[name="envio"]:checked');
@@ -79,34 +58,58 @@ document.addEventListener("DOMContentLoaded", function() {
     if (totalElem) {
       totalElem.textContent = `Total: $${total.toFixed(2)}`;
     }
-
-    console.log("Costos actualizados:", {
-      subtotal: subtotal,
-      envio: costoEnvio,
-      total: total
-    });
-  }
+  };
 
   // Escuchar cambios en envío
   document.querySelectorAll('input[name="envio"]').forEach(radio => {
-    radio.addEventListener("change", function() {
-      console.log("Cambió tipo de envío a:", this.value);
-      actualizarCostos();
+    radio.addEventListener("change", actualizarCostos);
+  });
+
+  // Mostrar/ocultar campos según método de pago
+  document.querySelectorAll('input[name="pago"]').forEach(radio => {
+    radio.addEventListener("change", () => {
+      const camposTarjeta = document.getElementById("campos-tarjeta");
+      const camposTransferencia = document.getElementById("campos-transferencia");
+      
+      if (radio.value === "tarjeta") {
+        camposTarjeta.style.display = "block";
+        camposTransferencia.style.display = "none";
+      } else if (radio.value === "transferencia") {
+        camposTarjeta.style.display = "none";
+        camposTransferencia.style.display = "block";
+      }
     });
   });
 
-  // Ejecutar al cargar
-  console.log("Llamando a actualizarCostos()...");
+  // Formatear número de tarjeta automáticamente
+  document.getElementById("numero-tarjeta").addEventListener("input", (e) => {
+    let valor = e.target.value.replace(/\s/g, '').replace(/\D/g, '');
+    let formatted = valor.match(/.{1,4}/g)?.join(' ') || valor;
+    e.target.value = formatted;
+  });
+
+  // Solo números en CVV
+  document.getElementById("cvv").addEventListener("input", (e) => {
+    e.target.value = e.target.value.replace(/\D/g, '');
+  });
+
+  // Formatear vencimiento MM/AA
+  document.getElementById("vencimiento").addEventListener("input", (e) => {
+    let valor = e.target.value.replace(/\D/g, '');
+    if (valor.length >= 2) {
+      valor = valor.slice(0, 2) + '/' + valor.slice(2, 4);
+    }
+    e.target.value = valor;
+  });
+
   actualizarCostos();
 
   // Validación del formulario
   if (form) {
-    form.addEventListener("submit", function(e) {
-      console.log("Submit del formulario");
+    form.addEventListener("submit", (e) => {
       e.preventDefault();
       e.stopPropagation();
 
-      // Verificar si el formulario es válido
       const departamento = document.getElementById("departamento").value.trim();
       const calle = document.getElementById("calle").value.trim();
       const numerodepuerta = document.getElementById("numerodepuerta").value.trim();
@@ -117,7 +120,6 @@ document.addEventListener("DOMContentLoaded", function() {
       // Ocultar todos los mensajes de error
       document.querySelectorAll('.error-message').forEach(msg => msg.style.display = 'none');
 
-      // Validar cada campo y mostrar errores si es necesario
       let hayErrores = false;
 
       if (!departamento) {
@@ -150,12 +152,40 @@ document.addEventListener("DOMContentLoaded", function() {
         hayErrores = true;
       }
 
-      // Si hay errores, detener el envío
-      if (hayErrores) {
-        return;
+      // Validar campos de pago específicos
+      if (formaPago) {
+        if (formaPago.value === "tarjeta") {
+          const numeroTarjeta = document.getElementById("numero-tarjeta").value.trim();
+          const titular = document.getElementById("titular-tarjeta").value.trim();
+          const vencimiento = document.getElementById("vencimiento").value.trim();
+          const cvv = document.getElementById("cvv").value.trim();
+
+          if (!numeroTarjeta) {
+            document.getElementById("error-numero-tarjeta").style.display = "block";
+            hayErrores = true;
+          }
+          if (!titular) {
+            document.getElementById("error-titular-tarjeta").style.display = "block";
+            hayErrores = true;
+          }
+          if (!vencimiento) {
+            document.getElementById("error-vencimiento").style.display = "block";
+            hayErrores = true;
+          }
+          if (!cvv) {
+            document.getElementById("error-cvv").style.display = "block";
+            hayErrores = true;
+          }
+        } else if (formaPago.value === "transferencia") {
+          const banco = document.getElementById("banco").value;
+          if (!banco) {
+            document.getElementById("error-banco").style.display = "block";
+            hayErrores = true;
+          }
+        }
       }
 
-      console.log("Formulario válido, guardando...");
+      if (hayErrores) return;
 
       const subtotal = calcularSubtotal();
       const porcentajeEnvio = tipoEnvio.value === "premium" ? 0.15 : 
@@ -163,30 +193,39 @@ document.addEventListener("DOMContentLoaded", function() {
       const costoEnvio = subtotal * porcentajeEnvio;
       const total = subtotal + costoEnvio;
 
+      // Recopilar datos de pago adicionales
+      let datosPago = {};
+      if (formaPago.value === "tarjeta") {
+        datosPago = {
+          numeroTarjeta: document.getElementById("numero-tarjeta").value.trim(),
+          titular: document.getElementById("titular-tarjeta").value.trim(),
+          vencimiento: document.getElementById("vencimiento").value.trim(),
+          cvv: document.getElementById("cvv").value.trim()
+        };
+      } else if (formaPago.value === "transferencia") {
+        datosPago = {
+          banco: document.getElementById("banco").value
+        };
+      }
+
       const datosEnvio = {
-        departamento: departamento,
-        calle: calle,
-        numerodepuerta: numerodepuerta,
-        esquina: esquina,
+        departamento,
+        calle,
+        numerodepuerta,
+        esquina,
         tipoEnvio: tipoEnvio.value,
         formaPago: formaPago.value,
-        subtotal: subtotal,
-        costoEnvio: costoEnvio,
-        total: total,
-        carrito: carrito,
+        datosPago,
+        subtotal,
+        costoEnvio,
+        total,
+        carrito,
         fecha: new Date().toISOString()
       };
 
       localStorage.setItem("datosEnvio", JSON.stringify(datosEnvio));
-      console.log("Datos guardados:", datosEnvio);
-
-      // Vaciar el carrito después de confirmar la compra
       localStorage.removeItem("cartItems");
-
-      // Redirigir a página de compra exitosa
       window.location.href = "compra-exitosa.html";
     });
   }
 });
-
-console.log("Final del archivo buy-now.js");

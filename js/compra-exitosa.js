@@ -1,6 +1,4 @@
-// js/compra-exitosa.js
-
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", () => {
   mostrarUsuarioLogueado("#userNav", false);
   actualizarBadgeCarrito();
   cargarDetallesCompra();
@@ -9,18 +7,17 @@ document.addEventListener("DOMContentLoaded", function() {
 function cargarDetallesCompra() {
   const datosEnvio = JSON.parse(localStorage.getItem("datosEnvio"));
 
-  // Si no hay datos de envío, redirigir al carrito
   if (!datosEnvio) {
     alert("No se encontraron datos de la compra.");
     window.location.href = "cart.html";
     return;
   }
 
-  // Generar número de pedido aleatorio
-  const numeroPedido = "PED-" + Math.floor(Math.random() * 1000000).toString().padStart(6, '0');
+  // Generar número de pedido
+  const numeroPedido = `PED-${Math.floor(Math.random() * 1000000).toString().padStart(6, '0')}`;
   document.getElementById("numero-pedido").textContent = numeroPedido;
 
-  // Formatear y mostrar fecha
+  // Formatear fecha
   const fecha = new Date(datosEnvio.fecha);
   const fechaFormateada = fecha.toLocaleDateString('es-ES', {
     year: 'numeric',
@@ -51,14 +48,21 @@ function cargarDetallesCompra() {
   switch(datosEnvio.formaPago) {
     case "tarjeta":
       formaPagoTexto = "Tarjeta de crédito o débito";
+      if (datosEnvio.datosPago && datosEnvio.datosPago.numeroTarjeta) {
+        const ultimos4 = datosEnvio.datosPago.numeroTarjeta.replace(/\s/g, '').slice(-4);
+        formaPagoTexto += ` (**** **** **** ${ultimos4})`;
+      }
       break;
     case "transferencia":
       formaPagoTexto = "Transferencia bancaria";
+      if (datosEnvio.datosPago && datosEnvio.datosPago.banco) {
+        formaPagoTexto += ` - ${datosEnvio.datosPago.banco.toUpperCase()}`;
+      }
       break;
   }
   document.getElementById("forma-pago").textContent = formaPagoTexto;
 
-  // Mostrar dirección de envío
+  // Mostrar dirección
   const direccion = `${datosEnvio.calle} ${datosEnvio.numerodepuerta}, esquina ${datosEnvio.esquina}, ${datosEnvio.departamento}`;
   document.getElementById("direccion-envio").textContent = direccion;
 
@@ -67,9 +71,6 @@ function cargarDetallesCompra() {
 
   // Mostrar productos
   mostrarProductos(datosEnvio.carrito);
-
-  // Limpiar datos de envío del localStorage después de mostrarlos
-  // localStorage.removeItem("datosEnvio");
 }
 
 function mostrarProductos(productos) {
@@ -103,18 +104,13 @@ function mostrarProductos(productos) {
   });
 }
 
-// Función para actualizar el badge del carrito (debe estar vacío después de la compra)
 function actualizarBadgeCarrito() {
   const badge = document.getElementById("cart-count");
   if (!badge) return;
 
   const items = JSON.parse(localStorage.getItem("cartItems")) || [];
-  const total = items.reduce(
-    (sum, item) => sum + (parseInt(item.count) || 0),
-    0
-  );
+  const total = items.reduce((sum, item) => sum + (parseInt(item.count) || 0), 0);
 
   badge.textContent = total;
   badge.style.display = total > 0 ? "inline-block" : "none";
 }
-

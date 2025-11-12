@@ -17,7 +17,6 @@
       rel="stylesheet"
     />
     <link href="css/styles.css" rel="stylesheet" />
-    <link href="css/haloween.css" rel="stylesheet" />
     <script>
       const tema = localStorage.getItem("tema") || "light";
       document.documentElement.setAttribute("data-theme", tema);
@@ -200,6 +199,55 @@
                 <div class="error-message" id="error-pago">
                   Seleccione una forma de pago.
                 </div>
+
+                <!-- Campos adicionales para tarjeta -->
+                <div id="campos-tarjeta" class="mt-4" style="display: none;">
+                  <h5 class="mb-3">Datos de la tarjeta</h5>
+                  <div class="row">
+                    <div class="col-md-12 mb-3">
+                      <label for="numero-tarjeta" class="form-label">Número de tarjeta</label>
+                      <input type="text" class="form-control" id="numero-tarjeta" placeholder="1234 5678 9012 3456" maxlength="19">
+                      <div class="error-message" id="error-numero-tarjeta">Ingrese el número de tarjeta.</div>
+                    </div>
+                    <div class="col-md-12 mb-3">
+                      <label for="titular-tarjeta" class="form-label">Nombre del titular</label>
+                      <input type="text" class="form-control" id="titular-tarjeta" placeholder="Como aparece en la tarjeta">
+                      <div class="error-message" id="error-titular-tarjeta">Ingrese el nombre del titular.</div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                      <label for="vencimiento" class="form-label">Vencimiento (MM/AA)</label>
+                      <input type="text" class="form-control" id="vencimiento" placeholder="12/25" maxlength="5">
+                      <div class="error-message" id="error-vencimiento">Ingrese la fecha de vencimiento.</div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                      <label for="cvv" class="form-label">CVV</label>
+                      <input type="text" class="form-control" id="cvv" placeholder="123" maxlength="3">
+                      <div class="error-message" id="error-cvv">Ingrese el CVV.</div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Campos adicionales para transferencia -->
+                <div id="campos-transferencia" class="mt-4" style="display: none;">
+                  <h5 class="mb-3">Datos de transferencia</h5>
+                  <div class="mb-3">
+                    <label for="banco" class="form-label">Banco de origen</label>
+                    <select class="form-control" id="banco">
+                      <option value="">Seleccione su banco</option>
+                      <option value="brou">BROU</option>
+                      <option value="itau">Itaú</option>
+                      <option value="santander">Santander</option>
+                      <option value="scotiabank">Scotiabank</option>
+                      <option value="bbva">BBVA</option>
+                      <option value="otro">Otro</option>
+                    </select>
+                    <div class="error-message" id="error-banco">Seleccione un banco.</div>
+                  </div>
+                  <div class="alert alert-transferencia">
+                    <i class="fas fa-info-circle me-2"></i>
+                    Los datos para realizar la transferencia se enviarán a tu correo electrónico.
+                  </div>
+                </div>
               </div>
             </div>
           </form>
@@ -255,7 +303,6 @@
     <script src="js/mostrarUsuarioLogueado.js"></script>
     <script src="js/proteccion.js"></script>
     <script src="js/theme-toggle.js"></script>
-    <script src="js/halloween.js"></script>
     <script src="js/buy-now.js"></script>
   </body>
 </html>

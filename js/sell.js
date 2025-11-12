@@ -9,133 +9,111 @@ let PESO_SYMBOL = "UYU ";
 let PERCENTAGE_SYMBOL = '%';
 let MSG = "FUNCIONALIDAD NO IMPLEMENTADA";
 
-//Función que se utiliza para actualizar los costos de publicación
-function updateTotalCosts() {
-    let unitProductCostHTML = document.getElementById("productCostText");
-    let comissionCostHTML = document.getElementById("comissionText");
-    let totalCostHTML = document.getElementById("totalCostText");
+// Actualizar costos de publicación
+const updateTotalCosts = () => {
+  const unitProductCostHTML = document.getElementById("productCostText");
+  const comissionCostHTML = document.getElementById("comissionText");
+  const totalCostHTML = document.getElementById("totalCostText");
 
-    let unitCostToShow = MONEY_SYMBOL + productCost;
-    let comissionToShow = Math.round((comissionPercentage * 100)) + PERCENTAGE_SYMBOL;
-    let totalCostToShow = MONEY_SYMBOL + ((Math.round(productCost * comissionPercentage * 100) / 100) + parseInt(productCost));
+  const unitCostToShow = MONEY_SYMBOL + productCost;
+  const comissionToShow = Math.round((comissionPercentage * 100)) + PERCENTAGE_SYMBOL;
+  const totalCostToShow = MONEY_SYMBOL + ((Math.round(productCost * comissionPercentage * 100) / 100) + parseInt(productCost));
 
-    unitProductCostHTML.innerHTML = unitCostToShow;
-    comissionCostHTML.innerHTML = comissionToShow;
-    totalCostHTML.innerHTML = totalCostToShow;
-}
+  unitProductCostHTML.innerHTML = unitCostToShow;
+  comissionCostHTML.innerHTML = comissionToShow;
+  totalCostHTML.innerHTML = totalCostToShow;
+};
 
-//Función que se ejecuta una vez que se haya lanzado el evento de
-//que el documento se encuentra cargado, es decir, se encuentran todos los
-//elementos HTML presentes.
-document.addEventListener("DOMContentLoaded", function (e) {
-    document.getElementById("productCountInput").addEventListener("change", function () {
-        productCount = this.value;
-        updateTotalCosts();
-    });
+document.addEventListener("DOMContentLoaded", (e) => {
+  document.getElementById("productCountInput").addEventListener("change", function() {
+    productCount = this.value;
+    updateTotalCosts();
+  });
 
-    document.getElementById("productCostInput").addEventListener("change", function () {
-        productCost = this.value;
-        updateTotalCosts();
-    });
+  document.getElementById("productCostInput").addEventListener("change", function() {
+    productCost = this.value;
+    updateTotalCosts();
+  });
 
-    document.getElementById("goldradio").addEventListener("change", function () {
-        comissionPercentage = 0.13;
-        updateTotalCosts();
-    });
+  document.getElementById("goldradio").addEventListener("change", () => {
+    comissionPercentage = 0.13;
+    updateTotalCosts();
+  });
 
-    document.getElementById("premiumradio").addEventListener("change", function () {
-        comissionPercentage = 0.07;
-        updateTotalCosts();
-    });
+  document.getElementById("premiumradio").addEventListener("change", () => {
+    comissionPercentage = 0.07;
+    updateTotalCosts();
+  });
 
-    document.getElementById("standardradio").addEventListener("change", function () {
-        comissionPercentage = 0.03;
-        updateTotalCosts();
-    });
+  document.getElementById("standardradio").addEventListener("change", () => {
+    comissionPercentage = 0.03;
+    updateTotalCosts();
+  });
 
-    document.getElementById("productCurrency").addEventListener("change", function () {
-        if (this.value == DOLLAR_CURRENCY) {
-            MONEY_SYMBOL = DOLLAR_SYMBOL;
-        }
-        else if (this.value == PESO_CURRENCY) {
-            MONEY_SYMBOL = PESO_SYMBOL;
-        }
+  document.getElementById("productCurrency").addEventListener("change", function() {
+    if (this.value == DOLLAR_CURRENCY) {
+      MONEY_SYMBOL = DOLLAR_SYMBOL;
+    } else if (this.value == PESO_CURRENCY) {
+      MONEY_SYMBOL = PESO_SYMBOL;
+    }
+    updateTotalCosts();
+  });
 
-        updateTotalCosts();
-    });
+  // Configuración Dropzone
+  const dzoptions = {
+    url: "/",
+    autoQueue: false
+  };
+  const myDropzone = new Dropzone("div#file-upload", dzoptions);
 
+  // Formulario de publicación
+  const sellForm = document.getElementById("sell-info");
 
-    //Configuraciones para el elemento que sube archivos
-    let dzoptions = {
-        url: "/",
-        autoQueue: false
-    };
-    let myDropzone = new Dropzone("div#file-upload", dzoptions);
+  sellForm.addEventListener("submit", (e) => {
+    e.preventDefault();
 
+    const productNameInput = document.getElementById("productName");
+    const productCategory = document.getElementById("productCategory");
+    const productCost = document.getElementById("productCostInput");
+    let infoMissing = false;
 
-    //Se obtiene el formulario de publicación de producto
-    let sellForm = document.getElementById("sell-info");
+    // Quitar clases inválidas
+    productNameInput.classList.remove('is-invalid');
+    productCategory.classList.remove('is-invalid');
+    productCost.classList.remove('is-invalid');
 
-    //Se agrega una escucha en el evento 'submit' que será
-    //lanzado por el formulario cuando se seleccione 'Vender'.
-    sellForm.addEventListener("submit", function (e) {
+    // Validar campos
+    if (productNameInput.value === "") {
+      productNameInput.classList.add('is-invalid');
+      infoMissing = true;
+    }
 
-        e.preventDefault();
-        e.preventDefault();
+    if (productCategory.value === "") {
+      productCategory.classList.add('is-invalid');
+      infoMissing = true;
+    }
 
-        let productNameInput = document.getElementById("productName");
-        let productCategory = document.getElementById("productCategory");
-        let productCost = document.getElementById("productCostInput");
-        let infoMissing = false;
+    if (productCost.value <= 0) {
+      productCost.classList.add('is-invalid');
+      infoMissing = true;
+    }
 
-        //Quito las clases que marcan como inválidos
-        productNameInput.classList.remove('is-invalid');
-        productCategory.classList.remove('is-invalid');
-        productCost.classList.remove('is-invalid');
+    if (!infoMissing) {
+      getJSONData(PUBLISH_PRODUCT_URL).then(resultObj => {
+        const msgToShowHTML = document.getElementById("resultSpan");
+        let msgToShow = "";
 
-        //Se realizan los controles necesarios,
-        //En este caso se controla que se haya ingresado el nombre y categoría.
-        //Consulto por el nombre del producto
-        if (productNameInput.value === "") {
-            productNameInput.classList.add('is-invalid');
-            infoMissing = true;
-        }
-
-        //Consulto por la categoría del producto
-        if (productCategory.value === "") {
-            productCategory.classList.add('is-invalid');
-            infoMissing = true;
-        }
-
-        //Consulto por el costo
-        if (productCost.value <= 0) {
-            productCost.classList.add('is-invalid');
-            infoMissing = true;
+        if (resultObj.status === 'ok') {
+          msgToShow = MSG;
+          document.getElementById("alertResult").classList.add('alert-primary');
+        } else if (resultObj.status === 'error') {
+          msgToShow = MSG;
+          document.getElementById("alertResult").classList.add('alert-primary');
         }
 
-        if (!infoMissing) {
-            //Aquí ingresa si pasó los controles, irá a enviar
-            //la solicitud para crear la publicación.
-
-            getJSONData(PUBLISH_PRODUCT_URL).then(function (resultObj) {
-                let msgToShowHTML = document.getElementById("resultSpan");
-                let msgToShow = "";
-
-                //Si la publicación fue exitosa, devolverá mensaje de éxito,
-                //de lo contrario, devolverá mensaje de error.
-                //FUNCIONALIDAD NO IMPLEMENTADA
-                if (resultObj.status === 'ok') {
-                    msgToShow = MSG;
-                    document.getElementById("alertResult").classList.add('alert-primary');
-                }
-                else if (resultObj.status === 'error') {
-                    msgToShow = MSG;
-                    document.getElementById("alertResult").classList.add('alert-primary');
-                }
-
-                msgToShowHTML.innerHTML = msgToShow;
-                document.getElementById("alertResult").classList.add("show");
-            });
-        }
-    });
+        msgToShowHTML.innerHTML = msgToShow;
+        document.getElementById("alertResult").classList.add("show");
+      });
+    }
+  });
 });
