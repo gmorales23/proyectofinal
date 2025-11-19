@@ -52,7 +52,9 @@ function mostrarUsuarioLogueado(containerSelector, mostrarGoHome = false) {
   }
   
   document.getElementById("logout").addEventListener("click", () => {
+    // Eliminar token y datos de usuario
     localStorage.removeItem("usuarioLogueado");
+    localStorage.removeItem("token");
     window.location.reload();
   });
 }

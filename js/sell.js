@@ -1,3 +1,5 @@
+const PUBLISH_PRODUCT_URL = "https://japceibal.github.io/emercado-api/sell/publish.json";
+
 let productCost = 0;
 let productCount = 0;
 let comissionPercentage = 0.13;
